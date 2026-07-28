@@ -25,7 +25,7 @@ export async function onRequestPost({ request, env }) {
     return Response.json({ ok: false, error: "invalid_email" }, { status: 400 });
   }
 
-  if (!env.RESEND_API_KEY) {
+  if (!env.RESEND_API_KEY || !env.TO_EMAIL) {
     return Response.json({ ok: false, error: "not_configured" }, { status: 500 });
   }
 
@@ -55,7 +55,7 @@ export async function onRequestPost({ request, env }) {
     },
     body: JSON.stringify({
       from: env.FROM_EMAIL || "Sloan <onboarding@resend.dev>",
-      to: [env.TO_EMAIL || "hello@decimal.pe"],
+      to: [env.TO_EMAIL],
       reply_to: data.email,
       subject: `New Sloan application: ${data.name_company}`,
       html,

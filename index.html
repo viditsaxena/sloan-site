@@ -431,7 +431,6 @@ Here's an actual seller call — press play
 <button type="submit" class="btn" id="qualify-submit" style="width:100%">Get every lead called in seconds</button>
 <p id="form-status" role="status" aria-live="polite" style="margin:14px 0 0;text-align:center;font:400 13px/1.5 'Inter',sans-serif;color:var(--ink2)">60 seconds · no card · one reply from a person, not a sequence</p>
 </form>
-<p style="margin:24px 0 0;font:400 14px/1.5 'Inter',sans-serif;color:var(--ink2)">Rather talk it through? <a href="mailto:hello@decimal.pe" style="text-decoration:underline">Book 15 minutes</a></p>
 </div>
 </section>
 
@@ -623,11 +622,11 @@ document.querySelectorAll('a[data-cta-location]').forEach(function(a){
           status.textContent="Thanks — a founder will reply directly.";
           submitBtn.style.display='none';
         } else {
-          status.textContent='Something went wrong. Email us directly at hello@decimal.pe and we\'ll take it from there.';
+          status.textContent='Something went wrong. Please try submitting again in a moment.';
           submitBtn.disabled=false;
         }
       }).catch(function(){
-        status.textContent='Something went wrong. Email us directly at hello@decimal.pe and we\'ll take it from there.';
+        status.textContent='Something went wrong. Please try submitting again in a moment.';
         submitBtn.disabled=false;
       });
   });
