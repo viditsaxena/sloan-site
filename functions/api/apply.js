@@ -1,4 +1,4 @@
-const REQUIRED_FIELDS = ["name_company", "email", "lead_volume", "first_caller"];
+const REQUIRED_FIELDS = ["name_company", "email", "phone", "whatsapp_ok", "lead_volume", "first_caller"];
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (c) => ({
@@ -39,6 +39,8 @@ export async function onRequestPost({ request, env }) {
     <table cellpadding="6" cellspacing="0">
       <tr><td><strong>Name and company</strong></td><td>${escapeHtml(data.name_company)}</td></tr>
       <tr><td><strong>Work email</strong></td><td>${escapeHtml(data.email)}</td></tr>
+      <tr><td><strong>Phone number</strong></td><td>${escapeHtml(data.phone)}</td></tr>
+      <tr><td><strong>OK to contact on WhatsApp</strong></td><td>${escapeHtml(data.whatsapp_ok)}</td></tr>
       <tr><td><strong>Monthly inbound seller leads</strong></td><td>${escapeHtml(data.lead_volume)}</td></tr>
       <tr><td><strong>Who makes the first calls</strong></td><td>${escapeHtml(data.first_caller)}</td></tr>
       <tr><td><strong>Monthly cost today</strong></td><td>${escapeHtml(data.monthly_cost || "")}</td></tr>
