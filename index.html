@@ -99,7 +99,24 @@ input[type=range].scrub::-moz-range-track{height:6px;border-radius:3px;backgroun
 <p style="margin:14px 0 0;font:400 13.5px/1 'IBM Plex Mono',monospace;color:var(--ink3)">5 questions · 60 seconds · no card, no call required</p>
 </div>
 
-<div class="wrap" style="max-width:820px;margin-top:56px;text-align:left">
+<div class="wrap" style="max-width:820px;margin-top:40px;text-align:left">
+<div class="card" style="padding:22px 26px">
+<p style="margin:0 0 16px;font:600 16px/1.3 'Inter',sans-serif;display:flex;align-items:center;gap:9px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M19 8a5 5 0 0 1 0 8"/></svg>
+Here's an actual seller call — press play
+</p>
+<div style="display:flex;align-items:center;gap:16px">
+<button id="play-btn" type="button" aria-label="Play the recording" style="flex:none;width:48px;height:48px;border-radius:50%;border:none;background:var(--blue);color:#fff;cursor:pointer;font:400 16px/1 'Inter',sans-serif;display:flex;align-items:center;justify-content:center;padding:0">
+<span id="play-icon" aria-hidden="true" style="margin-left:3px">&#9654;</span>
+</button>
+<input type="range" id="scrub" class="scrub" aria-label="Seek recording" min="0" max="1000" value="0" step="1">
+<span id="cur" style="flex:none;font:400 12.5px/1 'IBM Plex Mono',monospace;color:var(--ink3)">0:00</span>
+</div>
+<audio id="call-audio" preload="metadata" src="assets/sloan-call.mp3"></audio>
+</div>
+</div>
+
+<div class="wrap" style="max-width:820px;margin-top:20px;text-align:left">
 <div class="card" style="overflow:hidden">
 <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px">
 <span style="font:600 15px/1.3 'Inter',sans-serif">Marcus T. · 4412 Ridgeway Dr</span>
@@ -108,21 +125,11 @@ input[type=range].scrub::-moz-range-track{height:6px;border-radius:3px;backgroun
 <div class="grid-2" style="gap:0">
 <div style="padding:22px 24px;border-right:1px solid var(--border)">
 <p style="margin:0 0 14px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">Call activity</p>
-<div style="display:flex;flex-direction:column;gap:10px;font:400 14px/1.5 'Inter',sans-serif;margin-bottom:16px">
+<div style="display:flex;flex-direction:column;gap:10px;font:400 14px/1.5 'Inter',sans-serif">
 <div style="display:flex;gap:10px"><span style="flex:none;width:64px;color:var(--ink3);font:400 12.5px/1.5 'IBM Plex Mono',monospace">Sat 21:41</span><span style="color:var(--ink2)">Lead received</span></div>
 <div style="display:flex;gap:10px"><span style="flex:none;width:64px;color:var(--blue);font:500 12.5px/1.5 'IBM Plex Mono',monospace">21:41:06</span><span>Attempt 1 — connected</span></div>
 <div style="display:flex;gap:10px"><span style="flex:none;width:64px;color:var(--ink3);font:400 12.5px/1.5 'IBM Plex Mono',monospace">21:42</span><span style="color:var(--ink2)">Transcript delivered</span></div>
 </div>
-<div style="display:flex;align-items:center;gap:10px;padding:12px;background:var(--bg2);border-radius:8px">
-<button id="play-btn" type="button" aria-label="Play the recording" style="flex:none;width:32px;height:32px;border-radius:50%;border:none;background:var(--blue);color:#fff;cursor:pointer;font:400 12px/1 'Inter',sans-serif;display:flex;align-items:center;justify-content:center;padding:0">
-<span id="play-icon" aria-hidden="true" style="margin-left:2px">&#9654;</span>
-</button>
-<input type="range" id="scrub" class="scrub" aria-label="Seek recording" min="0" max="1000" value="0" step="1">
-<span id="cur" style="flex:none;font:400 11.5px/1 'IBM Plex Mono',monospace;color:var(--ink3)">0:00</span>
-</div>
-<audio id="call-audio" preload="metadata" src="assets/sloan-call.mp3"></audio>
-<button type="button" id="transcript-btn" style="margin-top:10px;background:none;border:none;padding:0;cursor:pointer;font:400 12.5px/1.5 'Inter',sans-serif;color:var(--ink3);text-decoration:underline">View transcript</button>
-<div id="transcript-panel" hidden style="margin-top:8px;font:400 13px/1.6 'Inter',sans-serif;color:var(--ink2);max-height:140px;overflow-y:auto"></div>
 </div>
 <div style="padding:22px 24px">
 <p style="margin:0 0 14px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">Qualification answers</p>
@@ -225,7 +232,7 @@ input[type=range].scrub::-moz-range-track{height:6px;border-radius:3px;backgroun
 </div>
 <div class="card" style="padding:24px 28px;display:grid;grid-template-columns:1fr 1.4fr;gap:24px">
 <p class="accent" style="margin:0;font-size:17px;color:var(--ink)">"What if it does not work for us?"</p>
-<p style="margin:0;font:400 14.5px/1.6 'Inter',sans-serif;color:var(--ink2)">That is what the 30-day pilot is for. At the end you will have your own connect and qualification numbers, and it is month to month after that with no notice period.</p>
+<p style="margin:0;font:400 14.5px/1.6 'Inter',sans-serif;color:var(--ink2)">It is month to month from day one, no long contract to sign. If it is not working, you cancel and walk away with your own connect and qualification numbers already set up.</p>
 </div>
 </div>
 </div>
@@ -290,26 +297,40 @@ input[type=range].scrub::-moz-range-track{height:6px;border-radius:3px;backgroun
 <!-- Pricing -->
 <section id="pricing" style="padding:88px 20px;scroll-margin-top:24px">
 <div class="wrap" style="text-align:center">
-<h2 style="margin-bottom:14px">One fixed price. Start with a 30-day pilot.</h2>
-<p style="margin:0 auto 40px;max-width:520px;font:400 16.5px/1.6 'Inter',sans-serif;color:var(--ink2)">A full month on your real leads, so you judge it on your own numbers instead of our promises.</p>
-<div class="card" style="max-width:420px;margin:0 auto;padding:32px;text-align:left">
-<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-<span style="font:400 13.5px/1 'Inter',sans-serif;color:var(--ink2)">30-day pilot</span>
-<span class="pill pill-teal">No per-minute fees</span>
+<span class="pill pill-teal" style="margin-bottom:18px">Founding rate · first 10 operators</span>
+<h2 style="margin-bottom:14px">Sign up now and get founding pricing</h2>
+<p style="margin:0 auto 40px;max-width:540px;font:400 16.5px/1.6 'Inter',sans-serif;color:var(--ink2)">First come, first served, limited to ten operators who meet the fit above. Everyone else pays our standard rate.</p>
+<div class="card" style="max-width:440px;margin:0 auto;padding:32px;text-align:left">
+
+<p style="margin:0 0 6px;font:400 13.5px/1 'Inter',sans-serif;color:var(--ink2)">Initial setup</p>
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:22px">
+<p style="margin:0;font:700 38px/1 'Inter',sans-serif;letter-spacing:-.02em">$499</p>
+<p style="margin:0;font:500 17px/1 'Inter',sans-serif;color:var(--ink3);text-decoration:line-through">$1,500</p>
 </div>
-<p style="margin:0 0 4px;font:700 42px/1 'Inter',sans-serif;letter-spacing:-.02em">$1,500</p>
-<p style="margin:0 0 24px;font:400 13.5px/1 'Inter',sans-serif;color:var(--ink3)">Setup included</p>
-<div style="display:flex;flex-direction:column;gap:11px;font:400 14.5px/1.4 'Inter',sans-serif;margin-bottom:22px">
-<span style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Up to 250 leads during the pilot</span>
-<span style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Up to 10 attempts per lead</span>
-<span style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Your own dedicated phone number</span>
-<span style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Transcripts and structured answers</span>
-<span style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Dashboard or webhook delivery</span>
+<div style="display:flex;flex-direction:column;gap:10px;font:400 14.5px/1.4 'Inter',sans-serif;margin-bottom:22px">
+<span style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Your own dedicated phone number, provisioned</span>
+<span style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Agent configured and connected to your intake</span>
+<span style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Test calls on an answered and an unanswered lead</span>
 <span style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Live one working day after you say yes</span>
 </div>
-<div style="height:1px;background:var(--border);margin-bottom:18px"></div>
-<p style="margin:0 0 4px;font:600 12px/1 'Inter',sans-serif;color:var(--ink3)">After the pilot</p>
-<p style="margin:0 0 22px;font:400 14.5px/1.5 'Inter',sans-serif;color:var(--ink2)">$797 a month, month to month. Cancel any time. Still no per-minute charges.</p>
+
+<div style="height:1px;background:var(--border);margin-bottom:22px"></div>
+
+<p style="margin:0 0 6px;font:400 13.5px/1 'Inter',sans-serif;color:var(--ink2)">Then, ongoing</p>
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:4px">
+<p style="margin:0;font:700 38px/1 'Inter',sans-serif;letter-spacing:-.02em">$499</p>
+<p style="margin:0;font:500 17px/1 'Inter',sans-serif;color:var(--ink3);text-decoration:line-through">$897</p>
+<p style="margin:0;font:400 14px/1 'Inter',sans-serif;color:var(--ink3)">/ month</p>
+</div>
+<p style="margin:0 0 18px;font:400 13px/1.5 'Inter',sans-serif;color:var(--ink3)">Month to month. Cancel any time. No per-minute charges, ever.</p>
+<div style="display:flex;flex-direction:column;gap:10px;font:400 14.5px/1.4 'Inter',sans-serif;margin-bottom:22px">
+<span style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Up to 250 leads a month</span>
+<span style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Up to 10 attempts per lead</span>
+<span style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Your dedicated phone number</span>
+<span style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Transcripts and structured answers</span>
+<span style="display:flex;align-items:center;gap:9px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Dashboard or webhook delivery</span>
+</div>
+
 <a href="#qualify" class="btn" style="display:block;width:100%" data-cta-location="pricing">See if you qualify</a>
 </div>
 <p style="margin:22px 0 0;font:400 13.5px/1.5 'Inter',sans-serif;color:var(--ink3)">Nothing is due until we have confirmed Sloan fits your lead flow.</p>
@@ -361,7 +382,7 @@ input[type=range].scrub::-moz-range-track{height:6px;border-radius:3px;backgroun
 <div><p style="margin:0 0 7px;font:600 15.5px/1.3 'Inter',sans-serif">Can we get recordings?</p><p style="margin:0;font:400 14px/1.55 'Inter',sans-serif;color:var(--ink2)">Transcripts come with every call as standard. Recordings are available on request.</p></div>
 <div><p style="margin:0 0 7px;font:600 15.5px/1.3 'Inter',sans-serif">Do you do cold calling?</p><p style="margin:0;font:400 14px/1.55 'Inter',sans-serif;color:var(--ink2)">No. Inbound leads who asked to be contacted only. No purchased lists, no skip-traced numbers.</p></div>
 <div><p style="margin:0 0 7px;font:600 15.5px/1.3 'Inter',sans-serif">How long until it is live?</p><p style="margin:0;font:400 14px/1.55 'Inter',sans-serif;color:var(--ink2)">One working day after we confirm fit, including test calls on an answered and an unanswered lead.</p></div>
-<div><p style="margin:0 0 7px;font:600 15.5px/1.3 'Inter',sans-serif">What happens after 30 days?</p><p style="margin:0;font:400 14px/1.55 'Inter',sans-serif;color:var(--ink2)">You continue at $797 a month or you stop. Month to month, no notice period, no contract to escape.</p></div>
+<div><p style="margin:0 0 7px;font:600 15.5px/1.3 'Inter',sans-serif">What if I want to stop?</p><p style="margin:0;font:400 14px/1.55 'Inter',sans-serif;color:var(--ink2)">You cancel. Month to month, no notice period, no contract to escape.</p></div>
 </div>
 </div>
 </section>
@@ -497,8 +518,7 @@ document.querySelectorAll('a[data-cta-location]').forEach(function(a){
 (function player(){
   var a=document.getElementById('call-audio'),btn=document.getElementById('play-btn'),
       icon=document.getElementById('play-icon'),scrub=document.getElementById('scrub'),
-      cur=document.getElementById('cur'),
-      tBtn=document.getElementById('transcript-btn'),tPanel=document.getElementById('transcript-panel');
+      cur=document.getElementById('cur');
   if(!a||!btn)return;
   var seeking=false, startedTracked=false, halfTracked=false;
 
@@ -548,36 +568,6 @@ document.querySelectorAll('a[data-cta-location]').forEach(function(a){
   });
   scrub.addEventListener('change',function(){seeking=false});
   updateFill();
-
-  if(tBtn && tPanel){
-    var loaded=false;
-    tBtn.setAttribute('aria-expanded','false');
-    tBtn.setAttribute('aria-controls','transcript-panel');
-    tBtn.addEventListener('click',function(){
-      var open = tPanel.hasAttribute('hidden');
-      if(open){
-        tPanel.removeAttribute('hidden');
-        tBtn.textContent='Hide transcript';
-        tBtn.setAttribute('aria-expanded','true');
-        trackEvent('transcript_open',{location:'hero'});
-        if(!loaded){
-          loaded=true;
-          fetch('assets/transcript.txt').then(function(r){
-            if(!r.ok) throw new Error('missing');
-            return r.text();
-          }).then(function(text){
-            tPanel.textContent=text;
-          }).catch(function(){
-            tPanel.textContent='Transcript coming soon.';
-          });
-        }
-      } else {
-        tPanel.setAttribute('hidden','');
-        tBtn.textContent='View transcript';
-        tBtn.setAttribute('aria-expanded','false');
-      }
-    });
-  }
 })();
 
 (function form(){
