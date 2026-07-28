@@ -14,90 +14,115 @@ body{margin:0;background:#faf9f6;font-family:"Inter Tight",Helvetica,Arial,sans-
 a{color:#17171a}
 a:hover{color:#57534a}
 .page{display:block;max-width:1440px;margin:0 auto;box-shadow:0 0 0 1px #e4e1da}
-.hero{display:grid;column-gap:64px;grid-template-columns:minmax(0,1fr) minmax(0,460px);grid-template-areas:"text player" "fine player"}
-.hero-text{grid-area:text}
-.hero-player{grid-area:player;align-self:center}
-.hero-fine{grid-area:fine;margin-top:18px}
+
+:focus-visible{outline:2px solid oklch(0.58 0.13 150);outline-offset:2px}
+button{font-family:inherit}
+
+.hero-wrap{max-width:1200px;margin:0 auto;padding:95px 48px}
+.hero{display:grid;grid-template-columns:52fr 48fr;column-gap:64px;align-items:center}
 @media (max-width:1000px){
-.hero{grid-template-columns:minmax(0,1fr);grid-template-areas:"text" "player" "fine"}
-.hero-player{margin-top:30px}
-.hero-fine{margin-top:24px}
+.hero-wrap{padding:56px 24px}
+.hero{grid-template-columns:minmax(0,1fr);row-gap:0}
+.hero-player{margin-top:52px}
 }
-@media (max-width:700px){
-header{flex-wrap:wrap;row-gap:14px}
-header>div{flex-wrap:wrap}
+
+.hero-cta-row{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.btn-primary{font:600 15px/1 'Inter Tight',sans-serif;color:#faf9f6;background:#17171a;padding:16px 26px;border-radius:4px;text-decoration:none;border:none;cursor:pointer;display:inline-block;text-align:center}
+.btn-secondary{font:600 15px/1 'Inter Tight',sans-serif;color:#17171a;background:transparent;border:1px solid #17171a;padding:15px 26px;border-radius:4px;text-decoration:none;cursor:pointer;display:inline-block;text-align:center}
+@media (max-width:1000px){
+.hero-cta-row{flex-direction:column;align-items:stretch}
+.btn-primary,.btn-secondary{width:100%}
 }
+
+/* range inputs styled to sit over the waveform backdrop */
+input[type=range].scrub{-webkit-appearance:none;appearance:none;width:100%;height:46px;border-radius:3px;margin:0;cursor:pointer;background-repeat:no-repeat;background-image:repeating-linear-gradient(90deg,oklch(0.72 0.13 150 / .4) 0 2px,transparent 2px 6px),repeating-linear-gradient(90deg,#3a3833 0 2px,transparent 2px 6px);background-size:0% 100%,100% 100%}
+input[type=range].scrub::-webkit-slider-runnable-track{height:46px;background:transparent}
+input[type=range].scrub::-webkit-slider-thumb{-webkit-appearance:none;width:3px;height:46px;border-radius:2px;background:oklch(0.72 0.13 150);border:none}
+input[type=range].scrub::-moz-range-track{height:46px;background:transparent;border:none}
+input[type=range].scrub::-moz-range-thumb{width:3px;height:46px;border:none;border-radius:2px;background:oklch(0.72 0.13 150)}
+
+input[type=range].vol{-webkit-appearance:none;appearance:none;width:74px;height:4px;background:#3a3833;border-radius:2px;cursor:pointer}
+input[type=range].vol::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:#faf9f6;margin-top:-4px}
+input[type=range].vol::-moz-range-thumb{width:12px;height:12px;border:none;border-radius:50%;background:#faf9f6}
+
+/* modal */
+#modal-backdrop{position:fixed;inset:0;background:rgba(23,23,26,.55);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}
+#modal-backdrop.open{display:flex}
+#qualify-modal{width:100%;max-width:480px;max-height:90vh;overflow-y:auto;background:#faf9f6;border-radius:8px;padding:32px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.field label{font:500 12px/1 'Inter Tight',sans-serif;color:#57534a}
+.field input,.field select{font:400 14px/1 'Inter Tight',sans-serif;color:#17171a;padding:12px 13px;border:1px solid #ddd9d1;border-radius:4px;background:#fff}
 </style>
 </head>
 <body>
 <div class="page">
 
-<header style="display:flex;align-items:center;justify-content:space-between;padding:20px 5vw;border-bottom:1px solid #e4e1da;background:#faf9f6">
+<header style="display:flex;align-items:center;justify-content:space-between;padding:20px 5vw;border-bottom:1px solid #e4e1da;background:#faf9f6;flex-wrap:wrap;row-gap:14px">
 <div style="display:flex;align-items:baseline;gap:9px">
 <span style="font:600 19px/1 'Inter Tight',sans-serif;letter-spacing:-.02em;color:#17171a">Sloan</span>
 </div>
-<div style="display:flex;align-items:center;gap:22px">
-<a href="#problem" style="font:500 13px/1 'Inter Tight',sans-serif;color:#57534a;text-decoration:none">The problem</a>
-<a href="#hear-a-call" style="font:500 13px/1 'Inter Tight',sans-serif;color:#57534a;text-decoration:none">Hear a call</a>
-<a href="#who-its-for" style="font:500 13px/1 'Inter Tight',sans-serif;color:#57534a;text-decoration:none">Who it's for</a>
-<a href="#apply" style="font:600 13px/1 'Inter Tight',sans-serif;color:#faf9f6;background:#17171a;padding:10px 16px;border-radius:4px;text-decoration:none">Apply for a slot</a>
+<div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+<a href="#how-it-works" style="font:500 13px/1 'Inter Tight',sans-serif;color:#57534a;text-decoration:none">How it works</a>
+<a href="#pricing" style="font:500 13px/1 'Inter Tight',sans-serif;color:#57534a;text-decoration:none">Pricing</a>
+<a href="#faq" style="font:500 13px/1 'Inter Tight',sans-serif;color:#57534a;text-decoration:none">FAQ</a>
+<button type="button" class="btn-primary open-modal-cta" style="font-size:13px;padding:10px 16px" data-cta-location="nav">See If You Qualify</button>
 </div>
 </header>
 
-<div style="padding:88px 5vw 68px;background:#faf9f6;border-bottom:1px solid #e4e1da">
+<div style="background:#faf9f6;border-bottom:1px solid #e4e1da">
+<div class="hero-wrap">
 <div class="hero">
 
 <div class="hero-text">
-<div style="display:flex;align-items:center;gap:8px;margin-bottom:26px">
-<span style="flex:none;width:6px;height:6px;border-radius:50%;background:oklch(0.58 0.13 150)"></span>
-<span style="font:400 11px/1.4 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a857c">Your best seller lead may arrive at 9:41 on a Saturday night.</span>
+<p style="margin:0 0 16px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.07em;text-transform:uppercase;color:#8a857c">Built for inbound seller leads</p>
+<h1 style="margin:0 0 20px;max-width:600px;font:600 58px/1.05 'Inter Tight',sans-serif;letter-spacing:-.03em;color:#17171a;text-wrap:pretty">Stop losing seller leads to slow follow-up.</h1>
+<p style="margin:0 0 30px;max-width:570px;font:400 20px/1.5 'Inter Tight',sans-serif;color:#57534a;text-wrap:pretty">Sloan calls every new inbound seller lead within seconds, follows up up to 10 times, and sends your team the transcript and qualification answers. Day, night, or weekend.</p>
+<div class="hero-cta-row">
+<button type="button" class="btn-primary open-modal-cta" data-cta-location="hero">See If Sloan Fits Your Lead Flow</button>
+<button type="button" class="btn-secondary" id="hear-call-cta">Hear a Real Seller Call</button>
 </div>
-<h1 style="margin:0 0 24px;max-width:620px;font:600 56px/1.03 'Inter Tight',sans-serif;letter-spacing:-.035em;color:#17171a;text-wrap:pretty">Stop losing paid seller leads to slow follow-up.</h1>
-<p style="margin:0 0 34px;max-width:580px;font:400 17px/1.55 'Inter Tight',sans-serif;color:#57534a;text-wrap:pretty">Sloan calls every new inbound seller lead within five seconds, follows up up to 10 times, and sends your team the transcript and qualification answers. Day, night, or weekend.</p>
-<div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
-<a href="#apply" style="font:600 14px/1 'Inter Tight',sans-serif;color:#faf9f6;background:#17171a;padding:15px 24px;border-radius:4px;text-decoration:none">Get your leads called today</a>
-<a href="#problem" style="font:600 14px/1 'Inter Tight',sans-serif;color:#17171a;border:1px solid #17171a;padding:14px 24px;border-radius:4px;text-decoration:none">See what it costs you not to</a>
-</div>
+<p style="margin:0;font:400 13px/1.5 'Inter Tight',sans-serif;color:#8a857c">For operators handling 100 or more inbound seller leads per month.</p>
 </div>
 
-<div id="hear-a-call" class="hero-player" style="scroll-margin-top:24px">
+<div class="hero-player">
 <div style="border:1px solid #35342f;border-radius:6px;background:#17171a;overflow:hidden">
-<div style="padding:15px 22px;border-bottom:1px solid #35342f">
-<span style="font:500 11px/1.4 'IBM Plex Mono',monospace;letter-spacing:.07em;text-transform:uppercase;color:oklch(0.72 0.13 150)">A real call with an inbound seller lead</span>
+<div style="padding:15px 22px;border-bottom:1px solid #35342f;display:flex;align-items:center;justify-content:space-between;gap:12px">
+<span style="font:500 12px/1.4 'Inter Tight',sans-serif;color:#faf9f6">Real inbound seller call</span>
+<span style="font:400 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:oklch(0.72 0.13 150)">No staged demo</span>
 </div>
 
-<div style="padding:28px 22px;display:flex;align-items:center;gap:20px">
-<button id="play-btn" aria-label="Play the recording" style="flex:none;width:64px;height:64px;border-radius:50%;border:none;background:#faf9f6;color:#17171a;cursor:pointer;font:400 19px/1 'Inter Tight',sans-serif;display:flex;align-items:center;justify-content:center;padding:0">
-<span id="play-icon" style="margin-left:4px">&#9654;</span>
+<div style="padding:26px 22px 8px;display:flex;align-items:center;gap:18px">
+<button id="play-btn" type="button" aria-label="Play the recording" style="flex:none;width:60px;height:60px;border-radius:50%;border:none;background:#faf9f6;color:#17171a;cursor:pointer;font:400 18px/1 'Inter Tight',sans-serif;display:flex;align-items:center;justify-content:center;padding:0">
+<span id="play-icon" aria-hidden="true" style="margin-left:4px">&#9654;</span>
 </button>
-<div style="flex:1;display:flex;flex-direction:column;gap:11px;min-width:0">
-<div id="track" style="height:46px;border-radius:3px;background:repeating-linear-gradient(90deg,#3a3833 0 2px,transparent 2px 6px);position:relative;cursor:pointer">
-<div id="prog" style="position:absolute;top:0;left:0;bottom:0;width:0;border-radius:3px;background:repeating-linear-gradient(90deg,oklch(0.72 0.13 150) 0 2px,transparent 2px 6px)"></div>
+<div style="flex:1;min-width:0">
+<input type="range" id="scrub" class="scrub" aria-label="Seek recording" min="0" max="1000" value="0" step="1">
 </div>
-<div style="display:flex;justify-content:space-between;gap:12px;font:400 11px/1 'IBM Plex Mono',monospace;color:#8a857c">
-<span id="status">Press play</span><span id="cur">0:00</span>
 </div>
+<div style="padding:0 22px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+<span id="cur" style="font:400 11px/1 'IBM Plex Mono',monospace;color:#8a857c">0:00 / 0:00</span>
+<div style="display:flex;align-items:center;gap:8px">
+<span aria-hidden="true" style="font:400 12px/1 'Inter Tight',sans-serif;color:#8a857c">&#128266;</span>
+<input type="range" id="volume" class="vol" aria-label="Volume" min="0" max="1" step="0.01" value="1">
 </div>
 </div>
 <audio id="call-audio" preload="metadata" src="assets/sloan-call.mp3"></audio>
 
-<div style="padding:18px 22px;border-top:1px solid #35342f;display:flex;flex-direction:column;gap:11px">
-<div style="display:flex;align-items:baseline;gap:11px"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:oklch(0.72 0.13 150)"></span><span style="font:400 13.5px/1.4 'Inter Tight',sans-serif;color:#d6d1c7">Called five seconds after submission</span></div>
-<div style="display:flex;align-items:baseline;gap:11px"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:oklch(0.72 0.13 150)"></span><span style="font:400 13.5px/1.4 'Inter Tight',sans-serif;color:#d6d1c7">Real seller conversation</span></div>
-<div style="display:flex;align-items:baseline;gap:11px"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:oklch(0.72 0.13 150)"></span><span style="font:400 13.5px/1.4 'Inter Tight',sans-serif;color:#d6d1c7">Qualification completed</span></div>
+<div style="padding:16px 22px;border-top:1px solid #35342f;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:baseline;gap:11px"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:oklch(0.72 0.13 150)"></span><span style="font:400 13.5px/1.4 'Inter Tight',sans-serif;color:#d6d1c7">Real inbound lead</span></div>
+<div style="display:flex;align-items:baseline;gap:11px"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:oklch(0.72 0.13 150)"></span><span style="font:400 13.5px/1.4 'Inter Tight',sans-serif;color:#d6d1c7">Called within seconds</span></div>
+<div style="display:flex;align-items:baseline;gap:11px"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:oklch(0.72 0.13 150)"></span><span style="font:400 13.5px/1.4 'Inter Tight',sans-serif;color:#d6d1c7">Standard qualification flow</span></div>
 </div>
 
 <div style="padding:14px 22px;border-top:1px solid #35342f;background:#1f1e1b">
-<span style="font:400 12px/1.5 'IBM Plex Mono',monospace;color:#8a857c">No voice actor. No staged demo.</span>
+<button type="button" id="transcript-btn" style="background:none;border:none;padding:0;cursor:pointer;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#8a857c;text-decoration:underline">View transcript</button>
+<div id="transcript-panel" hidden style="margin-top:10px;font:400 13px/1.6 'Inter Tight',sans-serif;color:#a8a29a;max-height:160px;overflow-y:auto"></div>
 </div>
 </div>
-</div>
-
-<div class="hero-fine">
-<p style="margin:0 0 18px;font:400 12.5px/1.5 'Inter Tight',sans-serif;color:#8a857c">Live in one working day. We never touch your CRM.</p>
-<p style="margin:0;font:400 12.5px/1.6 'IBM Plex Mono',monospace;color:#8a857c">Built inside our own wholesaling operation · not a startup demo<br>For operators taking 100+ inbound seller leads a month. Below that, this won't pay for itself and we'll tell you so.</p>
+<button type="button" class="btn-primary open-modal-cta" id="post-listen-cta" data-cta-location="post_listen" style="display:none;width:100%;margin-top:16px">See If Sloan Fits Your Lead Flow</button>
 </div>
 
+</div>
 </div>
 </div>
 
@@ -201,7 +226,7 @@ header>div{flex-wrap:wrap}
 </div>
 </div>
 
-<div style="padding:76px 5vw;background:#faf9f6;border-bottom:1px solid #e4e1da">
+<div id="how-it-works" style="padding:76px 5vw;background:#faf9f6;border-bottom:1px solid #e4e1da;scroll-margin-top:24px">
 <h2 style="margin:0 0 8px;font:600 30px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">From payment to first live call: one working day</h2>
 <p style="margin:0 0 32px;max-width:620px;font:400 15px/1.6 'Inter Tight',sans-serif;color:#57534a">No implementation project. No discovery phase. Four steps, and only one of them needs you.</p>
 <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
@@ -228,7 +253,7 @@ header>div{flex-wrap:wrap}
 </div>
 </div>
 
-<div style="padding:76px 5vw;background:#17171a;border-bottom:1px solid #e4e1da">
+<div id="pricing" style="padding:76px 5vw;background:#17171a;border-bottom:1px solid #e4e1da;scroll-margin-top:24px">
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:26px">
 <p style="margin:0;font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a857c">One plan, no usage fees</p>
 </div>
@@ -240,7 +265,7 @@ header>div{flex-wrap:wrap}
 <div style="height:1px;background:#35342f;margin-bottom:20px"></div>
 <p style="margin:0 0 6px;font:600 20px/1 'Inter Tight',sans-serif;color:#faf9f6">$797<span style="font-weight:400;font-size:14px;color:#a8a29a"> / month after</span></p>
 <p style="margin:0 0 8px;font:400 13px/1.5 'Inter Tight',sans-serif;color:#a8a29a">Month to month. Cancel whenever. No per-minute charges, ever.</p>
-<a href="#apply" style="display:block;text-align:center;font:600 14px/1 'Inter Tight',sans-serif;color:#17171a;background:#faf9f6;padding:15px;border-radius:4px;text-decoration:none">Apply for a slot</a>
+<button type="button" class="open-modal-cta" data-cta-location="pricing" style="display:block;width:100%;text-align:center;font:600 14px/1 'Inter Tight',sans-serif;color:#17171a;background:#faf9f6;padding:15px;border-radius:4px;border:none;cursor:pointer">See If Sloan Fits Your Lead Flow</button>
 </div>
 <div style="flex:1;padding-top:6px">
 <p style="margin:0 0 18px;font:400 15px/1.65 'Inter Tight',sans-serif;color:#d6d1c7">Every lead you send gets all of this:</p>
@@ -279,7 +304,7 @@ header>div{flex-wrap:wrap}
 </div>
 </div>
 
-<div style="padding:76px 5vw;background:#faf9f6;border-bottom:1px solid #e4e1da">
+<div id="faq" style="padding:76px 5vw;background:#faf9f6;border-bottom:1px solid #e4e1da;scroll-margin-top:24px">
 <h2 style="margin:0 0 28px;font:600 30px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">What you're probably thinking</h2>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px 40px">
 <div><p style="margin:0 0 6px;font:600 14.5px/1.35 'Inter Tight',sans-serif;color:#17171a">"Sellers will hate talking to a robot."</p><p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">Some do. Far more hate leaving a voicemail on Saturday and hearing back Tuesday. Listen to the recording and judge it against the alternative, which is silence.</p></div>
@@ -304,37 +329,13 @@ header>div{flex-wrap:wrap}
 </div>
 </div>
 
-<div id="apply" style="padding:76px 5vw;background:#faf9f6">
-<div style="display:flex;gap:56px;align-items:flex-start">
-<div style="flex:1">
-<h2 style="margin:0 0 12px;font:600 30px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">Apply for a slot</h2>
-<p style="margin:0 0 22px;font:400 15px/1.6 'Inter Tight',sans-serif;color:#57534a">Four questions. You get a straight yes or no from a founder — including "no, your volume is too low and this won't pay for itself." We'd rather tell you that than take your $1,500.</p>
+<div id="apply" style="padding:76px 5vw;background:#faf9f6;scroll-margin-top:24px">
+<div style="max-width:640px">
+<h2 style="margin:0 0 12px;font:600 30px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">See if Sloan fits your lead flow</h2>
+<p style="margin:0 0 26px;font:400 15px/1.6 'Inter Tight',sans-serif;color:#57534a">Five questions. You get a straight yes or no from a founder — including "no, your volume is too low and this won't pay for itself." We'd rather tell you that than take your money.</p>
+<div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+<button type="button" class="btn-primary open-modal-cta" data-cta-location="apply_section">Check My Fit</button>
 <p style="margin:0;font:400 12.5px/1.7 'IBM Plex Mono',monospace;color:#8a857c">Rather talk it through?<br><a href="mailto:hello@decimal.pe" style="color:#17171a;text-decoration:underline">Book 15 minutes directly</a></p>
-</div>
-<div style="flex:none;width:440px;padding:28px;background:#fff;border:1px solid #ddd9d1;border-radius:6px;display:flex;flex-direction:column;gap:16px">
-<div style="display:flex;flex-direction:column;gap:6px">
-<label style="font:500 12px/1 'Inter Tight',sans-serif;color:#57534a">Name and company</label>
-<div style="padding:11px 12px;border:1px solid #ddd9d1;border-radius:4px;font:400 13.5px/1 'Inter Tight',sans-serif;color:#b5b0a7">Jane Doe, Ridgeline Property Group</div>
-</div>
-<div style="display:flex;flex-direction:column;gap:6px">
-<label style="font:500 12px/1 'Inter Tight',sans-serif;color:#57534a">Inbound seller leads per month</label>
-<div style="display:flex;gap:8px">
-<div style="flex:1;text-align:center;padding:10px 0;border:1px solid #ddd9d1;border-radius:4px;font:500 12.5px/1 'Inter Tight',sans-serif;color:#8a857c">&lt;100</div>
-<div style="flex:1;text-align:center;padding:10px 0;border:1px solid #17171a;border-radius:4px;font:600 12.5px/1 'Inter Tight',sans-serif;color:#17171a;background:#f1efe9">100–250</div>
-<div style="flex:1;text-align:center;padding:10px 0;border:1px solid #ddd9d1;border-radius:4px;font:500 12.5px/1 'Inter Tight',sans-serif;color:#8a857c">250–500</div>
-<div style="flex:1;text-align:center;padding:10px 0;border:1px solid #ddd9d1;border-radius:4px;font:500 12.5px/1 'Inter Tight',sans-serif;color:#8a857c">500+</div>
-</div>
-</div>
-<div style="display:flex;flex-direction:column;gap:6px">
-<label style="font:500 12px/1 'Inter Tight',sans-serif;color:#57534a">Who makes the first call today?</label>
-<div style="padding:11px 12px;border:1px solid #ddd9d1;border-radius:4px;font:400 13.5px/1 'Inter Tight',sans-serif;color:#b5b0a7">VA · ISA · acquisitions rep · me</div>
-</div>
-<div style="display:flex;flex-direction:column;gap:6px">
-<label style="font:500 12px/1 'Inter Tight',sans-serif;color:#57534a">What does that cost you monthly?</label>
-<div style="padding:11px 12px;border:1px solid #ddd9d1;border-radius:4px;font:400 13.5px/1 'Inter Tight',sans-serif;color:#b5b0a7">$</div>
-</div>
-<a href="mailto:hello@decimal.pe" style="display:block;text-align:center;font:600 14px/1 'Inter Tight',sans-serif;color:#faf9f6;background:#17171a;padding:15px;border-radius:4px;text-decoration:none">Apply for a slot</a>
-<p style="margin:0;text-align:center;font:400 11.5px/1.4 'Inter Tight',sans-serif;color:#8a857c">No sequence, no drip. One reply from a person.</p>
 </div>
 </div>
 </div>
@@ -345,33 +346,265 @@ header>div{flex-wrap:wrap}
 </footer>
 
 </div>
+
+<div id="modal-backdrop">
+<div id="qualify-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+<h2 id="modal-title" style="margin:0;font:600 22px/1.2 'Inter Tight',sans-serif;letter-spacing:-.02em;color:#17171a">Check your fit</h2>
+<button type="button" id="modal-close" aria-label="Close" style="background:none;border:none;cursor:pointer;font:400 22px/1 'Inter Tight',sans-serif;color:#8a857c;padding:6px">&#10005;</button>
+</div>
+<p style="margin:0 0 20px;font:400 13.5px/1.5 'Inter Tight',sans-serif;color:#57534a">Takes about a minute. A founder replies directly.</p>
+<form id="qualify-form">
+<div class="field">
+<label for="f-name">Name</label>
+<input type="text" id="f-name" name="name" autocomplete="name" required>
+</div>
+<div class="field">
+<label for="f-email">Work email</label>
+<input type="email" id="f-email" name="email" autocomplete="email" required>
+</div>
+<div class="field">
+<label for="f-company">Company</label>
+<input type="text" id="f-company" name="company" autocomplete="organization" required>
+</div>
+<div class="field">
+<label for="f-volume">Monthly inbound seller leads</label>
+<select id="f-volume" name="lead_volume" required>
+<option value="" disabled selected>Select a range</option>
+<option value="<100">Under 100</option>
+<option value="100-250">100–250</option>
+<option value="250-500">250–500</option>
+<option value="500+">500+</option>
+</select>
+</div>
+<div class="field">
+<label for="f-caller">Who currently makes the first calls</label>
+<select id="f-caller" name="first_caller" required>
+<option value="" disabled selected>Select one</option>
+<option value="va">VA</option>
+<option value="isa">ISA</option>
+<option value="acquisitions_rep">Acquisitions rep</option>
+<option value="me">Me</option>
+<option value="other">Other</option>
+</select>
+</div>
+<input type="hidden" name="utm_source">
+<input type="hidden" name="utm_medium">
+<input type="hidden" name="utm_campaign">
+<input type="hidden" name="utm_term">
+<input type="hidden" name="utm_content">
+<input type="hidden" name="page_url">
+<button type="submit" class="btn-primary" id="qualify-submit" style="width:100%;margin-top:4px">Check My Fit</button>
+<p id="modal-status" role="status" aria-live="polite" style="margin:12px 0 0;font:400 13px/1.5 'Inter Tight',sans-serif;color:#57534a"></p>
+</form>
+</div>
+</div>
 <script>
-(function(){
+window.dataLayer = window.dataLayer || [];
+function trackEvent(name, params){
+  params = params || {};
+  try{
+    window.dataLayer.push(Object.assign({event:name}, params));
+    if(typeof window.gtag === 'function') window.gtag('event', name, params);
+  }catch(e){}
+}
+
+(function utm(){
+  var keys=['utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
+  var params=new URLSearchParams(location.search);
+  var stored={};
+  try{stored=JSON.parse(sessionStorage.getItem('sloan_utms')||'{}');}catch(e){}
+  var changed=false;
+  keys.forEach(function(k){ if(params.get(k)){ stored[k]=params.get(k); changed=true; } });
+  if(changed){ try{sessionStorage.setItem('sloan_utms', JSON.stringify(stored));}catch(e){} }
+  window.__sloanUtms = stored;
+})();
+
+(function player(){
   var a=document.getElementById('call-audio'),btn=document.getElementById('play-btn'),
-      icon=document.getElementById('play-icon'),track=document.getElementById('track'),
-      prog=document.getElementById('prog'),cur=document.getElementById('cur'),
-      note=document.getElementById('status');
+      icon=document.getElementById('play-icon'),scrub=document.getElementById('scrub'),
+      vol=document.getElementById('volume'),cur=document.getElementById('cur'),
+      tBtn=document.getElementById('transcript-btn'),tPanel=document.getElementById('transcript-panel');
   if(!a||!btn)return;
+  var seeking=false, startedTracked=false, halfTracked=false;
+
   function fmt(s){s=Math.floor(s)||0;return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2)}
   function total(){return isFinite(a.duration)?a.duration:0}
+  function updateFill(){
+    var pct = scrub.max>0 ? (scrub.value/scrub.max*100) : 0;
+    scrub.style.backgroundSize = pct+'% 100%, 100% 100%';
+  }
+
   btn.addEventListener('click',function(){a.paused?a.play():a.pause()});
-  a.addEventListener('play',function(){icon.innerHTML='&#10074;&#10074;';icon.style.marginLeft='0'});
-  a.addEventListener('pause',function(){icon.innerHTML='&#9654;';icon.style.marginLeft='3px'});
-  a.addEventListener('loadedmetadata',function(){cur.textContent='0:00 / '+fmt(total())});
-  a.addEventListener('timeupdate',function(){
-    prog.style.width=(total()?a.currentTime/total()*100:0)+'%';
-    cur.textContent=fmt(a.currentTime)+' / '+fmt(total());
+  a.addEventListener('play',function(){
+    icon.innerHTML='&#10074;&#10074;';icon.style.marginLeft='0';
+    btn.setAttribute('aria-label','Pause the recording');
+    if(!startedTracked){startedTracked=true;trackEvent('audio_start');}
   });
-  a.addEventListener('ended',function(){prog.style.width='0';a.currentTime=0});
+  a.addEventListener('pause',function(){
+    icon.innerHTML='&#9654;';icon.style.marginLeft='4px';
+    btn.setAttribute('aria-label','Play the recording');
+  });
+  a.addEventListener('loadedmetadata',function(){
+    cur.textContent='0:00 / '+fmt(total());
+    scrub.max=Math.round(total()*1000)||1000;
+  });
+  a.addEventListener('timeupdate',function(){
+    if(!seeking){ scrub.value=Math.round(a.currentTime*1000); updateFill(); }
+    cur.textContent=fmt(a.currentTime)+' / '+fmt(total());
+    if(!halfTracked && total() && a.currentTime/total()>=0.5){halfTracked=true;trackEvent('audio_50');}
+  });
+  a.addEventListener('ended',function(){
+    scrub.value=0;a.currentTime=0;updateFill();
+    trackEvent('audio_complete');
+    var postCta=document.getElementById('post-listen-cta');
+    if(postCta) postCta.style.display='block';
+  });
   a.addEventListener('error',function(){
     btn.disabled=true;btn.style.opacity='.45';btn.style.cursor='default';
-    cur.textContent='';
-    if(note)note.textContent='Recording unavailable';
+    scrub.disabled=true;
+    cur.textContent='Recording unavailable';
   });
-  track.addEventListener('click',function(e){
-    if(!total())return;
-    var r=track.getBoundingClientRect();
-    a.currentTime=Math.min(Math.max((e.clientX-r.left)/r.width,0),1)*total();
+
+  scrub.addEventListener('pointerdown',function(){seeking=true});
+  scrub.addEventListener('input',function(){
+    updateFill();
+    if(total()) a.currentTime=(scrub.value/1000);
+  });
+  scrub.addEventListener('change',function(){seeking=false});
+  updateFill();
+
+  vol.addEventListener('input',function(){a.volume=parseFloat(vol.value);});
+
+  if(tBtn && tPanel){
+    var loaded=false;
+    tBtn.setAttribute('aria-expanded','false');
+    tBtn.setAttribute('aria-controls','transcript-panel');
+    tBtn.addEventListener('click',function(){
+      var open = tPanel.hasAttribute('hidden');
+      if(open){
+        tPanel.removeAttribute('hidden');
+        tBtn.textContent='Hide transcript';
+        tBtn.setAttribute('aria-expanded','true');
+        if(!loaded){
+          loaded=true;
+          fetch('assets/transcript.txt').then(function(r){
+            if(!r.ok) throw new Error('missing');
+            return r.text();
+          }).then(function(text){
+            tPanel.textContent=text;
+          }).catch(function(){
+            tPanel.textContent='Transcript coming soon.';
+          });
+        }
+      } else {
+        tPanel.setAttribute('hidden','');
+        tBtn.textContent='View transcript';
+        tBtn.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+})();
+
+(function heroSecondaryCta(){
+  var hearBtn=document.getElementById('hear-call-cta');
+  var player=document.querySelector('.hero-player');
+  var playBtn=document.getElementById('play-btn');
+  if(!hearBtn||!player||!playBtn)return;
+  hearBtn.addEventListener('click',function(){
+    trackEvent('cta_click',{type:'secondary',location:'hero'});
+    player.scrollIntoView({behavior:'smooth',block:'center'});
+    window.setTimeout(function(){playBtn.focus();},350);
+  });
+})();
+
+(function modal(){
+  var backdrop=document.getElementById('modal-backdrop'),
+      modalEl=document.getElementById('qualify-modal'),
+      closeBtn=document.getElementById('modal-close'),
+      form=document.getElementById('qualify-form'),
+      status=document.getElementById('modal-status'),
+      submitBtn=document.getElementById('qualify-submit');
+  if(!backdrop||!modalEl||!form)return;
+  var lastFocused=null, formStarted=false;
+
+  function focusable(){
+    return Array.prototype.slice.call(modalEl.querySelectorAll('button, input, select, textarea, a[href]'))
+      .filter(function(el){return !el.disabled && el.offsetParent!==null;});
+  }
+
+  function openModal(trigger){
+    lastFocused = trigger || document.activeElement;
+    backdrop.classList.add('open');
+    formStarted=false;
+    status.textContent='';
+    var utms=window.__sloanUtms||{};
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){
+      var f=form.querySelector('[name="'+k+'"]');
+      if(f) f.value=utms[k]||'';
+    });
+    var pageUrlField=form.querySelector('[name="page_url"]');
+    if(pageUrlField) pageUrlField.value=location.href;
+    trackEvent('form_open');
+    var first=form.querySelector('#f-name');
+    if(first) first.focus();
+  }
+  window.openSloanModal=openModal;
+
+  function closeModal(){
+    backdrop.classList.remove('open');
+    if(lastFocused && typeof lastFocused.focus==='function') lastFocused.focus();
+  }
+
+  document.querySelectorAll('.open-modal-cta').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      trackEvent('cta_click',{type:'primary',location:btn.dataset.ctaLocation||'unknown'});
+      openModal(btn);
+    });
+  });
+
+  closeBtn.addEventListener('click',closeModal);
+  backdrop.addEventListener('click',function(e){ if(e.target===backdrop) closeModal(); });
+  document.addEventListener('keydown',function(e){
+    if(!backdrop.classList.contains('open')) return;
+    if(e.key==='Escape'){ closeModal(); return; }
+    if(e.key==='Tab'){
+      var els=focusable();
+      if(!els.length) return;
+      var f=els[0], l=els[els.length-1];
+      if(e.shiftKey && document.activeElement===f){ e.preventDefault(); l.focus(); }
+      else if(!e.shiftKey && document.activeElement===l){ e.preventDefault(); f.focus(); }
+    }
+  });
+
+  form.addEventListener('input',function(){
+    if(!formStarted){ formStarted=true; trackEvent('form_start'); }
+  }, true);
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    trackEvent('form_submit');
+    var data={};
+    new FormData(form).forEach(function(v,k){data[k]=v;});
+    submitBtn.disabled=true;
+    status.textContent='Sending…';
+    fetch('/api/apply',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(data)
+    }).then(function(r){return r.json().catch(function(){return {ok:false};});})
+      .then(function(res){
+        if(res && res.ok){
+          status.textContent="Thanks — a founder will reply directly.";
+          submitBtn.style.display='none';
+        } else {
+          status.textContent='Something went wrong. Email us directly at hello@decimal.pe and we\'ll take it from there.';
+          submitBtn.disabled=false;
+        }
+      }).catch(function(){
+        status.textContent='Something went wrong. Email us directly at hello@decimal.pe and we\'ll take it from there.';
+        submitBtn.disabled=false;
+      });
   });
 })();
 </script>
