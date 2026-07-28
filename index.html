@@ -26,7 +26,7 @@ button{font-family:inherit}
 :focus-visible{outline:2px solid var(--orange);outline-offset:2px}
 
 .wrap{max-width:1160px;margin:0 auto;padding-left:48px;padding-right:48px}
-@media (max-width:700px){.wrap{padding-left:22px;padding-right:22px}}
+@media (max-width:700px){.wrap{padding-left:22px;padding-right:22px}.nav-links{display:none!important}}
 
 .btn-primary{background:var(--ink);color:var(--bg);border-radius:999px;padding:16px 28px;font:600 14.5px/1 'Inter Tight',sans-serif;border:none;cursor:pointer;display:inline-block;text-align:center;text-decoration:none}
 .btn-secondary{background:transparent;color:var(--ink);border:1px solid #C9C3B6;border-radius:999px;padding:15px 28px;font:600 14.5px/1 'Inter Tight',sans-serif;cursor:pointer;display:inline-block;text-align:center;text-decoration:none}
@@ -81,13 +81,15 @@ section,.sec-pad{padding-top:56px!important;padding-bottom:56px!important}
 <body>
 
 <header style="position:sticky;top:0;z-index:20;background:rgba(251,250,248,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)">
-<div class="wrap" style="height:66px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;row-gap:10px">
+<div class="wrap" style="min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px">
 <span style="font:600 19px/1 'Inter Tight',sans-serif;letter-spacing:-.02em">Sloan</span>
-<nav style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+<nav style="display:flex;align-items:center;gap:24px">
+<div class="nav-links" style="display:flex;align-items:center;gap:24px">
 <a href="#how-it-works" style="font:500 13.5px/1 'Inter Tight',sans-serif;color:var(--ink2)">How it works</a>
 <a href="#pricing" style="font:500 13.5px/1 'Inter Tight',sans-serif;color:var(--ink2)">Pricing</a>
 <a href="#faq" style="font:500 13.5px/1 'Inter Tight',sans-serif;color:var(--ink2)">FAQ</a>
-<button type="button" class="btn-nav open-modal-cta" data-cta-location="nav">See if you qualify</button>
+</div>
+<button type="button" class="btn-nav open-modal-cta" style="flex:none" data-cta-location="nav">See if you qualify</button>
 </nav>
 </div>
 </header>
