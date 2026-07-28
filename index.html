@@ -52,6 +52,11 @@ input[type=range].vol::-moz-range-thumb{width:12px;height:12px;border:none;borde
 .field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
 .field label{font:500 12px/1 'Inter Tight',sans-serif;color:#57534a}
 .field input,.field select{font:400 14px/1 'Inter Tight',sans-serif;color:#17171a;padding:12px 13px;border:1px solid #ddd9d1;border-radius:4px;background:#fff}
+
+.faq-item summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';flex:none;font:400 20px/1 'Inter Tight',sans-serif;color:#8a857c}
+.faq-item[open] summary::after{content:'\2212'}
 </style>
 </head>
 <body>
@@ -126,216 +131,210 @@ input[type=range].vol::-moz-range-thumb{width:12px;height:12px;border:none;borde
 </div>
 </div>
 
-<div id="problem" style="padding:76px 5vw;background:#fff;border-bottom:1px solid #e4e1da">
-<p style="margin:0 0 10px;font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a857c">The math nobody puts in the P&amp;L</p>
-<h2 style="margin:0 0 14px;max-width:660px;font:600 30px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">You already paid for the leads you never spoke to</h2>
-<p style="margin:0 0 30px;max-width:620px;font:400 15px/1.6 'Inter Tight',sans-serif;color:#57534a">That lead sat in your CRM until Monday, got two attempts, and went quiet. We measured a month of our own inbound and nearly half ended exactly like that.</p>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
-<div style="padding:26px;border:1px solid #e4e1da;border-radius:5px;background:#faf9f6">
-<p style="margin:0 0 16px;font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a857c">What happens today</p>
-<div style="display:flex;flex-direction:column;gap:12px;font:400 13.5px/1.5 'Inter Tight',sans-serif;color:#57534a">
-<div style="display:flex;gap:12px"><span style="flex:none;width:52px;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#b5b0a7">21:41</span><span>Seller fills out your form. Nobody is at a desk.</span></div>
-<div style="display:flex;gap:12px"><span style="flex:none;width:52px;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#b5b0a7">Mon 09:20</span><span>First attempt, eleven hours cold. No answer.</span></div>
-<div style="display:flex;gap:12px"><span style="flex:none;width:52px;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#b5b0a7">Mon 14:00</span><span>Seller calls back. Your VA is on another call. Voicemail.</span></div>
-<div style="display:flex;gap:12px"><span style="flex:none;width:52px;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#b5b0a7">Tue</span><span>Attempt two. Then the lead quietly stops being worked.</span></div>
-<div style="display:flex;gap:12px"><span style="flex:none;width:52px;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#b5b0a7">Later</span><span>They sell to whoever picked up the phone first.</span></div>
+<!-- Section 1: Make the value concrete -->
+<div id="how-it-works" style="padding:80px 5vw;background:#fff;border-bottom:1px solid #e4e1da;scroll-margin-top:24px">
+<h2 style="margin:0 0 14px;max-width:700px;font:600 32px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">Every inbound seller lead gets the same follow-up. Every time.</h2>
+<p style="margin:0 0 52px;max-width:640px;font:400 19px/1.55 'Inter Tight',sans-serif;color:#57534a">Sloan calls new leads within seconds, continues trying when they do not answer, and returns the conversation and qualification answers to your team.</p>
+<div style="display:flex;align-items:flex-start;gap:20px">
+<div style="flex:1;min-width:0">
+<div style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#17171a;color:#faf9f6;font:600 15px/1 'Inter Tight',sans-serif;margin-bottom:18px">1</div>
+<p style="margin:0 0 8px;font:600 17px/1.3 'Inter Tight',sans-serif;color:#17171a">The lead comes in</p>
+<p style="margin:0;font:400 15px/1.6 'Inter Tight',sans-serif;color:#57534a">The client sends the seller's name, phone number, property address, and lead source through our standard intake.</p>
 </div>
+<div aria-hidden="true" style="flex:none;padding-top:11px;font:400 20px/1 'Inter Tight',sans-serif;color:#ddd9d1">&#8594;</div>
+<div style="flex:1;min-width:0">
+<div style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#17171a;color:#faf9f6;font:600 15px/1 'Inter Tight',sans-serif;margin-bottom:18px">2</div>
+<p style="margin:0 0 8px;font:600 17px/1.3 'Inter Tight',sans-serif;color:#17171a">Sloan starts calling</p>
+<p style="margin:0;font:400 15px/1.6 'Inter Tight',sans-serif;color:#57534a">The first attempt begins within seconds. If the seller does not answer, Sloan continues through the standard follow-up sequence.</p>
 </div>
-<div style="padding:26px;border:1px solid #17171a;border-radius:5px;background:#17171a">
-<p style="margin:0 0 16px;font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:oklch(0.72 0.13 150)">What happens with Sloan</p>
-<div style="display:flex;flex-direction:column;gap:12px;font:400 13.5px/1.5 'Inter Tight',sans-serif;color:#a8a29a">
-<div style="display:flex;gap:12px"><span style="flex:none;width:52px;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#6f6b64">21:41:05</span><span style="color:#faf9f6">Phone is ringing. Five seconds after the form.</span></div>
-<div style="display:flex;gap:12px"><span style="flex:none;width:52px;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#6f6b64">21:42</span><span style="color:#faf9f6">Seller answers. Six qualification questions asked.</span></div>
-<div style="display:flex;gap:12px"><span style="flex:none;width:52px;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#6f6b64">21:43</span><span>Transcript and structured answers in your hands.</span></div>
-<div style="display:flex;gap:12px"><span style="flex:none;width:52px;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#6f6b64">No answer?</span><span>Nine more attempts across our tested cadence.</span></div>
-<div style="display:flex;gap:12px"><span style="flex:none;width:52px;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#6f6b64">Mon 09:00</span><span style="color:#faf9f6">Your rep opens the day with sellers who already qualified.</span></div>
-</div>
-</div>
-</div>
-<p style="margin:22px 0 0;max-width:660px;font:400 13.5px/1.65 'Inter Tight',sans-serif;color:#8a857c">Do the arithmetic on your own numbers: leads a month × what you pay per lead × the share that never reach a conversation. For most operators we talk to, that figure is larger than what this service costs.</p>
-</div>
-
-<div style="padding:76px 5vw;background:#fff;border-bottom:1px solid #e4e1da">
-<h2 style="margin:0 0 8px;font:600 30px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">Four things one person on one phone cannot do</h2>
-<p style="margin:0 0 32px;max-width:620px;font:400 15px/1.6 'Inter Tight',sans-serif;color:#57534a">This isn't a knock on your team. It's the limit of having one mouth and one shift.</p>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e4e1da;border:1px solid #e4e1da;border-radius:5px;overflow:hidden">
-<div style="background:#fff;padding:24px 26px">
-<p style="margin:0 0 7px;font:600 15px/1.3 'Inter Tight',sans-serif;color:#17171a">Work the evening and the weekend</p>
-<p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">The hours your seller leads actually arrive are the hours nobody is at the desk. Sloan doesn't know Sunday 10pm from Tuesday 10am.</p>
-</div>
-<div style="background:#fff;padding:24px 26px">
-<p style="margin:0 0 7px;font:600 15px/1.3 'Inter Tight',sans-serif;color:#17171a">Answer the seller calling back</p>
-<p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">Your VA is mid-call, so the one seller motivated enough to ring you gets voicemail. Sloan picks up on the first ring, however many call at once.</p>
-</div>
-<div style="background:#fff;padding:24px 26px">
-<p style="margin:0 0 7px;font:600 15px/1.3 'Inter Tight',sans-serif;color:#17171a">Hold ten conversations at the same time</p>
-<p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">A campaign spikes and a human works a queue — the last lead waits hours. Every lead gets dialed the moment it lands.</p>
-</div>
-<div style="background:#fff;padding:24px 26px">
-<p style="margin:0 0 7px;font:600 15px/1.3 'Inter Tight',sans-serif;color:#17171a">Make the tenth attempt without flinching</p>
-<p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">Our own team averaged under three attempts before a lead went quiet. Sloan runs the full ten on every lead, forever.</p>
+<div aria-hidden="true" style="flex:none;padding-top:11px;font:400 20px/1 'Inter Tight',sans-serif;color:#ddd9d1">&#8594;</div>
+<div style="flex:1;min-width:0">
+<div style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#17171a;color:#faf9f6;font:600 15px/1 'Inter Tight',sans-serif;margin-bottom:18px">3</div>
+<p style="margin:0 0 8px;font:600 17px/1.3 'Inter Tight',sans-serif;color:#17171a">Your team receives the result</p>
+<p style="margin:0;font:400 15px/1.6 'Inter Tight',sans-serif;color:#57534a">When the seller answers, you receive the transcript and qualification answers. If Sloan cannot connect, the lead is marked not reached.</p>
 </div>
 </div>
 </div>
 
-<div style="padding:76px 5vw;background:#faf9f6;border-bottom:1px solid #e4e1da">
-<h2 style="margin:0 0 8px;font:600 30px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">Sloan against a $1,000/month VA</h2>
-<p style="margin:0 0 28px;max-width:600px;font:400 15px/1.6 'Inter Tight',sans-serif;color:#57534a">Keep your VA. Just stop paying them to dial numbers nobody answers.</p>
-<div style="display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:1px;background:#e4e1da;border:1px solid #e4e1da;border-radius:5px;overflow:hidden;font:400 13.5px/1.5 'Inter Tight',sans-serif">
-<div style="background:#f1efe9;padding:13px 18px">&nbsp;</div>
-<div style="background:#17171a;padding:13px 18px;font:600 10.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#faf9f6">Sloan</div>
-<div style="background:#f1efe9;padding:13px 18px;font:400 10.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a857c">Qualification VA / ISA</div>
-<div style="background:#fff;padding:14px 18px;color:#57534a">First call</div><div style="background:#fff;padding:14px 18px;color:#17171a;font-weight:600">~5 seconds, always</div><div style="background:#fff;padding:14px 18px;color:#57534a">Whenever they're free</div>
-<div style="background:#fff;padding:14px 18px;color:#57534a">Hours covered</div><div style="background:#fff;padding:14px 18px;color:#17171a;font-weight:600">24 / 7 / 365</div><div style="background:#fff;padding:14px 18px;color:#57534a">One shift, one time zone</div>
-<div style="background:#fff;padding:14px 18px;color:#57534a">Attempts per lead</div><div style="background:#fff;padding:14px 18px;color:#17171a;font-weight:600">Up to 10</div><div style="background:#fff;padding:14px 18px;color:#57534a">2–3 in practice</div>
-<div style="background:#fff;padding:14px 18px;color:#57534a">Calls at the same time</div><div style="background:#fff;padding:14px 18px;color:#17171a;font-weight:600">Many</div><div style="background:#fff;padding:14px 18px;color:#57534a">Exactly one</div>
-<div style="background:#fff;padding:14px 18px;color:#57534a">Seller rings you back</div><div style="background:#fff;padding:14px 18px;color:#17171a;font-weight:600">Answered instantly</div><div style="background:#fff;padding:14px 18px;color:#57534a">Voicemail, then chase</div>
-<div style="background:#fff;padding:14px 18px;color:#57534a">Script consistency</div><div style="background:#fff;padding:14px 18px;color:#17171a;font-weight:600">Identical, call one to ten thousand</div><div style="background:#fff;padding:14px 18px;color:#57534a">As good as their day is going</div>
-<div style="background:#fff;padding:14px 18px;color:#57534a">Live and working</div><div style="background:#fff;padding:14px 18px;color:#17171a;font-weight:600">One working day</div><div style="background:#fff;padding:14px 18px;color:#57534a">Weeks of hiring and training</div>
-<div style="background:#fff;padding:14px 18px;color:#57534a">Turnover</div><div style="background:#fff;padding:14px 18px;color:#17171a;font-weight:600">None</div><div style="background:#fff;padding:14px 18px;color:#57534a">Rehire, retrain, repeat</div>
-<div style="background:#fff;padding:14px 18px;color:#57534a">Effective first-year cost</div><div style="background:#fff;padding:14px 18px;color:#17171a;font-weight:600">~$856 / month</div><div style="background:#fff;padding:14px 18px;color:#57534a">$1,000 / month + your time</div>
+<!-- Section 2: Explain the main benefits -->
+<div style="padding:80px 5vw;background:#faf9f6;border-bottom:1px solid #e4e1da">
+<h2 style="margin:0 0 48px;max-width:640px;font:600 32px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">The first-touch work happens without someone watching the clock.</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:36px 48px">
+<div>
+<p style="margin:0 0 6px;font:600 17px/1.3 'Inter Tight',sans-serif;color:#17171a">Calls within seconds</p>
+<p style="margin:0;font:400 18px/1.55 'Inter Tight',sans-serif;color:#57534a">Reach the seller while your company and their form submission are still fresh in their mind.</p>
 </div>
+<div>
+<p style="margin:0 0 6px;font:600 17px/1.3 'Inter Tight',sans-serif;color:#17171a">Keeps trying</p>
+<p style="margin:0;font:400 18px/1.55 'Inter Tight',sans-serif;color:#57534a">Each lead receives up to 10 attempts without someone remembering to follow up.</p>
 </div>
-
-<div id="who-its-for" style="padding:76px 5vw;background:#fff;border-bottom:1px solid #e4e1da">
-<h2 style="margin:0 0 8px;font:600 30px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">We are turning most people down</h2>
-<p style="margin:0 0 30px;max-width:620px;font:400 15px/1.6 'Inter Tight',sans-serif;color:#57534a">We'd rather have the right operators than the first ones through the door. Read the right-hand column honestly before you apply.</p>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
-<div style="padding:26px;border:1px solid #ddd9d1;border-radius:5px">
-<p style="margin:0 0 16px;font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:oklch(0.52 0.12 150)">This is for you if</p>
-<div style="display:flex;flex-direction:column;gap:11px;font:400 13.5px/1.5 'Inter Tight',sans-serif;color:#57534a">
-<span>You take 100+ inbound seller leads a month</span>
-<span>You pay for those leads — Facebook, Google, your site, purchased</span>
-<span>Someone on your team already makes the first call</span>
-<span>You know leads are slipping and it bothers you</span>
-<span>You have people to follow up once a seller is qualified</span>
-<span>You can point a form or CRM at a webhook</span>
+<div>
+<p style="margin:0 0 6px;font:600 17px/1.3 'Inter Tight',sans-serif;color:#17171a">Works around the clock</p>
+<p style="margin:0;font:400 18px/1.55 'Inter Tight',sans-serif;color:#57534a">Nights, weekends, holidays, and sudden lead spikes follow the same process.</p>
 </div>
-</div>
-<div style="padding:26px;border:1px solid #ddd9d1;border-radius:5px;background:#faf9f6">
-<p style="margin:0 0 16px;font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a857c">Don't apply if</p>
-<div style="display:flex;flex-direction:column;gap:11px;font:400 13.5px/1.5 'Inter Tight',sans-serif;color:#8a857c">
-<span>You get fewer than 100 inbound leads a month</span>
-<span>You want cold lists or skip-traced numbers called</span>
-<span>You need your own script and your own questions</span>
-<span>You want us inside your CRM building automations</span>
-<span>You're shopping for AI to try, not a leak to fix</span>
-<span>Nobody is available to work the qualified sellers we hand back</span>
-</div>
+<div>
+<p style="margin:0 0 6px;font:600 17px/1.3 'Inter Tight',sans-serif;color:#17171a">Handles several calls at once</p>
+<p style="margin:0;font:400 18px/1.55 'Inter Tight',sans-serif;color:#57534a">One new conversation does not prevent another lead from being contacted.</p>
 </div>
 </div>
 </div>
 
-<div id="how-it-works" style="padding:76px 5vw;background:#faf9f6;border-bottom:1px solid #e4e1da;scroll-margin-top:24px">
-<h2 style="margin:0 0 8px;font:600 30px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">From payment to first live call: one working day</h2>
-<p style="margin:0 0 32px;max-width:620px;font:400 15px/1.6 'Inter Tight',sans-serif;color:#57534a">No implementation project. No discovery phase. Four steps, and only one of them needs you.</p>
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
-<div style="padding:22px;background:#fff;border:1px solid #ddd9d1;border-radius:5px">
-<p style="margin:0 0 12px;font:500 11px/1 'IBM Plex Mono',monospace;color:oklch(0.52 0.12 150)">Hour 0</p>
-<p style="margin:0 0 6px;font:600 14.5px/1.3 'Inter Tight',sans-serif;color:#17171a">You pay and fill one form</p>
-<p style="margin:0;font:400 13px/1.5 'Inter Tight',sans-serif;color:#57534a">Company, lead source, where you want results, one technical contact.</p>
+<!-- Section 3: Handle the biggest objection -->
+<div style="padding:80px 5vw;background:#fff;border-bottom:1px solid #e4e1da">
+<h2 style="margin:0 0 14px;max-width:700px;font:600 32px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">Sloan handles the first conversation. Your team handles the deal.</h2>
+<p style="margin:0 0 40px;max-width:640px;font:400 19px/1.55 'Inter Tight',sans-serif;color:#57534a">Sloan performs one narrow job. Immediate calling, repeated attempts, and fixed seller qualification. Your team remains responsible for deeper discovery, underwriting, appointments, negotiation, and closing.</p>
+<div style="max-width:720px;font:400 15.5px/1.5 'Inter Tight',sans-serif">
+<div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:0 0 12px;border-bottom:1px solid #17171a">
+<span style="font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a857c">Task</span>
+<span style="font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a857c">Sloan</span>
+<span style="font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a857c">Your team</span>
 </div>
-<div style="padding:22px;background:#fff;border:1px solid #ddd9d1;border-radius:5px">
-<p style="margin:0 0 12px;font:500 11px/1 'IBM Plex Mono',monospace;color:oklch(0.52 0.12 150)">Hour 1</p>
-<p style="margin:0 0 6px;font:600 14.5px/1.3 'Inter Tight',sans-serif;color:#17171a">We clone the desk</p>
-<p style="margin:0;font:400 13px/1.5 'Inter Tight',sans-serif;color:#57534a">Your own agent and dedicated number, running the script that works on our leads.</p>
+<div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:14px 0;border-bottom:1px solid #e4e1da;color:#17171a"><span>Call new leads within seconds</span><span style="color:oklch(0.5 0.13 150)">&#10003; Yes</span><span style="color:#8a857c">Not required</span></div>
+<div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:14px 0;border-bottom:1px solid #e4e1da;color:#17171a"><span>Call nights and weekends</span><span style="color:oklch(0.5 0.13 150)">&#10003; Yes</span><span style="color:#8a857c">Not required</span></div>
+<div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:14px 0;border-bottom:1px solid #e4e1da;color:#17171a"><span>Make up to 10 attempts</span><span style="color:oklch(0.5 0.13 150)">&#10003; Yes</span><span style="color:#8a857c">Not required</span></div>
+<div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:14px 0;border-bottom:1px solid #e4e1da;color:#17171a"><span>Ask the standard qualification questions</span><span style="color:oklch(0.5 0.13 150)">&#10003; Yes</span><span style="color:#8a857c">Not required</span></div>
+<div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:14px 0;border-bottom:1px solid #e4e1da;color:#17171a"><span>Handle unusual or incomplete conversations</span><span style="color:#8a857c">No</span><span style="color:#17171a;font-weight:600">Yes</span></div>
+<div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:14px 0;border-bottom:1px solid #e4e1da;color:#17171a"><span>Perform deep discovery</span><span style="color:#8a857c">No</span><span style="color:#17171a;font-weight:600">Yes</span></div>
+<div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:14px 0;border-bottom:1px solid #e4e1da;color:#17171a"><span>Underwrite and make offers</span><span style="color:#8a857c">No</span><span style="color:#17171a;font-weight:600">Yes</span></div>
+<div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:14px 0;color:#17171a"><span>Negotiate and close</span><span style="color:#8a857c">No</span><span style="color:#17171a;font-weight:600">Yes</span></div>
 </div>
-<div style="padding:22px;background:#fff;border:1px solid #ddd9d1;border-radius:5px">
-<p style="margin:0 0 12px;font:500 11px/1 'IBM Plex Mono',monospace;color:oklch(0.52 0.12 150)">Hour 3</p>
-<p style="margin:0 0 6px;font:600 14.5px/1.3 'Inter Tight',sans-serif;color:#17171a">Test calls together</p>
-<p style="margin:0;font:400 13px/1.5 'Inter Tight',sans-serif;color:#57534a">One answered, one unanswered. You confirm the output lands where you want it.</p>
-</div>
-<div style="padding:22px;background:#17171a;border:1px solid #17171a;border-radius:5px">
-<p style="margin:0 0 12px;font:500 11px/1 'IBM Plex Mono',monospace;color:oklch(0.78 0.14 60)">Same day</p>
-<p style="margin:0 0 6px;font:600 14.5px/1.3 'Inter Tight',sans-serif;color:#faf9f6">Live on real leads</p>
-<p style="margin:0;font:400 13px/1.5 'Inter Tight',sans-serif;color:#a8a29a">Every new lead gets called in five seconds from that moment on.</p>
-</div>
-</div>
+<p style="margin:36px 0 0;max-width:680px;padding:24px 28px;background:#17171a;border-radius:6px;font:500 18px/1.5 'Inter Tight',sans-serif;color:#faf9f6">Sloan does not replace your entire VA or acquisitions team. It removes the repetitive first-touch calling that keeps them dialing voicemail instead of working interested sellers.</p>
 </div>
 
-<div id="pricing" style="padding:76px 5vw;background:#17171a;border-bottom:1px solid #e4e1da;scroll-margin-top:24px">
-<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:26px">
-<p style="margin:0;font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a857c">One plan, no usage fees</p>
+<!-- Sections 4 and 5 held pending real product-output data and additional call recordings -->
+
+<!-- Section 6: Be transparent about the limitations -->
+<div style="padding:80px 5vw;background:#faf9f6;border-bottom:1px solid #e4e1da">
+<h2 style="margin:0 0 44px;max-width:640px;font:600 32px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">Sloan is very good at one job. It is not perfect.</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px 48px">
+<div>
+<p style="margin:0 0 6px;font:600 17px/1.3 'Inter Tight',sans-serif;color:#17171a">Unusual conversations</p>
+<p style="margin:0;font:400 17px/1.55 'Inter Tight',sans-serif;color:#57534a">Some sellers answer in ways that fall outside the supported qualification flow.</p>
 </div>
-<div style="display:flex;align-items:flex-start;gap:44px">
-<div style="flex:none;width:340px;padding:30px;border:1px solid #35342f;border-radius:6px;background:#1f1e1b">
-<p style="margin:0 0 4px;font:600 13px/1 'Inter Tight',sans-serif;color:oklch(0.72 0.13 150)">30-day pilot</p>
+<div>
+<p style="margin:0 0 6px;font:600 17px/1.3 'Inter Tight',sans-serif;color:#17171a">Interruptions and dead air</p>
+<p style="margin:0;font:400 17px/1.55 'Inter Tight',sans-serif;color:#57534a">Connection issues or interruptions can occasionally result in an incomplete call.</p>
+</div>
+<div>
+<p style="margin:0 0 6px;font:600 17px/1.3 'Inter Tight',sans-serif;color:#17171a">Transcript errors</p>
+<p style="margin:0;font:400 17px/1.55 'Inter Tight',sans-serif;color:#57534a">Names, addresses, prices, and other important details should be verified before being used in an offer or contract.</p>
+</div>
+<div>
+<p style="margin:0 0 6px;font:600 17px/1.3 'Inter Tight',sans-serif;color:#17171a">No human rescue</p>
+<p style="margin:0;font:400 17px/1.55 'Inter Tight',sans-serif;color:#57534a">We report incomplete calls and provide the available transcript. The client's team handles the follow-up.</p>
+</div>
+</div>
+<p style="margin:36px 0 0;max-width:640px;font:400 17px/1.6 'Inter Tight',sans-serif;color:#57534a">We would rather be clear about where Sloan stops than promise it replaces work it does not perform.</p>
+</div>
+
+<!-- Section 7: Explain who it is for -->
+<div id="who-its-for" style="padding:80px 5vw;background:#fff;border-bottom:1px solid #e4e1da;scroll-margin-top:24px">
+<h2 style="margin:0 0 44px;max-width:640px;font:600 32px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">Sloan is not right for every real estate operator</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:36px">
+<div style="padding:28px;border:1px solid #ddd9d1;border-radius:6px">
+<p style="margin:0 0 16px;font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:oklch(0.5 0.13 150)">Likely a good fit</p>
+<div style="display:flex;flex-direction:column;gap:12px;font:400 15.5px/1.5 'Inter Tight',sans-serif;color:#57534a">
+<span>You receive at least 100 inbound seller leads each month</span>
+<span>Someone currently calls and qualifies those leads</span>
+<span>Your team can take over after qualification</span>
+<span>You want faster and more consistent first-touch calling</span>
+<span>You can use our standard intake and output</span>
+</div>
+</div>
+<div style="padding:28px;border:1px solid #ddd9d1;border-radius:6px;background:#faf9f6">
+<p style="margin:0 0 16px;font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a857c">Probably not a fit</p>
+<div style="display:flex;flex-direction:column;gap:12px;font:400 15.5px/1.5 'Inter Tight',sans-serif;color:#8a857c">
+<span>You need cold outbound calling</span>
+<span>You want your own custom script</span>
+<span>You need us to build inside your CRM</span>
+<span>You need appointment booking or live transfers</span>
+<span>You receive only a small number of inbound leads</span>
+</div>
+</div>
+</div>
+<button type="button" class="btn-primary open-modal-cta" data-cta-location="who_its_for">See If Sloan Fits Your Lead Flow</button>
+</div>
+
+<!-- Section 8: Pricing -->
+<div id="pricing" style="padding:80px 5vw;background:#17171a;border-bottom:1px solid #e4e1da;scroll-margin-top:24px">
+<h2 style="margin:0 0 40px;max-width:640px;font:600 32px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#faf9f6">Start with one fixed 30-day pilot</h2>
+<div style="max-width:520px;padding:36px;border:1px solid #35342f;border-radius:8px;background:#1f1e1b">
 <p style="margin:0 0 6px;font:600 46px/1 'Inter Tight',sans-serif;letter-spacing:-.03em;color:#faf9f6">$1,500</p>
-<p style="margin:0 0 22px;font:400 13px/1.5 'Inter Tight',sans-serif;color:#a8a29a">Up to 250 unique leads · setup included · live in a day</p>
-<div style="height:1px;background:#35342f;margin-bottom:20px"></div>
-<p style="margin:0 0 6px;font:600 20px/1 'Inter Tight',sans-serif;color:#faf9f6">$797<span style="font-weight:400;font-size:14px;color:#a8a29a"> / month after</span></p>
-<p style="margin:0 0 8px;font:400 13px/1.5 'Inter Tight',sans-serif;color:#a8a29a">Month to month. Cancel whenever. No per-minute charges, ever.</p>
-<button type="button" class="open-modal-cta" data-cta-location="pricing" style="display:block;width:100%;text-align:center;font:600 14px/1 'Inter Tight',sans-serif;color:#17171a;background:#faf9f6;padding:15px;border-radius:4px;border:none;cursor:pointer">See If Sloan Fits Your Lead Flow</button>
+<p style="margin:0 0 26px;font:400 15px/1.5 'Inter Tight',sans-serif;color:#a8a29a">Initial 30-day pilot price</p>
+<div style="height:1px;background:#35342f;margin-bottom:24px"></div>
+<div style="display:flex;flex-direction:column;gap:13px;font:400 16px/1.4 'Inter Tight',sans-serif;color:#d6d1c7;margin-bottom:24px">
+<span>Up to 250 leads during the pilot</span>
+<span>Up to 10 attempts per lead</span>
+<span>One dedicated phone number</span>
+<span>Fixed qualification flow</span>
+<span>Transcripts and structured answers</span>
+<span>Standard dashboard or webhook delivery</span>
 </div>
-<div style="flex:1;padding-top:6px">
-<p style="margin:0 0 18px;font:400 15px/1.65 'Inter Tight',sans-serif;color:#d6d1c7">Every lead you send gets all of this:</p>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;font:400 13.5px/1.5 'Inter Tight',sans-serif;color:#a8a29a">
-<span>Called within ~5 seconds</span><span>Up to 10 attempts</span>
-<span>Our tested seller script</span><span>Structured qualification answers</span>
-<span>Full transcript</span><span>Recording on request</span>
-<span>Dedicated phone number</span><span>Reached / not-reached status</span>
-<span>Dashboard or webhook delivery</span><span>Setup inside one working day</span>
+<div style="height:1px;background:#35342f;margin-bottom:24px"></div>
+<p style="margin:0 0 4px;font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:oklch(0.72 0.13 150)">After the pilot</p>
+<p style="margin:0 0 24px;font:400 16px/1.5 'Inter Tight',sans-serif;color:#d6d1c7">$797 per month, month to month. Cancel any time. No per-minute charges.</p>
+<button type="button" class="btn-primary open-modal-cta" data-cta-location="pricing" style="width:100%;background:#faf9f6;color:#17171a">See If Sloan Fits Your Lead Flow</button>
 </div>
-<p style="margin:24px 0 0;font:400 12.5px/1.6 'IBM Plex Mono',monospace;color:#6f6b64">Across a full year that's about $856 a month — under the cost of a $1,000 VA, with coverage no VA can give you. One invoice, one number, no reconciliation.</p>
+<p style="margin:24px 0 0;font:400 14px/1.5 'Inter Tight',sans-serif;color:#8a857c">No custom build. No CRM migration. Payment is required only after we confirm the service fits your lead flow.</p>
 </div>
+
+<!-- Section 9: FAQ -->
+<div id="faq" style="padding:80px 5vw;background:#faf9f6;border-bottom:1px solid #e4e1da;scroll-margin-top:24px">
+<h2 style="margin:0 0 36px;font:600 32px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">Frequently asked questions</h2>
+<div style="max-width:760px;display:flex;flex-direction:column;gap:1px;background:#e4e1da;border:1px solid #e4e1da;border-radius:6px;overflow:hidden">
+<details name="faq" class="faq-item" style="background:#fff;padding:20px 24px">
+<summary style="cursor:pointer;font:600 16px/1.4 'Inter Tight',sans-serif;color:#17171a">Does Sloan replace my VA?</summary>
+<p style="margin:12px 0 0;font:400 15.5px/1.55 'Inter Tight',sans-serif;color:#57534a">It replaces immediate first-touch calling and fixed qualification. It does not replace deeper discovery, CRM work, underwriting, negotiation, or closing.</p>
+</details>
+<details name="faq" class="faq-item" style="background:#fff;padding:20px 24px">
+<summary style="cursor:pointer;font:600 16px/1.4 'Inter Tight',sans-serif;color:#17171a">Can we change the script?</summary>
+<p style="margin:12px 0 0;font:400 15.5px/1.55 'Inter Tight',sans-serif;color:#57534a">No. During the current pilot, every client uses the same qualification flow we use in our own operation.</p>
+</details>
+<details name="faq" class="faq-item" style="background:#fff;padding:20px 24px">
+<summary style="cursor:pointer;font:600 16px/1.4 'Inter Tight',sans-serif;color:#17171a">Will you connect Sloan to our CRM?</summary>
+<p style="margin:12px 0 0;font:400 15.5px/1.55 'Inter Tight',sans-serif;color:#57534a">We provide a standard dashboard or webhook payload. Your team is responsible for connecting it to your CRM.</p>
+</details>
+<details name="faq" class="faq-item" style="background:#fff;padding:20px 24px">
+<summary style="cursor:pointer;font:600 16px/1.4 'Inter Tight',sans-serif;color:#17171a">What happens when a seller does not answer?</summary>
+<p style="margin:12px 0 0;font:400 15.5px/1.55 'Inter Tight',sans-serif;color:#57534a">Sloan makes up to 10 attempts. If no conversation occurs, the lead is marked not reached.</p>
+</details>
+<details name="faq" class="faq-item" style="background:#fff;padding:20px 24px">
+<summary style="cursor:pointer;font:600 16px/1.4 'Inter Tight',sans-serif;color:#17171a">What happens when a call is incomplete?</summary>
+<p style="margin:12px 0 0;font:400 15.5px/1.55 'Inter Tight',sans-serif;color:#57534a">We provide the available transcript and mark the call incomplete so your team can follow up.</p>
+</details>
+<details name="faq" class="faq-item" style="background:#fff;padding:20px 24px">
+<summary style="cursor:pointer;font:600 16px/1.4 'Inter Tight',sans-serif;color:#17171a">Can we get the call recording?</summary>
+<p style="margin:12px 0 0;font:400 15.5px/1.55 'Inter Tight',sans-serif;color:#57534a">Yes, where recording is legally permitted. Recordings are available on request.</p>
+</details>
+<details name="faq" class="faq-item" style="background:#fff;padding:20px 24px">
+<summary style="cursor:pointer;font:600 16px/1.4 'Inter Tight',sans-serif;color:#17171a">Do you offer cold calling?</summary>
+<p style="margin:12px 0 0;font:400 15.5px/1.55 'Inter Tight',sans-serif;color:#57534a">No. Sloan calls only inbound leads that the client represents have provided legally sufficient consent.</p>
+</details>
 </div>
 </div>
 
-<div style="padding:76px 5vw;background:#fff;border-bottom:1px solid #e4e1da">
-<h2 style="margin:0 0 10px;font:600 30px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">Where it still falls short</h2>
-<p style="margin:0 0 28px;max-width:620px;font:400 15px/1.6 'Inter Tight',sans-serif;color:#57534a">If we hide this now you'll find it in week one and trust nothing else on this page.</p>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:22px 32px;max-width:840px">
-<div style="padding-left:16px;border-left:2px solid #ddd9d1">
-<p style="margin:0 0 5px;font:600 14px/1.3 'Inter Tight',sans-serif;color:#17171a">Incomplete calls happen</p>
-<p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">Dead air, an interruption, an answer it can't process. We flag the call, send what we captured, and your team finishes it. We don't quietly retry and hope.</p>
-</div>
-<div style="padding-left:16px;border-left:2px solid #ddd9d1">
-<p style="margin:0 0 5px;font:600 14px/1.3 'Inter Tight',sans-serif;color:#17171a">It qualifies. It doesn't close.</p>
-<p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">No appointments, no live transfers, no negotiating. Answers and a transcript, handed to your people.</p>
-</div>
-<div style="padding-left:16px;border-left:2px solid #ddd9d1">
-<p style="margin:0 0 5px;font:600 14px/1.3 'Inter Tight',sans-serif;color:#17171a">Our script, not yours</p>
-<p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">Read every question before you pay. You just can't rewrite them — that's the trade for a one-day setup and a flat price.</p>
-</div>
-<div style="padding-left:16px;border-left:2px solid #ddd9d1">
-<p style="margin:0 0 5px;font:600 14px/1.3 'Inter Tight',sans-serif;color:#17171a">Inbound and opted-in only</p>
-<p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">No cold lists. People who asked to hear from you, with consent you can show.</p>
-</div>
-</div>
+<!-- Section 10: Repeat the CTA -->
+<div style="padding:80px 5vw;background:#fff;border-bottom:1px solid #e4e1da">
+<h2 style="margin:0 0 14px;max-width:660px;font:600 32px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">Your next inbound seller lead should not have to wait until morning.</h2>
+<p style="margin:0 0 32px;max-width:600px;font:400 19px/1.55 'Inter Tight',sans-serif;color:#57534a">See whether Sloan can give your team faster first calls, more consistent follow-up, and fewer leads sitting untouched.</p>
+<button type="button" class="btn-primary open-modal-cta" data-cta-location="repeat_cta">See If Sloan Fits Your Lead Flow</button>
+<p style="margin:16px 0 0;font:400 13px/1.5 'Inter Tight',sans-serif;color:#8a857c">Answer five questions about your monthly lead volume and current calling process. Takes approximately 60 seconds.</p>
 </div>
 
-<div id="faq" style="padding:76px 5vw;background:#faf9f6;border-bottom:1px solid #e4e1da;scroll-margin-top:24px">
-<h2 style="margin:0 0 28px;font:600 30px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">What you're probably thinking</h2>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:26px 40px">
-<div><p style="margin:0 0 6px;font:600 14.5px/1.35 'Inter Tight',sans-serif;color:#17171a">"Sellers will hate talking to a robot."</p><p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">Some do. Far more hate leaving a voicemail on Saturday and hearing back Tuesday. Listen to the recording and judge it against the alternative, which is silence.</p></div>
-<div><p style="margin:0 0 6px;font:600 14.5px/1.35 'Inter Tight',sans-serif;color:#17171a">"Do I have to change my CRM?"</p><p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">No. We never touch it. Leads come to our webhook, results go to your dashboard or endpoint, your CRM stays exactly as it is.</p></div>
-<div><p style="margin:0 0 6px;font:600 14.5px/1.35 'Inter Tight',sans-serif;color:#17171a">"Should I fire my VA?"</p><p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">We'd tell you not to. Sloan takes first-touch dialing; your VA gets the sellers who already answered and qualified.</p></div>
-<div><p style="margin:0 0 6px;font:600 14.5px/1.35 'Inter Tight',sans-serif;color:#17171a">"I could build this myself for less."</p><p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">You could. It took us months of real seller calls to make the script hold up. If you want to own and maintain that, a self-service tool is genuinely the better buy.</p></div>
-<div><p style="margin:0 0 6px;font:600 14.5px/1.35 'Inter Tight',sans-serif;color:#17171a">"What if it doesn't work for us?"</p><p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">The pilot is 30 days for exactly that reason. At the end you'll have your own connection numbers and can walk away — month to month, no notice period.</p></div>
-<div><p style="margin:0 0 6px;font:600 14.5px/1.35 'Inter Tight',sans-serif;color:#17171a">"Aren't AI callers not allowed to call people?"</p><p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">The rules people have in mind govern cold outbound — dialing people who never asked to hear from you. Sloan only calls inbound leads who filled out your form and consented to contact, which is the same basis your own team already calls them on. No cold lists, no skip-traced numbers.</p></div>
-<div><p style="margin:0 0 6px;font:600 14.5px/1.35 'Inter Tight',sans-serif;color:#17171a">"Does it tell people it's AI?"</p><p style="margin:0;font:400 13.5px/1.55 'Inter Tight',sans-serif;color:#57534a">If a seller asks, it answers straight — it never claims to be a person. In practice they rarely ask. Getting the consent language right on your forms is part of onboarding.</p></div>
-</div>
-</div>
-
-<div style="padding:76px 5vw;background:#fff;border-bottom:1px solid #e4e1da">
-<div style="display:flex;gap:36px;align-items:flex-start;max-width:840px">
+<!-- Section 11: Founder's note -->
+<div style="padding:80px 5vw;background:#faf9f6">
+<div style="display:flex;gap:36px;align-items:flex-start;max-width:600px;margin:0 auto">
 <div style="flex:none;width:88px;height:88px;border-radius:5px;background:repeating-linear-gradient(135deg,#e9e6df 0 6px,#f4f2ec 6px 12px);border:1px solid #ddd9d1;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px">
 <span style="font:400 9px/1 'IBM Plex Mono',monospace;color:#a8a29a">founder photo</span>
 </div>
 <div>
-<p style="margin:0 0 14px;font:400 16px/1.65 'Inter Tight',sans-serif;color:#17171a;text-wrap:pretty">"I'm not selling you software. I built this because I was watching leads I'd paid for die in my own CRM over the weekend, and I got tired of it. It runs on our pipeline every day. I'm taking three operators so I can watch each account personally — after that, the honest answer is I couldn't give it the same attention."</p>
-<p style="margin:0;font:400 12px/1.5 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#8a857c">Vidit</p>
-</div>
-</div>
-</div>
-
-<div id="apply" style="padding:76px 5vw;background:#faf9f6;scroll-margin-top:24px">
-<div style="max-width:640px">
-<h2 style="margin:0 0 12px;font:600 30px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">See if Sloan fits your lead flow</h2>
-<p style="margin:0 0 26px;font:400 15px/1.6 'Inter Tight',sans-serif;color:#57534a">Five questions. You get a straight yes or no from a founder — including "no, your volume is too low and this won't pay for itself." We'd rather tell you that than take your money.</p>
-<div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
-<button type="button" class="btn-primary open-modal-cta" data-cta-location="apply_section">Check My Fit</button>
-<p style="margin:0;font:400 12.5px/1.7 'IBM Plex Mono',monospace;color:#8a857c">Rather talk it through?<br><a href="mailto:hello@decimal.pe" style="color:#17171a;text-decoration:underline">Book 15 minutes directly</a></p>
+<p style="margin:0 0 14px;font:600 20px/1.3 'Inter Tight',sans-serif;letter-spacing:-.015em;color:#17171a">Why we built Sloan</p>
+<p style="margin:0 0 16px;font:400 17px/1.65 'Inter Tight',sans-serif;color:#57534a">We did not start by trying to build an AI product.</p>
+<p style="margin:0 0 16px;font:400 17px/1.65 'Inter Tight',sans-serif;color:#57534a">We were already generating inbound seller leads inside Decimal. We wanted every new lead called immediately, followed up consistently, and returned to our acquisitions team with the same qualification questions answered.</p>
+<p style="margin:0 0 16px;font:400 17px/1.65 'Inter Tight',sans-serif;color:#57534a">A human team can do many things Sloan cannot. But one person cannot be available every second of every day, make several calls at once, and follow the same cadence for every lead.</p>
+<p style="margin:0 0 16px;font:400 17px/1.65 'Inter Tight',sans-serif;color:#57534a">So we built Sloan to handle that narrow first-touch job.</p>
+<p style="margin:0 0 20px;font:400 17px/1.65 'Inter Tight',sans-serif;color:#57534a">We still use it in our own operation. Now we are opening the same fixed system to a small number of other real estate operators.</p>
+<p style="margin:0;font:400 12px/1.5 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#8a857c">Vidit<br>Partner at Decimal</p>
 </div>
 </div>
 </div>
@@ -418,6 +417,22 @@ function trackEvent(name, params){
   keys.forEach(function(k){ if(params.get(k)){ stored[k]=params.get(k); changed=true; } });
   if(changed){ try{sessionStorage.setItem('sloan_utms', JSON.stringify(stored));}catch(e){} }
   window.__sloanUtms = stored;
+  trackEvent('page_view',{utm_source:stored.utm_source||'',utm_campaign:stored.utm_campaign||''});
+})();
+
+(function scrollDepth(){
+  var fired={};
+  var thresholds=[25,50,75,100];
+  function check(){
+    var doc=document.documentElement;
+    var scrollable=doc.scrollHeight-doc.clientHeight;
+    var pct=scrollable>0?Math.round((window.scrollY/scrollable)*100):100;
+    thresholds.forEach(function(t){
+      if(!fired[t] && pct>=t){ fired[t]=true; trackEvent('scroll_depth',{percent:t}); }
+    });
+  }
+  window.addEventListener('scroll',check,{passive:true});
+  check();
 })();
 
 (function player(){
@@ -486,6 +501,7 @@ function trackEvent(name, params){
         tPanel.removeAttribute('hidden');
         tBtn.textContent='Hide transcript';
         tBtn.setAttribute('aria-expanded','true');
+        trackEvent('transcript_open',{location:'hero'});
         if(!loaded){
           loaded=true;
           fetch('assets/transcript.txt').then(function(r){
@@ -581,9 +597,17 @@ function trackEvent(name, params){
     if(!formStarted){ formStarted=true; trackEvent('form_start'); }
   }, true);
 
+  var volumeField=form.querySelector('#f-volume');
+  if(volumeField){
+    volumeField.addEventListener('change',function(){
+      trackEvent('lead_volume_selected',{value:volumeField.value});
+    });
+  }
+
   form.addEventListener('submit',function(e){
     e.preventDefault();
-    trackEvent('form_submit');
+    var utms=window.__sloanUtms||{};
+    trackEvent('form_submit',{utm_source:utms.utm_source||'',utm_campaign:utms.utm_campaign||''});
     var data={};
     new FormData(form).forEach(function(v,k){data[k]=v;});
     submitBtn.disabled=true;
