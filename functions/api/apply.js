@@ -1,4 +1,4 @@
-const REQUIRED_FIELDS = ["name", "email", "company", "lead_volume", "first_caller"];
+const REQUIRED_FIELDS = ["name_company", "email", "lead_volume", "first_caller"];
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (c) => ({
@@ -37,11 +37,11 @@ export async function onRequestPost({ request, env }) {
   const html = `
     <h2>New Sloan application</h2>
     <table cellpadding="6" cellspacing="0">
-      <tr><td><strong>Name</strong></td><td>${escapeHtml(data.name)}</td></tr>
+      <tr><td><strong>Name and company</strong></td><td>${escapeHtml(data.name_company)}</td></tr>
       <tr><td><strong>Work email</strong></td><td>${escapeHtml(data.email)}</td></tr>
-      <tr><td><strong>Company</strong></td><td>${escapeHtml(data.company)}</td></tr>
       <tr><td><strong>Monthly inbound seller leads</strong></td><td>${escapeHtml(data.lead_volume)}</td></tr>
       <tr><td><strong>Who makes the first calls</strong></td><td>${escapeHtml(data.first_caller)}</td></tr>
+      <tr><td><strong>Monthly cost today</strong></td><td>${escapeHtml(data.monthly_cost || "")}</td></tr>
       ${utmRows}
       <tr><td><strong>Page URL</strong></td><td>${escapeHtml(data.page_url || "")}</td></tr>
     </table>
@@ -57,7 +57,7 @@ export async function onRequestPost({ request, env }) {
       from: env.FROM_EMAIL || "Sloan <onboarding@resend.dev>",
       to: [env.TO_EMAIL || "hello@decimal.pe"],
       reply_to: data.email,
-      subject: `New Sloan application: ${data.company}`,
+      subject: `New Sloan application: ${data.name_company}`,
       html,
     }),
   });
