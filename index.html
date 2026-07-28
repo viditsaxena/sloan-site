@@ -14,6 +14,19 @@ body{margin:0;background:#faf9f6;font-family:"Inter Tight",Helvetica,Arial,sans-
 a{color:#17171a}
 a:hover{color:#57534a}
 .page{display:block;max-width:1440px;margin:0 auto;box-shadow:0 0 0 1px #e4e1da}
+.hero{display:grid;column-gap:64px;grid-template-columns:minmax(0,1fr) minmax(0,460px);grid-template-areas:"text player" "fine player"}
+.hero-text{grid-area:text}
+.hero-player{grid-area:player;align-self:center}
+.hero-fine{grid-area:fine;margin-top:18px}
+@media (max-width:1000px){
+.hero{grid-template-columns:minmax(0,1fr);grid-template-areas:"text" "player" "fine"}
+.hero-player{margin-top:30px}
+.hero-fine{margin-top:24px}
+}
+@media (max-width:700px){
+header{flex-wrap:wrap;row-gap:14px}
+header>div{flex-wrap:wrap}
+}
 </style>
 </head>
 <body>
@@ -32,51 +45,57 @@ a:hover{color:#57534a}
 </header>
 
 <div style="padding:88px 5vw 68px;background:#faf9f6;border-bottom:1px solid #e4e1da">
-<div style="display:flex;gap:64px;align-items:center;flex-wrap:wrap">
+<div class="hero">
 
-<div style="flex:1 1 520px;min-width:0">
+<div class="hero-text">
 <div style="display:flex;align-items:center;gap:8px;margin-bottom:26px">
-<span style="width:6px;height:6px;border-radius:50%;background:oklch(0.58 0.13 150)"></span>
-<span style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a857c">Built inside our own wholesaling operation · not a startup demo</span>
+<span style="flex:none;width:6px;height:6px;border-radius:50%;background:oklch(0.58 0.13 150)"></span>
+<span style="font:400 11px/1.4 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a857c">Your best seller lead may arrive at 9:41 on a Saturday night.</span>
 </div>
-<h1 style="margin:0 0 24px;max-width:620px;font:600 56px/1.03 'Inter Tight',sans-serif;letter-spacing:-.035em;color:#17171a;text-wrap:pretty">Press play. Then decide if it sounds like a robot.</h1>
-<p style="margin:0 0 10px;max-width:560px;font:400 17px/1.55 'Inter Tight',sans-serif;color:#57534a;text-wrap:pretty">Sixty unedited seconds of Sloan qualifying a real inbound seller, five seconds after the form came in on a Saturday night.</p>
-<p style="margin:0 0 34px;max-width:560px;font:400 17px/1.55 'Inter Tight',sans-serif;color:#57534a;text-wrap:pretty">Sellers almost never ask whether they're talking to a person. They answer the six questions and get on with their evening.</p>
+<h1 style="margin:0 0 24px;max-width:620px;font:600 56px/1.03 'Inter Tight',sans-serif;letter-spacing:-.035em;color:#17171a;text-wrap:pretty">Stop losing paid seller leads to slow follow-up.</h1>
+<p style="margin:0 0 34px;max-width:580px;font:400 17px/1.55 'Inter Tight',sans-serif;color:#57534a;text-wrap:pretty">Sloan calls every new inbound seller lead within five seconds, follows up up to 10 times, and sends your team the transcript and qualification answers. Day, night, or weekend.</p>
 <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
 <a href="#apply" style="font:600 14px/1 'Inter Tight',sans-serif;color:#faf9f6;background:#17171a;padding:15px 24px;border-radius:4px;text-decoration:none">Get your leads called today</a>
 <a href="#problem" style="font:600 14px/1 'Inter Tight',sans-serif;color:#17171a;border:1px solid #17171a;padding:14px 24px;border-radius:4px;text-decoration:none">See what it costs you not to</a>
 </div>
-<p style="margin:0 0 20px;font:400 12.5px/1.5 'Inter Tight',sans-serif;color:#8a857c">Live in one working day. We never touch your CRM.</p>
-<p style="margin:0;font:400 12.5px/1.5 'IBM Plex Mono',monospace;color:#8a857c">For operators taking 100+ inbound seller leads a month. Below that, this won't pay for itself and we'll tell you so.</p>
 </div>
 
-<div id="hear-a-call" style="flex:0 1 420px;min-width:360px;scroll-margin-top:24px">
+<div id="hear-a-call" class="hero-player" style="scroll-margin-top:24px">
 <div style="border:1px solid #35342f;border-radius:6px;background:#17171a;overflow:hidden">
-<div style="display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-bottom:1px solid #35342f">
-<span style="font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:oklch(0.72 0.13 150)">Unedited recording</span>
-<span style="font:400 10.5px/1 'IBM Plex Mono',monospace;color:#6f6b64">Inbound seller · Sat 21:41</span>
+<div style="padding:15px 22px;border-bottom:1px solid #35342f">
+<span style="font:500 11px/1.4 'IBM Plex Mono',monospace;letter-spacing:.07em;text-transform:uppercase;color:oklch(0.72 0.13 150)">A real call with an inbound seller lead</span>
 </div>
 
-<div style="padding:24px 20px;display:flex;align-items:center;gap:16px">
-<button id="play-btn" aria-label="Play the recording" style="flex:none;width:52px;height:52px;border-radius:50%;border:none;background:#faf9f6;color:#17171a;cursor:pointer;font:400 15px/1 'Inter Tight',sans-serif;display:flex;align-items:center;justify-content:center;padding:0">
-<span id="play-icon" style="margin-left:3px">&#9654;</span>
+<div style="padding:28px 22px;display:flex;align-items:center;gap:20px">
+<button id="play-btn" aria-label="Play the recording" style="flex:none;width:64px;height:64px;border-radius:50%;border:none;background:#faf9f6;color:#17171a;cursor:pointer;font:400 19px/1 'Inter Tight',sans-serif;display:flex;align-items:center;justify-content:center;padding:0">
+<span id="play-icon" style="margin-left:4px">&#9654;</span>
 </button>
-<div style="flex:1;display:flex;flex-direction:column;gap:10px;min-width:0">
-<div id="track" style="height:32px;border-radius:3px;background:repeating-linear-gradient(90deg,#3a3833 0 2px,transparent 2px 6px);position:relative;cursor:pointer">
+<div style="flex:1;display:flex;flex-direction:column;gap:11px;min-width:0">
+<div id="track" style="height:46px;border-radius:3px;background:repeating-linear-gradient(90deg,#3a3833 0 2px,transparent 2px 6px);position:relative;cursor:pointer">
 <div id="prog" style="position:absolute;top:0;left:0;bottom:0;width:0;border-radius:3px;background:repeating-linear-gradient(90deg,oklch(0.72 0.13 150) 0 2px,transparent 2px 6px)"></div>
 </div>
-<div style="display:flex;justify-content:space-between;font:400 11px/1 'IBM Plex Mono',monospace;color:#8a857c">
-<span>Judge the voice for yourself</span><span id="cur">0:00</span>
+<div style="display:flex;justify-content:space-between;gap:12px;font:400 11px/1 'IBM Plex Mono',monospace;color:#8a857c">
+<span id="status">Press play</span><span id="cur">0:00</span>
 </div>
 </div>
 </div>
 <audio id="call-audio" preload="metadata" src="assets/sloan-call.mp3"></audio>
 
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#35342f;border-top:1px solid #35342f">
-<div style="background:#1f1e1b;padding:13px 18px"><p style="margin:0 0 4px;font:400 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#6f6b64">Dialed</p><p style="margin:0;font:500 12.5px/1.3 'Inter Tight',sans-serif;color:#faf9f6">5 seconds after the form</p></div>
-<div style="background:#1f1e1b;padding:13px 18px"><p style="margin:0 0 4px;font:400 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#6f6b64">Outcome</p><p style="margin:0;font:500 12.5px/1.3 'Inter Tight',sans-serif;color:#faf9f6">Qualified · 6 answers</p></div>
+<div style="padding:18px 22px;border-top:1px solid #35342f;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:11px"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:oklch(0.72 0.13 150)"></span><span style="font:400 13.5px/1.4 'Inter Tight',sans-serif;color:#d6d1c7">Called five seconds after submission</span></div>
+<div style="display:flex;align-items:baseline;gap:11px"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:oklch(0.72 0.13 150)"></span><span style="font:400 13.5px/1.4 'Inter Tight',sans-serif;color:#d6d1c7">Real seller conversation</span></div>
+<div style="display:flex;align-items:baseline;gap:11px"><span style="flex:none;width:5px;height:5px;border-radius:50%;background:oklch(0.72 0.13 150)"></span><span style="font:400 13.5px/1.4 'Inter Tight',sans-serif;color:#d6d1c7">Qualification completed</span></div>
+</div>
+
+<div style="padding:14px 22px;border-top:1px solid #35342f;background:#1f1e1b">
+<span style="font:400 12px/1.5 'IBM Plex Mono',monospace;color:#8a857c">No voice actor. No staged demo.</span>
 </div>
 </div>
+</div>
+
+<div class="hero-fine">
+<p style="margin:0 0 18px;font:400 12.5px/1.5 'Inter Tight',sans-serif;color:#8a857c">Live in one working day. We never touch your CRM.</p>
+<p style="margin:0;font:400 12.5px/1.6 'IBM Plex Mono',monospace;color:#8a857c">Built inside our own wholesaling operation · not a startup demo<br>For operators taking 100+ inbound seller leads a month. Below that, this won't pay for itself and we'll tell you so.</p>
 </div>
 
 </div>
@@ -84,8 +103,8 @@ a:hover{color:#57534a}
 
 <div id="problem" style="padding:76px 5vw;background:#fff;border-bottom:1px solid #e4e1da">
 <p style="margin:0 0 10px;font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a857c">The math nobody puts in the P&amp;L</p>
-<h2 style="margin:0 0 14px;max-width:780px;font:600 34px/1.12 'Inter Tight',sans-serif;letter-spacing:-.028em;color:#17171a;text-wrap:pretty">Your best seller lead came in at 9:41 on a Saturday night. Nobody called it back.</h2>
-<p style="margin:0 0 30px;max-width:620px;font:400 15px/1.6 'Inter Tight',sans-serif;color:#57534a">You paid for that lead. It sat in your CRM until Monday, got two attempts, and went quiet. We measured a month of our own inbound and nearly half ended exactly like that.</p>
+<h2 style="margin:0 0 14px;max-width:660px;font:600 30px/1.15 'Inter Tight',sans-serif;letter-spacing:-.025em;color:#17171a">You already paid for the leads you never spoke to</h2>
+<p style="margin:0 0 30px;max-width:620px;font:400 15px/1.6 'Inter Tight',sans-serif;color:#57534a">That lead sat in your CRM until Monday, got two attempts, and went quiet. We measured a month of our own inbound and nearly half ended exactly like that.</p>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
 <div style="padding:26px;border:1px solid #e4e1da;border-radius:5px;background:#faf9f6">
 <p style="margin:0 0 16px;font:600 11px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#8a857c">What happens today</p>
@@ -330,7 +349,8 @@ a:hover{color:#57534a}
 (function(){
   var a=document.getElementById('call-audio'),btn=document.getElementById('play-btn'),
       icon=document.getElementById('play-icon'),track=document.getElementById('track'),
-      prog=document.getElementById('prog'),cur=document.getElementById('cur');
+      prog=document.getElementById('prog'),cur=document.getElementById('cur'),
+      note=document.getElementById('status');
   if(!a||!btn)return;
   function fmt(s){s=Math.floor(s)||0;return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2)}
   function total(){return isFinite(a.duration)?a.duration:0}
@@ -346,8 +366,7 @@ a:hover{color:#57534a}
   a.addEventListener('error',function(){
     btn.disabled=true;btn.style.opacity='.45';btn.style.cursor='default';
     cur.textContent='';
-    var l=track.nextElementSibling.firstElementChild;
-    if(l)l.textContent='Recording unavailable';
+    if(note)note.textContent='Recording unavailable';
   });
   track.addEventListener('click',function(e){
     if(!total())return;
