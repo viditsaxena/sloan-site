@@ -182,6 +182,22 @@ input[type=range].scrub::-moz-range-thumb{width:3px;height:44px;border:none;bord
 .lead-o{flex:none;font:500 12.5px/1.3 'Inter',sans-serif;white-space:nowrap;text-align:right;min-width:96px}
 @media (max-width:560px){.lead-bar{display:none}.lead-o{min-width:0}}
 
+/* Revenue calculator */
+.rev-calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px 56px;align-items:start;max-width:940px}
+@media (max-width:720px){.rev-calc-grid{grid-template-columns:1fr}}
+.rc-field{margin-bottom:26px}
+.rc-label-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:9px}
+.rc-label{font:400 14px/1.45 'Inter',sans-serif;color:var(--ink2)}
+.rc-val{font:600 20px/1 'Inter',sans-serif;color:var(--ink);white-space:nowrap}
+.rc-slider{width:100%;accent-color:var(--teal);cursor:pointer;margin:0}
+.rc-outs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.rc-out{padding:20px 22px;background:var(--bg);border:1px solid var(--border);border-radius:8px}
+.rc-out-label{font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
+.rc-out-val{font:700 28px/1 'Inter',sans-serif;color:var(--ink);letter-spacing:-.03em}
+.rc-out.rc-big{grid-column:1/-1;background:var(--blue-bg);border-color:#C3D4F0}
+.rc-out.rc-big .rc-out-label{color:var(--blue)}
+.rc-out.rc-big .rc-out-val{font-size:clamp(30px,4vw,44px);color:var(--blue)}
+
 /* Fade-rise animation */
 @media (prefers-reduced-motion:no-preference){
   .chapter{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
@@ -597,6 +613,65 @@ A real inbound seller call — press play
 </div>
 </section>
 
+<!-- Revenue calculator -->
+<section style="padding:88px 20px;border-top:1px solid var(--border)">
+<div class="wrap">
+<span class="eyebrow" style="margin-bottom:18px">Run your own numbers</span>
+<h2 style="margin:0 0 14px;max-width:680px;font-size:clamp(22px,3vw,32px);line-height:1.18;letter-spacing:-.025em">The revenue sitting in your unanswered leads</h2>
+<p style="margin:0 0 44px;max-width:580px;font:400 16.5px/1.65 'Inter',sans-serif;color:var(--ink2)">Sloan calls at 4 a.m., calls the lead that came in during lunch, and makes 8.1 attempts before giving up. Your VAs make 2.4. That gap has a dollar value. Plug your numbers in.</p>
+
+<div class="rev-calc-grid">
+
+  <!-- Inputs -->
+  <div>
+    <div class="rc-field">
+      <div class="rc-label-row">
+        <label for="rc-leads" class="rc-label">Inbound leads per month</label>
+        <span id="rc-leads-val" class="rc-val">80</span>
+      </div>
+      <input type="range" id="rc-leads" class="rc-slider" min="20" max="500" step="5" value="80" aria-label="Inbound leads per month">
+    </div>
+    <div class="rc-field">
+      <div class="rc-label-row">
+        <label for="rc-deal" class="rc-label">Average deal profit</label>
+        <span id="rc-deal-val" class="rc-val">$8,000</span>
+      </div>
+      <input type="range" id="rc-deal" class="rc-slider" min="1000" max="30000" step="500" value="8000" aria-label="Average deal profit in dollars">
+    </div>
+    <div class="rc-field" style="margin-bottom:0">
+      <div class="rc-label-row">
+        <label for="rc-rate" class="rc-label">Contact rate — conversations per lead</label>
+        <span id="rc-rate-val" class="rc-val">25%</span>
+      </div>
+      <input type="range" id="rc-rate" class="rc-slider" min="8" max="50" step="1" value="25" aria-label="Current contact rate as a percentage">
+    </div>
+    <p style="margin:20px 0 0;font:400 11.5px/1.65 'IBM Plex Mono',monospace;color:var(--ink3)">Close rate fixed at 12% of conversations. Sloan uplift: 1.65× contact rate, based on 8.1 vs 2.4 attempts per lead and 24-hour vs 9-hour coverage. Your results will differ.</p>
+  </div>
+
+  <!-- Outputs -->
+  <div class="rc-outs">
+    <div class="rc-out">
+      <div class="rc-out-label">Extra leads reached/mo</div>
+      <div id="rc-extra-contacts" class="rc-out-val">—</div>
+    </div>
+    <div class="rc-out">
+      <div class="rc-out-label">Extra deals/month</div>
+      <div id="rc-extra-deals" class="rc-out-val">—</div>
+    </div>
+    <div class="rc-out">
+      <div class="rc-out-label">Monthly revenue upside</div>
+      <div id="rc-monthly" class="rc-out-val">—</div>
+    </div>
+    <div class="rc-out rc-big">
+      <div class="rc-out-label">Annual revenue upside</div>
+      <div id="rc-annual" class="rc-out-val">—</div>
+    </div>
+  </div>
+
+</div>
+</div>
+</section>
+
 <!-- 07 Now -->
 <section id="ch-07" class="chapter" data-chapter="07" style="scroll-margin-top:128px">
 <div class="wrap">
@@ -921,6 +996,41 @@ document.querySelectorAll('a[data-cta-location]').forEach(function(a){
   function debounce(){ clearTimeout(calcTimer); calcTimer = setTimeout(update, 150); }
   [ciPeople, ciCost, ciHours, ciLeads].forEach(function(el){ el.addEventListener('input', debounce); });
   ciConv.addEventListener('input', update);
+  update();
+})();
+
+/* Revenue calculator */
+(function revCalc(){
+  var rcLeads = document.getElementById('rc-leads');
+  var rcDeal  = document.getElementById('rc-deal');
+  var rcRate  = document.getElementById('rc-rate');
+  if(!rcLeads || !rcDeal || !rcRate) return;
+
+  function fmtDollar(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+  function fmtNum(n){ return n < 10 ? n.toFixed(1) : Math.round(n).toLocaleString('en-US'); }
+
+  function update(){
+    var leads     = parseInt(rcLeads.value);
+    var deal      = parseInt(rcDeal.value);
+    var rate      = parseInt(rcRate.value) / 100;
+    var closeRate = 0.12;
+    var sloRate   = Math.min(rate * 1.65, 0.60);
+
+    var extraContacts = leads * (sloRate - rate);
+    var extraDeals    = extraContacts * closeRate;
+    var monthly       = extraDeals * deal;
+    var annual        = monthly * 12;
+
+    document.getElementById('rc-leads-val').textContent  = leads;
+    document.getElementById('rc-deal-val').textContent   = fmtDollar(deal);
+    document.getElementById('rc-rate-val').textContent   = parseInt(rcRate.value) + '%';
+    document.getElementById('rc-extra-contacts').textContent = fmtNum(extraContacts);
+    document.getElementById('rc-extra-deals').textContent   = fmtNum(extraDeals);
+    document.getElementById('rc-monthly').textContent       = fmtDollar(monthly);
+    document.getElementById('rc-annual').textContent        = fmtDollar(annual);
+  }
+
+  [rcLeads, rcDeal, rcRate].forEach(function(el){ el.addEventListener('input', update); });
   update();
 })();
 
