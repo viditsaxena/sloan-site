@@ -198,6 +198,14 @@ input[type=range].scrub::-moz-range-thumb{width:3px;height:44px;border:none;bord
 .rc-out.rc-big .rc-out-label{color:var(--blue)}
 .rc-out.rc-big .rc-out-val{font-size:clamp(30px,4vw,44px);color:var(--blue)}
 
+/* Issue list */
+.issue-list{display:flex;flex-direction:column;gap:40px;max-width:660px;margin-top:44px}
+.issue-item{display:flex;gap:22px}
+.issue-n{font:400 13px/1.7 'IBM Plex Mono',monospace;color:var(--ink3);letter-spacing:.02em;padding-top:3px;flex-shrink:0;min-width:18px}
+.issue-body h3{margin:0 0 10px;font:600 17px/1.35 'Inter',sans-serif;color:var(--ink);letter-spacing:-.015em}
+.issue-body p{margin:0;font:400 16px/1.72 'Inter',sans-serif;color:var(--ink2)}
+.issue-body p+p{margin-top:12px}
+
 /* Fade-rise animation */
 @media (prefers-reduced-motion:no-preference){
   .chapter{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
@@ -231,32 +239,30 @@ input[type=range].scrub::-moz-range-thumb{width:3px;height:44px;border:none;bord
 <span class="eyebrow" style="margin-bottom:22px">Our own operation, in order</span>
 <h1 style="margin:0 0 22px;max-width:780px;font-size:clamp(30px,5vw,50px);line-height:1.13;letter-spacing:-.032em">We were paying two people to call our leads. Half our leads still got called late.</h1>
 <p style="margin:0 0 14px;max-width:620px;font:400 17.5px/1.65 'Inter',sans-serif;color:var(--ink2)">This is what actually happened inside our own wholesaling operation, in the order it happened, including the parts that make us look bad.</p>
-<p style="margin:0;font:400 13px/1 'IBM Plex Mono',monospace;color:var(--ink3)">A seven minute read, or scroll to <a href="#ch-06" style="color:var(--teal)">06</a> if you only want the numbers.</p>
+<p style="margin:0;font:400 13px/1 'IBM Plex Mono',monospace;color:var(--ink3)">A five minute read, or scroll to <a href="#ch-04" style="color:var(--teal)">04</a> if you only want the numbers.</p>
 </div>
 </section>
 
 <!-- Chapter rail -->
 <nav class="ch-rail" aria-label="Chapter navigation" id="ch-rail">
 <div class="ch-rail-inner">
-<a href="#ch-01" class="ch-link" aria-current="true" data-ch="01"><span class="ch-num">01</span><span class="ch-word">Leads</span></a>
-<a href="#ch-02" class="ch-link" data-ch="02"><span class="ch-num">02</span><span class="ch-word">Saturday</span></a>
-<a href="#ch-03" class="ch-link" data-ch="03"><span class="ch-num">03</span><span class="ch-word">Queue</span></a>
-<a href="#ch-04" class="ch-link" data-ch="04"><span class="ch-num">04</span><span class="ch-word">Math</span></a>
-<a href="#ch-05" class="ch-link" data-ch="05"><span class="ch-num">05</span><span class="ch-word">Build</span></a>
-<a href="#ch-06" class="ch-link" data-ch="06"><span class="ch-num">06</span><span class="ch-word">Live</span></a>
-<a href="#ch-07" class="ch-link" data-ch="07"><span class="ch-num">07</span><span class="ch-word">Now</span></a>
+<a href="#ch-01" class="ch-link" aria-current="true" data-ch="01"><span class="ch-num">01</span><span class="ch-word">Issue</span></a>
+<a href="#ch-02" class="ch-link" data-ch="02"><span class="ch-num">02</span><span class="ch-word">Math</span></a>
+<a href="#ch-03" class="ch-link" data-ch="03"><span class="ch-num">03</span><span class="ch-word">Build</span></a>
+<a href="#ch-04" class="ch-link" data-ch="04"><span class="ch-num">04</span><span class="ch-word">Live</span></a>
+<a href="#ch-05" class="ch-link" data-ch="05"><span class="ch-num">05</span><span class="ch-word">Now</span></a>
 </div>
 <div class="ch-prog" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="ch-prog-wrap">
 <div class="ch-prog-bar" id="ch-prog-bar"></div>
 </div>
 </nav>
 
-<!-- 01 Leads -->
+<!-- 01 Issue -->
 <section id="ch-01" class="chapter" data-chapter="01" style="scroll-margin-top:128px">
 <div class="wrap">
 <div class="ch-opener">
 <span class="ch-n">01</span>
-<span class="ch-w">Leads</span>
+<span class="ch-w">Issue</span>
 </div>
 <hr class="ch-rule">
 <h2 style="margin-bottom:36px;max-width:640px;font-size:clamp(24px,3.5vw,34px);line-height:1.2">How it worked before Sloan</h2>
@@ -267,85 +273,86 @@ input[type=range].scrub::-moz-range-thumb{width:3px;height:44px;border:none;bord
 <p>Two people. Two phones. US business hours.</p>
 <p>For a while that was fine.</p>
 <p>Then we turned the ad spend up.</p>
+<p>Here is everything that started breaking.</p>
 </div>
-<div style="margin-top:44px;max-width:760px">
-<div class="screenshot-ph" aria-label="Screenshot placeholder">
-<span class="ss-label">Screenshot</span>
-<span class="ss-desc">The CRM lead list on a normal day, or the five qualification questions as they appear in our script. Something that shows a real lead queue.</span>
+<div class="issue-list">
+<div class="issue-item">
+<span class="issue-n">1.</span>
+<div class="issue-body">
+<h3>A lead came in while every phone was busy.</h3>
+<p>Both VAs are on calls. A new lead lands. Nothing happens.</p>
+<p>It waits five minutes. Then ten. Some afternoons, more than an hour.</p>
+<p>By the time we call, he does not pick up. Or he picks up and tells us he has already spoken to somebody else.</p>
+<p>Speed to lead is not a nice extra in this business. It is the whole business. Whoever calls first usually gets the deal, and we were hardly ever first.</p>
 </div>
+</div>
+<div class="issue-item">
+<span class="issue-n">2.</span>
+<div class="issue-body">
+<h3>Our best days were our worst days.</h3>
+<p>More ad spend means more leads. That is supposed to be good news.</p>
+<p>But more leads with the same two phones just means a longer line. On our biggest days, the leads at the back got the worst treatment.</p>
+<p>We were paying more for leads and looking after them less.</p>
+</div>
+</div>
+<div class="issue-item">
+<span class="issue-n">3.</span>
+<div class="issue-body">
+<h3>Nobody was working at night or on the weekend.</h3>
+<p>Sellers fill in forms after work. Evenings, late nights, Sunday mornings.</p>
+<p>To cover that with people you need three shifts a day, seven days a week. At our size, that was never going to happen.</p>
+<p>So those leads waited until the morning. And a seller who fills in our form at 9pm fills in two other forms at 9pm. By the time we called, somebody else already had.</p>
+</div>
+</div>
+<div class="issue-item">
+<span class="issue-n">4.</span>
+<div class="issue-body">
+<h3>Most of what we were paying for was ringing, not talking.</h3>
+<p>This is the big one.</p>
+<p>About 60% of our leads do not pick up the first time. They need several attempts before anybody says hello.</p>
+<p>So most of a VA's day was not a conversation. It was dial tones. Voicemail greetings. Dead numbers. Wrong numbers. Somebody saying now is not a good time.</p>
+<p>We were paying people by the month to listen to phones ring.</p>
+</div>
+</div>
+<div class="issue-item">
+<span class="issue-n">5.</span>
+<div class="issue-body">
+<h3>Our callers are human, so they have to stop.</h3>
+<p>Lunch. A break. Notes to write up. The CRM to update. A sick day. A holiday.</p>
+<p>Every one of those is fair. Leads keep arriving through all of them.</p>
+</div>
+</div>
+<div class="issue-item">
+<span class="issue-n">6.</span>
+<div class="issue-body">
+<h3>They did not sound American.</h3>
+<p>Our VAs were good at the job. Like most VAs, they were not from the US, and a seller can hear that in the first three seconds.</p>
+<p>Some sellers simply do not want to talk to somebody with an accent about their house. They are polite, they get off the phone, and you never find out what that deal was worth.</p>
+<p>The fix is hiring US-based callers instead, at around $3,000 a month each. At the volume we needed, that math did not work.</p>
+</div>
+</div>
+<div class="issue-item">
+<span class="issue-n">7.</span>
+<div class="issue-body">
+<h3>We could not add capacity quickly.</h3>
+<p>Hiring one more caller is not a week's work. It is a month of training, scripts, shadowing and correcting before they are any good with a live seller.</p>
+<p>Then some of them leave, and you start again.</p>
+<p>Our lead volume was capped by how fast we could hire, not by how fast we could market.</p>
+</div>
+</div>
+</div>
+<div class="beat">
+<p>Six of those we could feel. Number four we could actually count.</p>
+<p>So we counted it.</p>
 </div>
 </div>
 </section>
 
-<!-- 02 Saturday -->
+<!-- 02 Math -->
 <section id="ch-02" class="chapter" data-chapter="02" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);scroll-margin-top:128px">
 <div class="wrap">
 <div class="ch-opener">
 <span class="ch-n">02</span>
-<span class="ch-w">Saturday</span>
-</div>
-<hr class="ch-rule">
-<h2 style="margin-bottom:36px;max-width:640px;font-size:clamp(24px,3.5vw,34px);line-height:1.2">The lead we paid for and did not call</h2>
-<div class="prose">
-<p>Saturday, 9:41pm. A lead comes in. <span class="verify-ph">Marcus</span>. Three bed, kitchen needs work, wants out fast.</p>
-<p>Nobody is at a desk. Our VAs work US business hours and it is Saturday night.</p>
-<p>So the lead sits there. All night Saturday. All day Sunday.</p>
-<p>Monday, 9:12am, one of our VAs calls him. Thirty six hours after he put his hand up.</p>
-<p>He picks up. He is perfectly polite about it. He has already signed with somebody else.</p>
-<p>He told us he filled in three forms that night. We were the one that never called.</p>
-<p>That lead cost us <span class="ph">$00</span> to buy. <span class="verify-ph">the deal was worth about <span class="ph">$00,000</span> to us.</span></p>
-<p>We did not lose it on price. We lost it because we were asleep.</p>
-</div>
-<div style="margin-top:44px;max-width:760px">
-<div class="screenshot-ph" aria-label="Screenshot placeholder" style="border-color:var(--border)">
-<span class="ss-label">Screenshot</span>
-<span class="ss-desc">The actual lead record showing received Saturday 21:41 and first call attempt Monday 09:12. This is the most important image on the page. If we cannot get the real one, we do not fake it, we cut the image and keep the words.</span>
-</div>
-</div>
-<div class="beat">
-<p>Then we started counting how often that was happening.</p>
-</div>
-</div>
-</section>
-
-<!-- 03 Queue -->
-<section id="ch-03" class="chapter" data-chapter="03" style="scroll-margin-top:128px">
-<div class="wrap">
-<div class="ch-opener">
-<span class="ch-n">03</span>
-<span class="ch-w">Queue</span>
-</div>
-<hr class="ch-rule">
-<h2 style="margin-bottom:44px;max-width:640px;font-size:clamp(24px,3.5vw,34px);line-height:1.2">Four things we could not do, however good our VAs were</h2>
-<div class="queue-list">
-<div class="queue-item">
-<h3>We could not call five leads at once.</h3>
-<p>Two people, two phones. When five leads landed together, three of them sat in a queue and waited for somebody to hang up. On a busy afternoon, the last one waited <span class="ph">00</span> minutes.</p>
-</div>
-<div class="queue-item">
-<h3>We could not pick up a seller calling us back.</h3>
-<p>If both VAs were talking, he got our voicemail. That is the one call you cannot afford to miss, and we missed it every week.</p>
-</div>
-<div class="queue-item">
-<h3>We could not call the 9pm lead at 9pm.</h3>
-<p>People fill in forms after work. <span class="ph">53%</span> of our leads arrived outside 9 to 6. Every one of them got a cold call the next morning instead of a warm one that evening.</p>
-</div>
-<div class="queue-item">
-<h3>We could not get to attempt five.</h3>
-<p>Nobody ever decided to give up on a lead. There was just always a newer one to call. And attempt five is where a lot of our deals actually live.</p>
-</div>
-</div>
-<div class="beat" style="padding-bottom:0">
-<p>None of that is a people problem. Then we found the number that was worse than all four.</p>
-</div>
-</div>
-</section>
-
-<!-- 04 Math -->
-<section id="ch-04" class="chapter" data-chapter="04" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);scroll-margin-top:128px">
-<div class="wrap">
-<div class="ch-opener">
-<span class="ch-n">04</span>
 <span class="ch-w">Math</span>
 </div>
 <hr class="ch-rule">
@@ -470,11 +477,11 @@ input[type=range].scrub::-moz-range-thumb{width:3px;height:44px;border:none;bord
 </div>
 </section>
 
-<!-- 05 Build -->
-<section id="ch-05" class="chapter" data-chapter="05" style="scroll-margin-top:128px">
+<!-- 03 Build -->
+<section id="ch-03" class="chapter" data-chapter="03" style="scroll-margin-top:128px">
 <div class="wrap">
 <div class="ch-opener">
-<span class="ch-n">05</span>
+<span class="ch-n">03</span>
 <span class="ch-w">Build</span>
 </div>
 <hr class="ch-rule">
@@ -536,11 +543,11 @@ A real inbound seller call — press play
 </div>
 </section>
 
-<!-- 06 Live -->
-<section id="ch-06" class="chapter" data-chapter="06" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);scroll-margin-top:128px">
+<!-- 04 Live -->
+<section id="ch-04" class="chapter" data-chapter="04" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);scroll-margin-top:128px">
 <div class="wrap">
 <div class="ch-opener">
-<span class="ch-n">06</span>
+<span class="ch-n">04</span>
 <span class="ch-w">Live</span>
 </div>
 <hr class="ch-rule">
@@ -672,11 +679,11 @@ A real inbound seller call — press play
 </div>
 </section>
 
-<!-- 07 Now -->
-<section id="ch-07" class="chapter" data-chapter="07" style="scroll-margin-top:128px">
+<!-- 05 Now -->
+<section id="ch-05" class="chapter" data-chapter="05" style="scroll-margin-top:128px">
 <div class="wrap">
 <div class="ch-opener">
-<span class="ch-n">07</span>
+<span class="ch-n">05</span>
 <span class="ch-w">Now</span>
 </div>
 <hr class="ch-rule">
@@ -862,7 +869,7 @@ document.querySelectorAll('a[data-cta-location]').forEach(function(a){
   var progWrap = document.getElementById('ch-prog-wrap');
   var railEl = document.getElementById('ch-rail');
   var NAV_H = 64;
-  var chNums = ['01','02','03','04','05','06','07'];
+  var chNums = ['01','02','03','04','05'];
   var IS_DESKTOP = window.innerWidth >= 1280;
 
   function getRailH(){ return IS_DESKTOP ? 0 : (railEl.offsetHeight || 44); }
