@@ -59,22 +59,33 @@ h3{font-size:22px;line-height:1.3}
 .radio-pill input:checked + span{border-color:var(--ink);color:var(--ink);background:var(--bg2)}
 .radio-pill input:focus-visible + span{outline:2px solid var(--ink);outline-offset:2px}
 
-/* Chapter rail */
+/* Chapter rail — mobile/tablet: compact sticky top bar */
 .ch-rail{position:sticky;top:64px;z-index:19;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-.ch-rail-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;max-width:1080px;margin:0 auto;padding:0 32px}
+.ch-rail-inner{display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;padding:0 12px}
 .ch-rail-inner::-webkit-scrollbar{display:none}
-.ch-link{display:flex;align-items:center;gap:6px;padding:10px 12px;text-decoration:none;color:var(--ink3);font:500 12.5px/1 'Inter',sans-serif;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s}
-.ch-link:hover{color:var(--ink)}
+.ch-link{position:relative;display:flex;align-items:center;gap:5px;padding:10px 8px;text-decoration:none;color:var(--ink3);font:500 12px/1 'Inter',sans-serif;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s;flex-shrink:0}
+.ch-link:hover{color:var(--ink2)}
 .ch-link[aria-current="true"]{color:var(--ink);border-bottom-color:var(--teal)}
-.ch-link .ch-num{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em}
-.ch-link .ch-word{font-size:12.5px}
+.ch-link.ch-done{color:var(--ink3)}
+.ch-link .ch-num{font:400 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.04em}
+.ch-link .ch-word{display:none}
+.ch-link[aria-current="true"] .ch-word{display:inline;font-size:12px}
 .ch-prog{height:2px;background:var(--border)}
 .ch-prog-bar{height:2px;background:var(--teal);width:0%;transition:width .08s linear}
-@media (max-width:640px){
-  .ch-rail-inner{padding:0 20px}
-  .ch-link{padding:11px 8px}
-  .ch-link .ch-word{display:none}
-  .ch-link[aria-current="true"] .ch-word{display:inline}
+@media (max-width:640px){.ch-link{padding:11px 6px}}
+/* Desktop sidebar (≥1280px): fixed vertical left rail */
+@media (min-width:1280px){
+  .ch-rail{position:fixed;top:50%;left:16px;transform:translateY(-50%);background:transparent;backdrop-filter:none;border:none;opacity:0;pointer-events:none;transition:opacity .35s ease}
+  .ch-rail.ch-visible{opacity:1;pointer-events:auto}
+  .ch-rail-inner{flex-direction:column;align-items:flex-start;gap:2px;overflow:visible;padding:0;scrollbar-width:auto}
+  .ch-link{padding:5px 0;border-bottom:none;gap:8px;font:500 11px/1.4 'Inter',sans-serif}
+  .ch-link[aria-current="true"]{color:var(--ink);font-weight:600;border-bottom:none}
+  .ch-link .ch-word{display:inline;font-size:11px}
+  .ch-link .ch-num{font-size:10px;letter-spacing:.04em}
+  .ch-link::after{content:'';position:absolute;left:0;top:50%;width:0;height:1px;background:var(--ink3);transition:width .4s ease}
+  .ch-link.ch-done{opacity:.5}
+  .ch-link.ch-done::after{width:100%}
+  .ch-prog{display:none}
 }
 
 /* Chapter sections */
@@ -199,7 +210,7 @@ input[type=range].scrub::-moz-range-thumb{width:3px;height:44px;border:none;bord
 </header>
 
 <!-- Hero -->
-<section style="padding:76px 20px 72px">
+<section id="hero" style="padding:76px 20px 72px">
 <div class="wrap">
 <span class="eyebrow" style="margin-bottom:22px">Our own operation, in order</span>
 <h1 style="margin:0 0 22px;max-width:780px;font-size:clamp(30px,5vw,50px);line-height:1.13;letter-spacing:-.032em">We were paying two people to call our leads. Half our leads still got called late.</h1>
@@ -774,45 +785,57 @@ document.querySelectorAll('a[data-cta-location]').forEach(function(a){
   var chapters = Array.from(document.querySelectorAll('.chapter'));
   var progBar = document.getElementById('ch-prog-bar');
   var progWrap = document.getElementById('ch-prog-wrap');
-  var railHeight = document.getElementById('ch-rail').offsetHeight;
+  var railEl = document.getElementById('ch-rail');
   var NAV_H = 64;
+  var chNums = ['01','02','03','04','05','06','07'];
+  var IS_DESKTOP = window.innerWidth >= 1280;
 
-  /* Smooth scroll on click */
+  function getRailH(){ return IS_DESKTOP ? 0 : (railEl.offsetHeight || 44); }
+
   links.forEach(function(link){
     link.addEventListener('click', function(e){
       e.preventDefault();
       var target = document.querySelector(link.getAttribute('href'));
-      if(target){
-        var top = target.getBoundingClientRect().top + window.scrollY - NAV_H - railHeight - 8;
-        window.scrollTo({top:top,behavior:'smooth'});
-      }
+      if(!target) return;
+      var top = target.getBoundingClientRect().top + window.scrollY - NAV_H - getRailH() - 8;
+      window.scrollTo({top:top, behavior:'smooth'});
     });
   });
 
-  /* Active chapter via IntersectionObserver */
-  if(typeof IntersectionObserver !== 'undefined'){
-    var current = '01';
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          current = e.target.dataset.chapter;
-          links.forEach(function(l){
-            var active = l.dataset.ch === current;
-            l.setAttribute('aria-current', active ? 'true' : 'false');
-          });
-        }
-      });
-    },{rootMargin:'-'+(NAV_H + railHeight + 16)+'px 0px -55% 0px',threshold:0});
-    chapters.forEach(function(ch){ io.observe(ch); });
+  function updateLinks(ch){
+    var idx = chNums.indexOf(ch);
+    links.forEach(function(l){
+      var li = chNums.indexOf(l.dataset.ch);
+      l.setAttribute('aria-current', l.dataset.ch === ch ? 'true' : 'false');
+      l.classList.toggle('ch-done', li < idx);
+    });
   }
 
-  /* Progress bar on scroll */
+  if(typeof IntersectionObserver !== 'undefined'){
+    var mobileRailH = IS_DESKTOP ? 0 : (railEl.offsetHeight || 44);
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting) updateLinks(e.target.dataset.chapter); });
+    },{rootMargin:'-'+(NAV_H + mobileRailH + 16)+'px 0px -55% 0px', threshold:0});
+    chapters.forEach(function(ch){ io.observe(ch); });
+
+    if(IS_DESKTOP){
+      var heroEl = document.getElementById('hero');
+      if(heroEl){
+        new IntersectionObserver(function(entries){
+          entries.forEach(function(e){ railEl.classList.toggle('ch-visible', !e.isIntersecting); });
+        },{threshold:0}).observe(heroEl);
+      } else {
+        railEl.classList.add('ch-visible');
+      }
+    }
+  }
+
   function updateProgress(){
     var doc = document.documentElement;
     var scrollable = doc.scrollHeight - doc.clientHeight;
     var pct = scrollable > 0 ? (window.scrollY / scrollable * 100) : 0;
-    progBar.style.width = Math.min(100, pct) + '%';
-    progWrap.setAttribute('aria-valuenow', Math.round(pct));
+    if(progBar) progBar.style.width = Math.min(100,pct)+'%';
+    if(progWrap) progWrap.setAttribute('aria-valuenow', Math.round(pct));
   }
   window.addEventListener('scroll', updateProgress, {passive:true});
   updateProgress();
