@@ -198,13 +198,27 @@ input[type=range].scrub::-moz-range-thumb{width:3px;height:44px;border:none;bord
 .rc-out.rc-big .rc-out-label{color:var(--blue)}
 .rc-out.rc-big .rc-out-val{font-size:clamp(30px,4vw,44px);color:var(--blue)}
 
-/* Issue list */
-.issue-list{display:flex;flex-direction:column;gap:40px;max-width:660px;margin-top:44px}
-.issue-item{display:flex;gap:22px}
-.issue-n{font:400 13px/1.7 'IBM Plex Mono',monospace;color:var(--ink3);letter-spacing:.02em;padding-top:3px;flex-shrink:0;min-width:18px}
-.issue-body h3{margin:0 0 10px;font:600 17px/1.35 'Inter',sans-serif;color:var(--ink);letter-spacing:-.015em}
-.issue-body p{margin:0;font:400 16px/1.72 'Inter',sans-serif;color:var(--ink2)}
-.issue-body p+p{margin-top:12px}
+/* Qualification question list */
+.q-list{max-width:660px;margin:22px 0 0;padding:0;list-style:none}
+.q-list li{position:relative;padding:0 0 0 22px;font:400 16.5px/1.75 'Inter',sans-serif;color:var(--ink2)}
+.q-list li+li{margin-top:7px}
+.q-list li::before{content:'';position:absolute;left:2px;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--teal)}
+
+/* Issue call-out boxes */
+.issue-list{display:flex;flex-direction:column;gap:16px;max-width:800px;margin-top:40px}
+.issue-item{display:flex;gap:20px;padding:26px 30px;background:var(--bg2);border:1px solid var(--border);border-radius:10px}
+.issue-n{display:grid;place-items:center;width:26px;height:26px;border-radius:7px;background:var(--ink);color:#fff;font:500 12px/1 'IBM Plex Mono',monospace;flex-shrink:0;margin-top:1px}
+.issue-body h3{margin:0 0 10px;font:600 17.5px/1.35 'Inter',sans-serif;color:var(--ink);letter-spacing:-.015em}
+.issue-body p{margin:0;font:400 15.5px/1.7 'Inter',sans-serif;color:var(--ink2)}
+.issue-body p+p{margin-top:11px}
+.issue-item.issue-key{background:var(--blue-bg);border-color:#C3D4F0}
+.issue-item.issue-key .issue-n{background:var(--blue)}
+.issue-item.issue-key .issue-body h3{color:var(--blue)}
+@media (max-width:640px){
+  .issue-item{padding:22px;gap:14px}
+  .issue-n{width:23px;height:23px;font-size:11px}
+  .issue-body h3{font-size:16.5px}
+}
 
 /* Fade-rise animation */
 @media (prefers-reduced-motion:no-preference){
@@ -267,36 +281,44 @@ input[type=range].scrub::-moz-range-thumb{width:3px;height:44px;border:none;bord
 <hr class="ch-rule">
 <h2 style="margin-bottom:36px;max-width:640px;font-size:clamp(24px,3.5vw,34px);line-height:1.2">How it worked before Sloan</h2>
 <div class="prose">
-<p>We buy inbound seller leads. Somebody finds us, fills in the form, and the lead lands in the CRM.</p>
-<p>Then one of our two VAs calls it and asks five questions. Why are you selling. When do you want to be out. What condition is the house in. What do you want for it. What do you still owe.</p>
-<p>That is the whole job. It is not complicated, and both of them were good at it.</p>
-<p>Two people. Two phones. US business hours.</p>
-<p>For a while that was fine.</p>
+<p>We buy inbound seller leads. Meta ads, pay per lead, you name it. However they reach us, we paid for every one of them. A seller finds us, fills in the form, and the lead lands in the CRM.</p>
+<p>Then one of our VAs calls and runs the qualification call.</p>
+</div>
+<ul class="q-list">
+<li>Why are you selling?</li>
+<li>When do you want to be out?</li>
+<li>What condition is the house in?</li>
+<li>What do you want for it?</li>
+<li>What do you still owe?</li>
+</ul>
+<div class="prose" style="margin-top:22px">
+<p>That is the whole job. It is not complicated, and all of them were good at it.</p>
+<p>Multiple people, multiple phones, US business hours. We thought that was fine.</p>
 <p>Then we turned the ad spend up.</p>
 <p>Here is everything that started breaking.</p>
 </div>
 <div class="issue-list">
 <div class="issue-item">
-<span class="issue-n">1.</span>
+<span class="issue-n">1</span>
 <div class="issue-body">
 <h3>A lead came in while every phone was busy.</h3>
-<p>Both VAs are on calls. A new lead lands. Nothing happens.</p>
+<p>Every VA is on a call. A new lead lands. Nothing happens.</p>
 <p>It waits five minutes. Then ten. Some afternoons, more than an hour.</p>
 <p>By the time we call, he does not pick up. Or he picks up and tells us he has already spoken to somebody else.</p>
 <p>Speed to lead is not a nice extra in this business. It is the whole business. Whoever calls first usually gets the deal, and we were hardly ever first.</p>
 </div>
 </div>
 <div class="issue-item">
-<span class="issue-n">2.</span>
+<span class="issue-n">2</span>
 <div class="issue-body">
 <h3>Our best days were our worst days.</h3>
 <p>More ad spend means more leads. That is supposed to be good news.</p>
-<p>But more leads with the same two phones just means a longer line. On our biggest days, the leads at the back got the worst treatment.</p>
+<p>But more leads with the same phones just means a longer line. On our biggest days, the leads at the back got the worst treatment.</p>
 <p>We were paying more for leads and looking after them less.</p>
 </div>
 </div>
 <div class="issue-item">
-<span class="issue-n">3.</span>
+<span class="issue-n">3</span>
 <div class="issue-body">
 <h3>Nobody was working at night or on the weekend.</h3>
 <p>Sellers fill in forms after work. Evenings, late nights, Sunday mornings.</p>
@@ -304,8 +326,8 @@ input[type=range].scrub::-moz-range-thumb{width:3px;height:44px;border:none;bord
 <p>So those leads waited until the morning. And a seller who fills in our form at 9pm fills in two other forms at 9pm. By the time we called, somebody else already had.</p>
 </div>
 </div>
-<div class="issue-item">
-<span class="issue-n">4.</span>
+<div class="issue-item issue-key">
+<span class="issue-n">4</span>
 <div class="issue-body">
 <h3>Most of what we were paying for was ringing, not talking.</h3>
 <p>This is the big one.</p>
@@ -315,7 +337,7 @@ input[type=range].scrub::-moz-range-thumb{width:3px;height:44px;border:none;bord
 </div>
 </div>
 <div class="issue-item">
-<span class="issue-n">5.</span>
+<span class="issue-n">5</span>
 <div class="issue-body">
 <h3>Our callers are human, so they have to stop.</h3>
 <p>Lunch. A break. Notes to write up. The CRM to update. A sick day. A holiday.</p>
@@ -323,7 +345,7 @@ input[type=range].scrub::-moz-range-thumb{width:3px;height:44px;border:none;bord
 </div>
 </div>
 <div class="issue-item">
-<span class="issue-n">6.</span>
+<span class="issue-n">6</span>
 <div class="issue-body">
 <h3>They did not sound American.</h3>
 <p>Our VAs were good at the job. Like most VAs, they were not from the US, and a seller can hear that in the first three seconds.</p>
@@ -332,7 +354,7 @@ input[type=range].scrub::-moz-range-thumb{width:3px;height:44px;border:none;bord
 </div>
 </div>
 <div class="issue-item">
-<span class="issue-n">7.</span>
+<span class="issue-n">7</span>
 <div class="issue-body">
 <h3>We could not add capacity quickly.</h3>
 <p>Hiring one more caller is not a week's work. It is a month of training, scripts, shadowing and correcting before they are any good with a live seller.</p>
