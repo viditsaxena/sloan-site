@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Case Study — What Half a Shift of Dialing Actually Costs | Sloan</title>
-<meta name="description" content="We paid for 200 Facebook leads in June 2026 and connected with only 70. The other 130 came in on weekends and late at night, when nobody was there to call. Here is what that cost us, and what changed when Sloan made the first call.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The lead we paid for and never called | Sloan case study</title>
+<meta name="description" content="We ran our own wholesaling operation with two VAs. Half our leads got called late, and half of every paid shift went to phones nobody answered. Here is what we counted, what we built, and what changed.">
+<meta property="og:title" content="The lead we paid for and never called | Sloan case study">
+<meta property="og:description" content="We ran our own wholesaling operation with two VAs. Half our leads got called late, and half of every paid shift went to phones nobody answered. Here is what we counted, what we built, and what changed.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://sloan.pages.dev/case-study">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital@1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -25,57 +29,113 @@ button{font-family:inherit}
 .wrap{max-width:1080px;margin:0 auto;padding-left:32px;padding-right:32px}
 @media (max-width:640px){.wrap{padding-left:20px;padding-right:20px}.nav-links{display:none!important}}
 
-h1,h2{margin:0;letter-spacing:-.02em;font-weight:700}
+h1,h2,h3{margin:0;letter-spacing:-.02em;font-weight:700}
 h2{font-size:32px;line-height:1.2}
+h3{font-size:22px;line-height:1.3}
 .eyebrow{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;background:var(--bg2);font:500 13px/1.4 'Inter',sans-serif;color:var(--ink)}
 .accent{font-family:"Newsreader",Georgia,serif;font-style:italic;font-weight:400}
 .highlight{background:var(--highlight);padding:0 4px;border-radius:3px}
 
 .btn{display:inline-block;background:var(--ink);color:#fff;border:none;border-radius:6px;padding:13px 22px;font:600 15px/1 'Inter',sans-serif;cursor:pointer;text-align:center;text-decoration:none}
 .btn:hover{background:#000;color:#fff}
-
 .card{background:#fff;border:1px solid var(--border);border-radius:12px}
 .pill{display:inline-block;padding:3px 10px;border-radius:6px;font:600 12.5px/1.6 'Inter',sans-serif}
 .pill-teal{background:var(--teal-bg);color:var(--teal)}
 .pill-blue{background:var(--blue-bg);color:var(--blue)}
+.pill-gray{background:#F1F0EE;color:var(--ink3)}
 
-.kicker{margin:0 0 18px;font:600 12px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
-.lede{margin:0;font:400 16.5px/1.65 'Inter',sans-serif;color:var(--ink2)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+@media (max-width:800px){.grid-2,.grid-3{grid-template-columns:1fr}}
 
-.g3{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
-.g2{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
-.split{display:grid;gap:16px;grid-template-columns:1fr 1fr}
-@media (max-width:1000px){.g3{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:860px){.split{grid-template-columns:1fr}}
-@media (max-width:720px){.g2{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+.field label{font:500 13px/1 'Inter',sans-serif;color:var(--ink)}
+.field input{font:400 15px/1 'Inter',sans-serif;color:var(--ink);padding:12px 14px;border:1px solid var(--border);border-radius:6px;background:#fff}
+.field input::placeholder{color:#C7C6C3}
+.radio-row{display:flex;gap:8px;flex-wrap:wrap}
+.radio-pill{position:relative}
+.radio-pill input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.radio-pill span{display:block;padding:10px 16px;border:1px solid var(--border);border-radius:6px;font:500 14px/1 'Inter',sans-serif;color:var(--ink2);text-align:center;white-space:nowrap}
+.radio-pill input:checked + span{border-color:var(--ink);color:var(--ink);background:var(--bg2)}
+.radio-pill input:focus-visible + span{outline:2px solid var(--ink);outline-offset:2px}
+
+/* Chapter rail */
+.ch-rail{position:sticky;top:64px;z-index:19;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.ch-rail-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;max-width:1080px;margin:0 auto;padding:0 32px}
+.ch-rail-inner::-webkit-scrollbar{display:none}
+.ch-link{display:flex;align-items:center;gap:6px;padding:10px 12px;text-decoration:none;color:var(--ink3);font:500 12.5px/1 'Inter',sans-serif;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s}
+.ch-link:hover{color:var(--ink)}
+.ch-link[aria-current="true"]{color:var(--ink);border-bottom-color:var(--teal)}
+.ch-link .ch-num{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em}
+.ch-link .ch-word{font-size:12.5px}
+.ch-prog{height:2px;background:var(--border)}
+.ch-prog-bar{height:2px;background:var(--teal);width:0%;transition:width .08s linear}
 @media (max-width:640px){
-  h1{font-size:32px!important}
-  h2{font-size:26px!important}
-  .g3{grid-template-columns:1fr}
-  .reason-row{grid-template-columns:1fr!important;gap:10px!important}
-  .proof-row,.proof-head{grid-template-columns:1.4fr .8fr .8fr!important}
+  .ch-rail-inner{padding:0 20px}
+  .ch-link{padding:11px 8px}
+  .ch-link .ch-word{display:none}
+  .ch-link[aria-current="true"] .ch-word{display:inline}
 }
 
-.reason-row{display:grid;grid-template-columns:minmax(190px,1fr) 1.5fr;gap:12px 40px;padding:28px 0;border-top:1px solid #E0DDD6}
-.reason-row:last-child{border-bottom:1px solid #E0DDD6}
+/* Chapter sections */
+.chapter{padding:88px 20px}
+@media (max-width:640px){.chapter{padding:64px 20px}}
 
+/* Chapter opener */
+.ch-opener{display:flex;align-items:baseline;gap:14px;margin-bottom:24px}
+.ch-opener .ch-n{font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;color:var(--ink3)}
+.ch-opener .ch-w{font:600 20px/1 'Inter',sans-serif;color:var(--ink)}
+.ch-rule{border:none;border-top:1px solid var(--border);margin:0 0 44px}
+
+/* Prose measure */
+.prose{max-width:660px}
+.prose p{margin:0;font:400 16.5px/1.75 'Inter',sans-serif;color:var(--ink2)}
+.prose p + p{margin-top:22px}
+
+/* Chapter closing beat — set apart, quiet */
+.beat{max-width:660px;padding:32px 0 0;font:400 16px/1.7 'Inter',sans-serif;color:var(--ink2)}
+.beat p{margin:0;font-style:italic}
+
+/* Placeholder styles */
+.ph{font-family:'IBM Plex Mono',monospace;font-size:.95em;background:var(--highlight);border-bottom:2px dashed var(--teal);padding:1px 5px;border-radius:3px;color:var(--ink)}
+.verify-ph{font-family:'IBM Plex Mono',monospace;font-size:.95em;background:#FEE2E2;border-bottom:2px dashed #E04444;padding:1px 5px;border-radius:3px;color:#7F1D1D}
+.verify-ph::before{content:'VERIFY ';font-size:.85em;opacity:.7}
+
+/* Screenshot frame */
+.screenshot-ph{width:100%;aspect-ratio:16/9;border:1px dashed var(--border);border-radius:8px;background:var(--bg2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;overflow-x:auto;min-height:120px}
+.screenshot-ph .ss-label{font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.04em;color:var(--ink3);text-transform:uppercase}
+.screenshot-ph .ss-desc{font:400 13px/1.5 'Inter',sans-serif;color:var(--ink3);max-width:440px;text-align:center;padding:0 20px}
+@media (max-width:640px){.screenshot-ph{aspect-ratio:unset;min-height:180px}}
+
+/* Queue list (ch-03) */
+.queue-list{max-width:760px}
+.queue-item{padding:32px 0;border-top:1px solid var(--border)}
+.queue-item:last-child{border-bottom:1px solid var(--border)}
+.queue-item h3{margin:0 0 10px;font:600 18px/1.35 'Inter',sans-serif}
+.queue-item p{margin:0;font:400 15px/1.7 'Inter',sans-serif;color:var(--ink2)}
+
+/* Pull quote */
+.pull-quote{padding:6px 0 6px 28px;border-left:3px solid var(--blue);margin:44px 0}
+.pull-quote p{margin:0;font:400 clamp(22px,3vw,30px)/1.4 'Newsreader',Georgia,serif;font-style:italic;color:var(--ink)}
+
+/* Comparison table */
 .proof-head,.proof-row{display:grid;grid-template-columns:1.5fr 1fr 1fr;align-items:center}
 .proof-row{border-bottom:1px solid #EDEDEC}
 .proof-row:last-child{border-bottom:none}
+@media (max-width:560px){
+  .proof-head,.proof-row{display:block}
+  .proof-head{display:none}
+  .proof-row{padding:16px 18px;display:grid;grid-template-columns:1fr 1fr;gap:6px 16px}
+  .proof-row > div:first-child{grid-column:1/-1;font-weight:600;color:var(--ink);padding:0 0 6px}
+  .proof-row > div:nth-child(2)::before{content:'Two VAs  ';font:500 11px/1 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.04em;color:var(--ink3);display:block;margin-bottom:4px}
+  .proof-row > div:nth-child(3)::before{content:'Sloan  ';font:500 11px/1 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.04em;color:var(--blue);display:block;margin-bottom:4px}
+}
 
-.lead-row{display:flex;align-items:center;gap:14px;padding:13px 22px;border-bottom:1px solid #F1F0EE}
-.lead-row:last-child{border-bottom:none}
-.lead-t{flex:none;width:44px;font:400 12.5px/1.3 'Inter',sans-serif;color:#B4B2AC}
-.lead-n{flex:none;width:74px;font:400 13.5px/1.3 'Inter',sans-serif;color:var(--ink)}
-.lead-bar{flex:1;height:8px;border-radius:4px;background:#EDEBE6;overflow:hidden}
-.lead-o{flex:none;font:500 12.5px/1.3 'Inter',sans-serif;white-space:nowrap;text-align:right;min-width:96px}
-@media (max-width:560px){.lead-bar{display:none}.lead-o{min-width:0}}
+/* Call activity card (ch-05 reuse) */
+.split{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
 
-.calc-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:13px 0;border-top:1px solid #EDEDEC}
-
-/* Shift breakdown. On wide screens each label sits under its slice of the bar;
-   the narrow slices are only ~20px, so below 700px it becomes a colour-keyed
-   legend instead of five clipped columns. */
+/* Shift bar */
 .shift-legend{display:flex;margin-top:10px}
 .shift-legend .seg{min-width:0}
 .shift-legend .seg > div{border-left:1px solid var(--border);padding-left:8px;padding-right:10px}
@@ -87,9 +147,35 @@ h2{font-size:32px;line-height:1.2}
   .shift-axis{display:none}
 }
 
-input[type=range].slider{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:var(--border);outline:none;margin:0}
-input[type=range].slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#fff;border:1px solid #DFDEDA;box-shadow:0 1px 3px rgba(15,15,15,.2);cursor:pointer}
-input[type=range].slider::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:1px solid #DFDEDA;cursor:pointer}
+/* Calculator */
+input[type=range].calc-slider{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:var(--border);outline:none;margin:0;cursor:pointer}
+input[type=range].calc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#fff;border:1px solid #DFDEDA;box-shadow:0 1px 3px rgba(15,15,15,.2);cursor:pointer}
+input[type=range].calc-slider::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:1px solid #DFDEDA;cursor:pointer}
+input[type=number].calc-num{font:600 16px/1 'Inter',sans-serif;color:var(--ink);width:80px;padding:8px 10px;border:1px solid var(--border);border-radius:6px;background:#fff;text-align:right}
+input[type=number].calc-num::-webkit-inner-spin-button{opacity:1}
+.calc-row-out{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:13px 0;border-top:1px solid #EDEDEC}
+
+/* Audio scrub bar */
+input[type=range].scrub{-webkit-appearance:none;appearance:none;width:100%;height:44px;border-radius:5px;margin:0;cursor:pointer;background-repeat:no-repeat;background-image:repeating-linear-gradient(90deg, #F5F4F2 0 3px, transparent 3px 7px), repeating-linear-gradient(90deg, #55524A 0 3px, transparent 3px 7px);background-size:0% 100%, 100% 100%}
+input[type=range].scrub::-webkit-slider-runnable-track{height:44px;background:transparent}
+input[type=range].scrub::-webkit-slider-thumb{-webkit-appearance:none;width:3px;height:44px;border-radius:2px;background:#F5F4F2;border:none}
+input[type=range].scrub::-moz-range-track{height:44px;background:transparent;border:none}
+input[type=range].scrub::-moz-range-thumb{width:3px;height:44px;border:none;border-radius:2px;background:#F5F4F2}
+
+/* Lead rows (ch-06 reuse) */
+.lead-row{display:flex;align-items:center;gap:14px;padding:13px 22px;border-bottom:1px solid #F1F0EE}
+.lead-row:last-child{border-bottom:none}
+.lead-t{flex:none;width:44px;font:400 12.5px/1.3 'Inter',sans-serif;color:#B4B2AC}
+.lead-n{flex:none;width:74px;font:400 13.5px/1.3 'Inter',sans-serif;color:var(--ink)}
+.lead-bar{flex:1;height:8px;border-radius:4px;background:#EDEBE6;overflow:hidden}
+.lead-o{flex:none;font:500 12.5px/1.3 'Inter',sans-serif;white-space:nowrap;text-align:right;min-width:96px}
+@media (max-width:560px){.lead-bar{display:none}.lead-o{min-width:0}}
+
+/* Fade-rise animation */
+@media (prefers-reduced-motion:no-preference){
+  .chapter{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+  .chapter.ch-visible{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
@@ -107,32 +193,148 @@ input[type=range].slider::-moz-range-thumb{width:18px;height:18px;border-radius:
 <a href="/#pricing" style="font:500 14px/1 'Inter',sans-serif;color:var(--ink2)">Pricing</a>
 <a href="/#faq" style="font:500 14px/1 'Inter',sans-serif;color:var(--ink2)">FAQ</a>
 </div>
-<a href="/#qualify" class="btn" style="padding:9px 16px;font-size:13.5px" data-cta-location="cs_nav">See if you qualify</a>
+<a href="#qualify" class="btn" style="padding:9px 16px;font-size:13.5px" data-cta-location="cs_nav">See if you qualify</a>
 </nav>
 </div>
 </header>
 
 <!-- Hero -->
-<section style="padding:76px 20px 64px">
+<section style="padding:76px 20px 72px">
 <div class="wrap">
-<p class="kicker">Case study, our own operation</p>
-<h1 style="margin:0 0 22px;max-width:860px;font-size:clamp(32px,5.4vw,52px);line-height:1.13;letter-spacing:-.032em">We paid for 200 leads on Facebook in June 2026. Our callers connected with only 70 of them.</h1>
-<p style="margin:0;max-width:640px;font:400 17.5px/1.6 'Inter',sans-serif;color:var(--ink2)">The other 130 leads we paid for through those same Facebook ads, we never connected with. They reached us on a weekend or late at night, when none of our VAs were available. When we called them the next day, or after the weekend, it was too late. Our speed to lead was slow.</p>
+<span class="eyebrow" style="margin-bottom:22px">Our own operation, in order</span>
+<h1 style="margin:0 0 22px;max-width:780px;font-size:clamp(30px,5vw,50px);line-height:1.13;letter-spacing:-.032em">We were paying two people to call our leads. Half our leads still got called late.</h1>
+<p style="margin:0 0 14px;max-width:620px;font:400 17.5px/1.65 'Inter',sans-serif;color:var(--ink2)">This is what actually happened inside our own wholesaling operation, in the order it happened, including the parts that make us look bad.</p>
+<p style="margin:0;font:400 13px/1 'IBM Plex Mono',monospace;color:var(--ink3)">A seven minute read, or scroll to <a href="#ch-06" style="color:var(--teal)">06</a> if you only want the numbers.</p>
 </div>
 </section>
 
-<!-- Hold music -->
-<section style="padding:88px 20px;background:var(--bg2);border-top:1px solid var(--border)">
+<!-- Chapter rail -->
+<nav class="ch-rail" aria-label="Chapter navigation" id="ch-rail">
+<div class="ch-rail-inner">
+<a href="#ch-01" class="ch-link" aria-current="true" data-ch="01"><span class="ch-num">01</span><span class="ch-word">Leads</span></a>
+<a href="#ch-02" class="ch-link" data-ch="02"><span class="ch-num">02</span><span class="ch-word">Saturday</span></a>
+<a href="#ch-03" class="ch-link" data-ch="03"><span class="ch-num">03</span><span class="ch-word">Queue</span></a>
+<a href="#ch-04" class="ch-link" data-ch="04"><span class="ch-num">04</span><span class="ch-word">Math</span></a>
+<a href="#ch-05" class="ch-link" data-ch="05"><span class="ch-num">05</span><span class="ch-word">Build</span></a>
+<a href="#ch-06" class="ch-link" data-ch="06"><span class="ch-num">06</span><span class="ch-word">Live</span></a>
+<a href="#ch-07" class="ch-link" data-ch="07"><span class="ch-num">07</span><span class="ch-word">Now</span></a>
+</div>
+<div class="ch-prog" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="ch-prog-wrap">
+<div class="ch-prog-bar" id="ch-prog-bar"></div>
+</div>
+</nav>
+
+<!-- 01 Leads -->
+<section id="ch-01" class="chapter" data-chapter="01" style="scroll-margin-top:128px">
 <div class="wrap">
-<h2 style="margin:0 0 20px;max-width:780px;font-size:clamp(26px,3.6vw,38px);line-height:1.16;letter-spacing:-.028em">You are not paying for calls. You are paying for hold music.</h2>
-<div style="max-width:640px;display:flex;flex-direction:column;gap:14px;margin-bottom:44px;font:400 16.5px/1.65 'Inter',sans-serif;color:var(--ink2)">
-<p style="margin:0">We had three VAs and every lead got called. But most dials go nowhere. The phone rings out. It goes to voicemail. The number is wrong. The seller says now is not a good time.</p>
-<p style="margin:0">So in an eight hour shift, our VAs were in a real conversation for about four hours. We paid for eight. We got four. Multiply that by three seats and twelve months and you are funding a full-time person to listen to ringtones.</p>
-<p style="margin:0">That was not our team being slow. That is just what dialing is.</p>
+<div class="ch-opener">
+<span class="ch-n">01</span>
+<span class="ch-w">Leads</span>
+</div>
+<hr class="ch-rule">
+<h2 style="margin-bottom:36px;max-width:640px;font-size:clamp(24px,3.5vw,34px);line-height:1.2">How it worked before Sloan</h2>
+<div class="prose">
+<p>We buy inbound seller leads. Somebody finds us, fills in the form, and the lead lands in the CRM.</p>
+<p>Then one of our two VAs calls it and asks five questions. Why are you selling. When do you want to be out. What condition is the house in. What do you want for it. What do you still owe.</p>
+<p>That is the whole job. It is not complicated, and both of them were good at it.</p>
+<p>Two people. Two phones. US business hours.</p>
+<p>For a while that was fine.</p>
+<p>Then we turned the ad spend up.</p>
+</div>
+<div style="margin-top:44px;max-width:760px">
+<div class="screenshot-ph" aria-label="Screenshot placeholder">
+<span class="ss-label">Screenshot</span>
+<span class="ss-desc">The CRM lead list on a normal day, or the five qualification questions as they appear in our script. Something that shows a real lead queue.</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 02 Saturday -->
+<section id="ch-02" class="chapter" data-chapter="02" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);scroll-margin-top:128px">
+<div class="wrap">
+<div class="ch-opener">
+<span class="ch-n">02</span>
+<span class="ch-w">Saturday</span>
+</div>
+<hr class="ch-rule">
+<h2 style="margin-bottom:36px;max-width:640px;font-size:clamp(24px,3.5vw,34px);line-height:1.2">The lead we paid for and did not call</h2>
+<div class="prose">
+<p>Saturday, 9:41pm. A lead comes in. <span class="verify-ph">Marcus</span>. Three bed, kitchen needs work, wants out fast.</p>
+<p>Nobody is at a desk. Our VAs work US business hours and it is Saturday night.</p>
+<p>So the lead sits there. All night Saturday. All day Sunday.</p>
+<p>Monday, 9:12am, one of our VAs calls him. Thirty six hours after he put his hand up.</p>
+<p>He picks up. He is perfectly polite about it. He has already signed with somebody else.</p>
+<p>He told us he filled in three forms that night. We were the one that never called.</p>
+<p>That lead cost us <span class="ph">$00</span> to buy. <span class="verify-ph">the deal was worth about <span class="ph">$00,000</span> to us.</span></p>
+<p>We did not lose it on price. We lost it because we were asleep.</p>
+</div>
+<div style="margin-top:44px;max-width:760px">
+<div class="screenshot-ph" aria-label="Screenshot placeholder" style="border-color:var(--border)">
+<span class="ss-label">Screenshot</span>
+<span class="ss-desc">The actual lead record showing received Saturday 21:41 and first call attempt Monday 09:12. This is the most important image on the page. If we cannot get the real one, we do not fake it, we cut the image and keep the words.</span>
+</div>
+</div>
+<div class="beat">
+<p>Then we started counting how often that was happening.</p>
+</div>
+</div>
+</section>
+
+<!-- 03 Queue -->
+<section id="ch-03" class="chapter" data-chapter="03" style="scroll-margin-top:128px">
+<div class="wrap">
+<div class="ch-opener">
+<span class="ch-n">03</span>
+<span class="ch-w">Queue</span>
+</div>
+<hr class="ch-rule">
+<h2 style="margin-bottom:44px;max-width:640px;font-size:clamp(24px,3.5vw,34px);line-height:1.2">Four things we could not do, however good our VAs were</h2>
+<div class="queue-list">
+<div class="queue-item">
+<h3>We could not call five leads at once.</h3>
+<p>Two people, two phones. When five leads landed together, three of them sat in a queue and waited for somebody to hang up. On a busy afternoon, the last one waited <span class="ph">00</span> minutes.</p>
+</div>
+<div class="queue-item">
+<h3>We could not pick up a seller calling us back.</h3>
+<p>If both VAs were talking, he got our voicemail. That is the one call you cannot afford to miss, and we missed it every week.</p>
+</div>
+<div class="queue-item">
+<h3>We could not call the 9pm lead at 9pm.</h3>
+<p>People fill in forms after work. <span class="ph">53%</span> of our leads arrived outside 9 to 6. Every one of them got a cold call the next morning instead of a warm one that evening.</p>
+</div>
+<div class="queue-item">
+<h3>We could not get to attempt five.</h3>
+<p>Nobody ever decided to give up on a lead. There was just always a newer one to call. And attempt five is where a lot of our deals actually live.</p>
+</div>
+</div>
+<div class="beat" style="padding-bottom:0">
+<p>None of that is a people problem. Then we found the number that was worse than all four.</p>
+</div>
+</div>
+</section>
+
+<!-- 04 Math -->
+<section id="ch-04" class="chapter" data-chapter="04" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);scroll-margin-top:128px">
+<div class="wrap">
+<div class="ch-opener">
+<span class="ch-n">04</span>
+<span class="ch-w">Math</span>
+</div>
+<hr class="ch-rule">
+<h2 style="margin-bottom:36px;max-width:640px;font-size:clamp(24px,3.5vw,34px);line-height:1.2">Eight hours paid. Four hours talking.</h2>
+<div class="prose" style="margin-bottom:44px">
+<p>We pulled a month of call logs and worked out one thing. How much of a paid shift is an actual conversation with a seller.</p>
+<p>It was about half.</p>
+<p>The other half is phones ringing out. Voicemail. Dead numbers. Wrong numbers. Somebody saying now is not a good time before you finish the first sentence. Then notes, CRM, a break.</p>
+<p>That is not slacking. That is what dialing is. Most dials never reach a human at all.</p>
+<p>Which means you cannot hire your way out of it. Two more VAs is two more people spending half their day listening to a ringtone.</p>
+<p>We were paying for a full day and buying half of one.</p>
 </div>
 
-<div class="card" style="padding:clamp(20px,3vw,34px)">
-<p class="kicker" style="margin-bottom:22px">One paid shift, drawn to scale</p>
+<!-- Shift bar -->
+<div class="card" style="padding:clamp(20px,3vw,32px);margin-bottom:44px">
+<p style="margin:0 0 22px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">One shift, drawn to scale</p>
 <div style="display:flex;height:64px;border-radius:6px;overflow:hidden;border:1px solid var(--border)">
 <div style="flex:240;background:var(--blue);border-right:1px solid rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;min-width:0"><span style="font:500 13.5px/1.3 'Inter',sans-serif;color:#fff;padding:0 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Talking to a seller</span></div>
 <div style="flex:100;background:#C9C7C1;border-right:1px solid rgba(255,255,255,.55);min-width:0"></div>
@@ -158,328 +360,349 @@ input[type=range].slider::-moz-range-thumb{width:18px;height:18px;border-radius:
 <div style="flex:2;min-width:0;text-align:center"><span style="font:400 11.5px/1 'Inter',sans-serif;color:#B4B2AC">7h</span></div>
 <div style="flex:1;min-width:0;text-align:right"><span style="font:400 11.5px/1 'Inter',sans-serif;color:#B4B2AC">8h</span></div>
 </div>
-<p style="margin:24px 0 0;max-width:620px;font:400 15px/1.6 'Inter',sans-serif;color:var(--ink2)">We were paying for a full day and buying half of one. There is no version of hiring harder that fixes this.</p>
+<p style="margin:22px 0 0;font:400 14.5px/1.6 'Inter',sans-serif;color:var(--ink2)">We are not paying for calls. We are paying for the gaps between them.</p>
 </div>
-</div>
-</section>
 
 <!-- Calculator -->
-<section style="padding:88px 20px">
-<div class="wrap">
-<h2 style="margin:0 0 18px;max-width:780px;font-size:clamp(26px,3.6vw,38px);line-height:1.16;letter-spacing:-.028em">Do it on your own numbers. It will annoy you.</h2>
-<p class="lede" style="margin-bottom:40px;max-width:620px">Five sliders. Use what you actually pay and what you actually close. The only figure we bring is the one we measured on ourselves: 130 of the 200 leads we paid for never turned into a conversation. The last slider discounts for the ones Sloan will not reach either.</p>
-<div class="card" style="overflow:hidden;padding:0">
+<div class="card" style="overflow:hidden;margin-bottom:44px">
+<div style="padding:clamp(20px,3vw,30px);border-bottom:1px solid var(--border)">
+<p style="margin:0 0 6px;font:600 17px/1.3 'Inter',sans-serif">Run it on your own numbers</p>
+<p style="margin:0;font:400 14px/1.55 'Inter',sans-serif;color:var(--ink2)">No email gate. Recalculates instantly. If the inputs make Sloan the worse deal, it says so.</p>
+</div>
 <div class="split" style="gap:0">
-<div style="padding:clamp(24px,3vw,34px);border-right:1px solid var(--border)">
+<div style="padding:clamp(20px,3vw,30px);border-right:1px solid var(--border)">
 
-<div style="margin-bottom:26px">
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:12px">
-<label for="cs-leads" style="font:400 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">Inbound seller leads a month</label>
-<span id="out-leads" style="font:600 17px/1 'Inter',sans-serif;letter-spacing:-.02em;color:var(--ink)">200</span>
+<!-- Input: people -->
+<div style="margin-bottom:24px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px">
+<label for="ci-people" style="font:400 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">How many people call your leads</label>
+<input type="number" id="ci-people" class="calc-num" min="1" max="20" value="2" aria-label="Number of callers">
 </div>
-<input class="slider" id="cs-leads" type="range" min="50" max="600" step="10" value="200">
-</div>
-
-<div style="margin-bottom:26px">
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:12px">
-<label for="cs-cpl" style="font:400 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">What you pay per lead</label>
-<span id="out-cpl" style="font:600 17px/1 'Inter',sans-serif;letter-spacing:-.02em;color:var(--ink)">$42</span>
-</div>
-<input class="slider" id="cs-cpl" type="range" min="10" max="150" step="1" value="42">
 </div>
 
-<div style="margin-bottom:26px">
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:12px">
-<label for="cs-close" style="font:400 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">Contracts per 100 conversations</label>
-<span id="out-close" style="font:600 17px/1 'Inter',sans-serif;letter-spacing:-.02em;color:var(--ink)">2%</span>
+<!-- Input: cost per person -->
+<div style="margin-bottom:24px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px">
+<label for="ci-cost" style="font:400 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">What you pay each, per month <span class="ph" style="font-size:11px;vertical-align:middle">confirm figure</span></label>
+<input type="number" id="ci-cost" class="calc-num" min="0" max="20000" value="3000" aria-label="Monthly cost per caller, in dollars">
 </div>
-<input class="slider" id="cs-close" type="range" min="0.5" max="4" step="0.5" value="2">
 </div>
 
-<div style="margin-bottom:26px">
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:12px">
-<label for="cs-fee" style="font:400 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">Average gross profit per deal</label>
-<span id="out-fee" style="font:600 17px/1 'Inter',sans-serif;letter-spacing:-.02em;color:var(--ink)">$12,000</span>
+<!-- Input: hours -->
+<div style="margin-bottom:24px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px">
+<label for="ci-hours" style="font:400 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">Hours paid per person per day</label>
+<input type="number" id="ci-hours" class="calc-num" min="1" max="16" value="8" aria-label="Paid hours per day">
 </div>
-<input class="slider" id="cs-fee" type="range" min="3000" max="25000" step="1000" value="12000">
 </div>
 
-<div style="margin-bottom:26px">
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:12px">
-<label for="cs-recover" style="font:400 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">Of those, how many Sloan actually reaches</label>
-<span id="out-recover" style="font:600 17px/1 'Inter',sans-serif;letter-spacing:-.02em;color:var(--ink)">55%</span>
+<!-- Input: conv pct -->
+<div style="margin-bottom:24px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px">
+<label for="ci-conv" style="font:400 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">How much of the shift is a real conversation</label>
+<span id="ci-conv-out" style="font:600 16px/1 'Inter',sans-serif;color:var(--ink);white-space:nowrap">50%</span>
 </div>
-<input class="slider" id="cs-recover" type="range" min="20" max="80" step="5" value="55">
-</div>
-
-<p style="margin:0;padding-top:22px;border-top:1px solid #EDEDEC;font:400 13px/1.6 'Inter',sans-serif;color:var(--ink3)">Sloan does not reach everybody either. The last slider is the honest discount, and we have left it at a figure we would defend rather than one that flatters us. Contracts per 100 conversations is the one people overstate. Lower both and the point holds.</p>
+<input type="range" id="ci-conv" class="calc-slider" min="20" max="80" step="5" value="50" aria-label="Percentage of shift in real conversations">
 </div>
 
-<div style="padding:clamp(24px,3vw,34px);background:#FBFBFA">
-<p class="kicker" style="margin-bottom:24px">What that costs you a year</p>
-<div class="calc-row"><span style="font:400 14.5px/1.45 'Inter',sans-serif;color:var(--ink2)">Leads you never speak to</span><span id="r-missed" style="font:500 15px/1.4 'Inter',sans-serif;text-align:right;white-space:nowrap">130 a month</span></div>
-<div class="calc-row"><span style="font:400 14.5px/1.45 'Inter',sans-serif;color:var(--ink2)">Marketing spend on silence</span><span id="r-spend" style="font:500 15px/1.4 'Inter',sans-serif;text-align:right;white-space:nowrap">$65,520 a year</span></div>
-<div class="calc-row"><span style="font:400 14.5px/1.45 'Inter',sans-serif;color:var(--ink2)">Of those, reached by Sloan</span><span id="r-reached" style="font:500 15px/1.4 'Inter',sans-serif;text-align:right;white-space:nowrap">72 a month</span></div>
-<div class="calc-row"><span style="font:400 14.5px/1.45 'Inter',sans-serif;color:var(--ink2)">Extra contracts that implies</span><span id="r-deals" style="font:500 15px/1.4 'Inter',sans-serif;text-align:right;white-space:nowrap">17.2 a year</span></div>
-<div style="margin-top:26px;padding:22px;border-radius:8px;background:#FAEBDD">
-<p style="margin:0 0 8px;font:500 13px/1.4 'Inter',sans-serif;color:#8A4B10">Gross profit at stake, on your own assumptions</p>
-<p id="r-profit" style="margin:0 0 8px;font:700 clamp(34px,5vw,46px)/1 'Inter',sans-serif;letter-spacing:-.035em;color:#D9730D">$205,920</p>
-<p style="margin:0;font:400 13.5px/1.55 'Inter',sans-serif;color:#8A4B10">a year, from leads you had already paid for and never spoke to</p>
-</div>
-<p style="margin:20px 0 0;font:400 13px/1.6 'Inter',sans-serif;color:var(--ink3)">Sloan costs <span class="highlight" id="r-sloan" style="color:var(--ink);font-weight:500">$9,588</span> a year at list price. You can decide whether that is expensive.</p>
+<!-- Input: leads -->
+<div style="margin-bottom:0">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px">
+<label for="ci-leads" style="font:400 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">Inbound leads per month</label>
+<input type="number" id="ci-leads" class="calc-num" min="1" max="2000" value="150" aria-label="Inbound leads per month">
 </div>
 </div>
+
 </div>
+<div style="padding:clamp(20px,3vw,30px);background:#FBFBFA">
+<p style="margin:0 0 20px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">What that means</p>
+<div class="calc-row-out"><span style="font:400 14px/1.45 'Inter',sans-serif;color:var(--ink2)">You are paying</span><span id="co-cph" style="font:600 16px/1.35 'Inter',sans-serif;text-align:right;color:var(--ink)">$<span id="co-cph-v">68</span> per hour of actual conversation</span></div>
+<div class="calc-row-out"><span style="font:400 14px/1.45 'Inter',sans-serif;color:var(--ink2)">Dialing that never reaches anyone</span><span id="co-dial" style="font:500 15px/1.35 'Inter',sans-serif;text-align:right;color:var(--ink)">$<span id="co-dial-v">3,000</span> a month</span></div>
+<div class="calc-row-out"><span style="font:400 14px/1.45 'Inter',sans-serif;color:var(--ink2)">Hours a day with nobody covering leads</span><span id="co-unc" style="font:500 15px/1.35 'Inter',sans-serif;text-align:right;color:var(--ink)"><span id="co-unc-v">16</span> hours</span></div>
+<div class="calc-row-out">
+<span style="font:400 14px/1.45 'Inter',sans-serif;color:var(--ink2)">Sloan, at your lead volume</span>
+<span style="font:500 15px/1.35 'Inter',sans-serif;text-align:right">
+  <a href="/#pricing" id="co-sloan" style="color:var(--teal);text-decoration:underline">$<span id="co-sloan-v">399</span>/mo</a>
+  <span id="co-sloan-name" style="font:400 12px/1 'Inter',sans-serif;color:var(--ink3);display:block;text-align:right;margin-top:2px"></span>
+</span>
+</div>
+<div id="co-honest" style="display:none;margin-top:16px;padding:14px 16px;border-radius:8px;background:#FFF3CD;border:1px solid #FBBF24">
+<p style="margin:0;font:400 13.5px/1.55 'Inter',sans-serif;color:#78350F">At your numbers, Sloan costs more than your current dialing waste. That is honest. The other reasons to use it — speed to lead, after-hours coverage, attempt depth — do not show up in this calculation.</p>
+</div>
+<p style="margin:20px 0 0;padding-top:16px;border-top:1px solid #EDEDEC;font:400 12px/1.7 'IBM Plex Mono',monospace;color:var(--ink3)" id="co-working">cost per talk hour = (people × monthly cost) ÷ (people × hrs/day × 22 days × conv%)</p>
+</div>
+</div>
+</div>
+
+<!-- Interruption -->
+<div style="max-width:640px;padding:28px 32px;border:1px solid var(--border);border-radius:10px;background:var(--bg)">
+<p style="margin:0 0 8px;font:600 14px/1.3 'Inter',sans-serif;color:var(--ink)">Quick interruption.</p>
+<p style="margin:0;font:400 14.5px/1.65 'Inter',sans-serif;color:var(--ink2)">If you are reading this and recognising your own operation, there is a short form at the <a href="#qualify" style="color:var(--teal);text-decoration:underline">bottom of this page</a>. Two minutes, and we will tell you straight if your lead volume means Sloan is not worth it. Now, back to the story.</p>
+</div>
+
 </div>
 </section>
 
-<!-- Three ways -->
-<section style="padding:88px 20px;background:var(--bg2);border-top:1px solid var(--border)">
+<!-- 05 Build -->
+<section id="ch-05" class="chapter" data-chapter="05" style="scroll-margin-top:128px">
 <div class="wrap">
-<h2 style="margin:0 0 44px;max-width:760px;font-size:clamp(26px,3.6vw,38px);line-height:1.16;letter-spacing:-.028em">Three ways we lost leads we had already paid for.</h2>
-<div style="max-width:900px">
-<div class="reason-row">
-<div>
-<p style="margin:0 0 6px;font:500 12.5px/1 'Inter',sans-serif;color:var(--ink3)">One</p>
-<p style="margin:0;font:600 19px/1.3 'Inter',sans-serif;letter-spacing:-.02em">The seller called someone else back first.</p>
+<div class="ch-opener">
+<span class="ch-n">05</span>
+<span class="ch-w">Build</span>
 </div>
-<p style="margin:0;font:400 15.5px/1.65 'Inter',sans-serif;color:var(--ink2)">Three VAs means three calls at once, at best. When six leads came in together, the rest sat in a queue, sometimes for hours. A motivated seller does not fill in one form. By the time we rang, they had already talked to a buyer who rang first, and that buyer set the price.</p>
+<hr class="ch-rule">
+<h2 style="margin-bottom:36px;max-width:640px;font-size:clamp(24px,3.5vw,34px);line-height:1.2">So we built Sloan, and week one went badly</h2>
+<div class="prose" style="margin-bottom:44px">
+<p>We looked at buying something first. Everything we found was either software we would have to configure ourselves, or a per minute rate that charged us more for doing the thing we wanted to do more of.</p>
+<p>So we built our own. One job. Take a brand new lead, call it immediately, ask our five questions, send the transcript and the answers to the team.</p>
+<p>Then we pointed it at our own leads, and it went wrong twice in the first week.</p>
+<p><span class="verify-ph">Day three.</span> It called a seller at 6:41am, because we had not set quiet hours. He told us exactly what he thought about that. He was right. Nothing rings before 8am now, and anything that lands overnight gets a text straight away instead.</p>
+<p><span class="verify-ph">Day six.</span> A woman started telling us about her mother's house and why it had to be sold. Sloan asked her what she wanted for it. Technically the next question on the list. Completely the wrong moment. That call is the reason we now hand anything emotional to a person the moment we spot it.</p>
+<p>We ran it on our own leads for <span class="ph">0</span> weeks and rewrote the questions <span class="ph">0</span> times before we let it near a lead we had paid for.</p>
 </div>
-<div class="reason-row">
-<div>
-<p style="margin:0 0 6px;font:500 12.5px/1 'Inter',sans-serif;color:var(--ink3)">Two</p>
-<p style="margin:0;font:600 19px/1.3 'Inter',sans-serif;letter-spacing:-.02em">Our best leads arrived when the office was empty.</p>
-</div>
-<p style="margin:0;font:400 15.5px/1.65 'Inter',sans-serif;color:var(--ink2)">People fill in forms after work. Evenings, late nights, Sunday mornings. Our VAs worked US business hours, so <span class="highlight" style="font-weight:500;color:var(--ink)">53%</span> of our leads landed when nobody was there. Those leads got their first call the next morning, cold, from a company they had half forgotten contacting.</p>
-</div>
-<div class="reason-row">
-<div>
-<p style="margin:0 0 6px;font:500 12.5px/1 'Inter',sans-serif;color:var(--ink3)">Three</p>
-<p style="margin:0;font:600 19px/1.3 'Inter',sans-serif;letter-spacing:-.02em">Follow-up quietly stopped at attempt two.</p>
-</div>
-<p style="margin:0;font:400 15.5px/1.65 'Inter',sans-serif;color:var(--ink2)">Nobody decided to give up on a lead. There was just always a newer one to call. Attempt five never happened. A lot of our deals come from attempt five, which means we were throwing away leads that were still worth money, and calling them dead in the CRM.</p>
-</div>
-</div>
-</div>
-</section>
 
-<!-- Saturday spike -->
-<section style="padding:88px 20px">
-<div class="wrap">
-<h2 style="margin:0 0 18px;max-width:760px;font-size:clamp(26px,3.6vw,38px);line-height:1.16;letter-spacing:-.028em">Saturday, 9:41pm. Six leads in four minutes.</h2>
-<p class="lede" style="margin-bottom:40px;max-width:620px">This is a real spike from our own marketing, and it is the moment that made us build Sloan. On the left, what used to happen. On the right, the same six leads today.</p>
-<div class="split">
-
-<div class="card" style="overflow:hidden">
-<div style="padding:16px 22px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:baseline;gap:12px">
-<span style="font:500 13px/1.3 'Inter',sans-serif;color:var(--ink2)">Before, three VAs, off shift</span>
-<span style="font:500 12px/1.3 'Inter',sans-serif;color:var(--ink3)">Sat 21:38–21:42</span>
+<!-- Reuse: audio player + call activity card -->
+<div style="max-width:820px">
+<p style="margin:0 0 16px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">This is what it sounds like now</p>
+<div id="recording-card" style="padding:24px 28px;border-radius:12px;background:var(--ink);margin-bottom:20px;scroll-margin-top:24px">
+<p style="margin:0 0 18px;font:600 16px/1.3 'Inter',sans-serif;color:#F5F4F2;display:flex;align-items:center;gap:9px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5F4F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M19 8a5 5 0 0 1 0 8"/></svg>
+A real inbound seller call — press play
+</p>
+<div style="display:flex;align-items:center;gap:16px">
+<button id="play-btn" type="button" aria-label="Play the recording" style="flex:none;width:48px;height:48px;border-radius:50%;border:none;background:#F5F4F2;color:var(--ink);cursor:pointer;font:400 16px/1 'Inter',sans-serif;display:flex;align-items:center;justify-content:center;padding:0">
+<span id="play-icon" aria-hidden="true" style="margin-left:3px">&#9654;</span>
+</button>
+<input type="range" id="scrub" class="scrub" aria-label="Seek recording" min="0" max="1000" value="0" step="1">
+<span id="cur" style="flex:none;font:400 12.5px/1 'IBM Plex Mono',monospace;color:#A8A6A0">0:00</span>
 </div>
-<div style="padding:8px 0">
-<div class="lead-row"><span class="lead-t">21:38</span><span class="lead-n">Marcus T.</span><div class="lead-bar"><div style="width:88%;height:100%;background:#C9C7C1"></div></div><span class="lead-o" style="color:var(--ink2)">Called Mon 9:20</span></div>
-<div class="lead-row"><span class="lead-t">21:39</span><span class="lead-n">Dana R.</span><div class="lead-bar"><div style="width:100%;height:100%;background:#C9C7C1"></div></div><span class="lead-o" style="color:#B4B2AC">Sold elsewhere</span></div>
-<div class="lead-row"><span class="lead-t">21:40</span><span class="lead-n">Luis M.</span><div class="lead-bar"><div style="width:94%;height:100%;background:#C9C7C1"></div></div><span class="lead-o" style="color:var(--ink2)">Called Mon 11:05</span></div>
-<div class="lead-row"><span class="lead-t">21:41</span><span class="lead-n">Karen W.</span><div class="lead-bar"><div style="width:100%;height:100%;background:#C9C7C1"></div></div><span class="lead-o" style="color:#B4B2AC">Sold elsewhere</span></div>
-<div class="lead-row"><span class="lead-t">21:41</span><span class="lead-n">Ray P.</span><div class="lead-bar"><div style="width:100%;height:100%;background:#C9C7C1"></div></div><span class="lead-o" style="color:#B4B2AC">Never called</span></div>
-<div class="lead-row"><span class="lead-t">21:42</span><span class="lead-n">Tonya S.</span><div class="lead-bar"><div style="width:100%;height:100%;background:#C9C7C1"></div></div><span class="lead-o" style="color:#B4B2AC">Sold elsewhere</span></div>
-</div>
-<div style="padding:18px 22px;background:#FBFBFA;border-top:1px solid var(--border)">
-<p style="margin:0;font:400 13.5px/1.6 'Inter',sans-serif;color:var(--ink2)">Two got a call the next morning. One never got called at all. Three had already spoken to another buyer.</p>
-</div>
+<audio id="call-audio" preload="metadata" src="assets/sloan-call.mp3"></audio>
 </div>
 
 <div class="card" style="overflow:hidden">
-<div style="padding:16px 22px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:baseline;gap:12px">
-<span style="font:500 13px/1.3 'Inter',sans-serif;color:var(--blue)">After, Sloan, same four minutes</span>
-<span style="font:500 12px/1.3 'Inter',sans-serif;color:var(--ink3)">Sat 21:38–21:42</span>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px">
+<span style="font:600 15px/1.3 'Inter',sans-serif">Marcus T. · 1442 San Francisco Circle</span>
+<span class="pill pill-teal">Qualified</span>
 </div>
-<div style="padding:8px 0">
-<div class="lead-row"><span class="lead-t">21:38</span><span class="lead-n">Marcus T.</span><div class="lead-bar"><div style="width:4%;height:100%;background:var(--blue)"></div></div><span class="lead-o" style="color:var(--teal)">Qualified 21:42</span></div>
-<div class="lead-row"><span class="lead-t">21:39</span><span class="lead-n">Dana R.</span><div class="lead-bar"><div style="width:5%;height:100%;background:var(--blue)"></div></div><span class="lead-o" style="color:var(--teal)">Qualified 21:44</span></div>
-<div class="lead-row"><span class="lead-t">21:40</span><span class="lead-n">Luis M.</span><div class="lead-bar"><div style="width:3%;height:100%;background:var(--blue)"></div></div><span class="lead-o" style="color:var(--ink2)">Attempt 1 of 10</span></div>
-<div class="lead-row"><span class="lead-t">21:41</span><span class="lead-n">Karen W.</span><div class="lead-bar"><div style="width:6%;height:100%;background:var(--blue)"></div></div><span class="lead-o" style="color:var(--teal)">Qualified 21:47</span></div>
-<div class="lead-row"><span class="lead-t">21:41</span><span class="lead-n">Ray P.</span><div class="lead-bar"><div style="width:4%;height:100%;background:var(--blue)"></div></div><span class="lead-o" style="color:var(--teal)">Qualified 21:45</span></div>
-<div class="lead-row"><span class="lead-t">21:42</span><span class="lead-n">Tonya S.</span><div class="lead-bar"><div style="width:3%;height:100%;background:var(--blue)"></div></div><span class="lead-o" style="color:var(--ink2)">Attempt 1 of 10</span></div>
-</div>
-<div style="padding:18px 22px;background:#FAFCFE;border-top:1px solid var(--border)">
-<p style="margin:0;font:400 13.5px/1.6 'Inter',sans-serif;color:var(--ink2)">All six were ringing within seconds of arriving. Four answered on the spot and were qualified before midnight. Two went into the ten attempt sequence.</p>
+<div class="split" style="gap:0">
+<div style="padding:22px 24px;border-right:1px solid var(--border)">
+<p style="margin:0 0 14px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">Call activity</p>
+<div style="display:flex;flex-direction:column;gap:10px;font:400 14px/1.5 'Inter',sans-serif">
+<div style="display:flex;gap:10px"><span style="flex:none;width:64px;color:var(--ink3);font:400 12.5px/1.5 'IBM Plex Mono',monospace">Sat 21:41</span><span style="color:var(--ink2)">Lead received</span></div>
+<div style="display:flex;gap:10px"><span style="flex:none;width:64px;color:var(--ink);font:500 12.5px/1.5 'IBM Plex Mono',monospace">21:41:06</span><span>Attempt 1 — connected</span></div>
+<div style="display:flex;gap:10px"><span style="flex:none;width:64px;color:var(--ink3);font:400 12.5px/1.5 'IBM Plex Mono',monospace">21:42</span><span style="color:var(--ink2)">Transcript delivered</span></div>
 </div>
 </div>
-
+<div style="padding:22px 24px">
+<p style="margin:0 0 14px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">Qualification answers</p>
+<div style="display:flex;flex-direction:column;gap:12px;font:400 14px/1.4 'Inter',sans-serif">
+<div style="display:flex;justify-content:space-between;gap:10px"><span style="color:var(--ink2)">Reason for selling</span><span style="font-weight:600;text-align:right">Downsizing</span></div>
+<div style="display:flex;justify-content:space-between;gap:10px"><span style="color:var(--ink2)">Timeline</span><span style="font-weight:600;text-align:right">As soon as possible</span></div>
+<div style="display:flex;justify-content:space-between;gap:10px"><span style="color:var(--ink2)">Condition</span><span style="font-weight:600;text-align:right">Needs work, especially the kitchen</span></div>
+<div style="display:flex;justify-content:space-between;gap:10px"><span style="color:var(--ink2)">Asking price</span><span style="font-weight:600;text-align:right">$410,000</span></div>
+<div style="display:flex;justify-content:space-between;gap:10px"><span style="color:var(--ink2)">Mortgage owed</span><span style="font-weight:600;text-align:right">$0</span></div>
 </div>
-<p style="margin:24px 0 0;max-width:660px;font:400 15px/1.6 'Inter',sans-serif;color:var(--ink3)">Nothing about the leads changed. Same forms, same ad spend, same questions. The only difference is that something answered on a Saturday night.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 
-<!-- What we did -->
-<section style="padding:88px 20px;background:var(--bg2);border-top:1px solid var(--border)">
+<!-- 06 Live -->
+<section id="ch-06" class="chapter" data-chapter="06" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);scroll-margin-top:128px">
 <div class="wrap">
-<h2 style="margin:0 0 18px;max-width:700px;font-size:clamp(26px,3.6vw,38px);line-height:1.16;letter-spacing:-.028em">So we put Sloan in front of the phone.</h2>
-<p class="lede" style="margin-bottom:40px;max-width:620px">Sloan is our own voice agent. It makes the first call, asks our standard questions, and sends the transcript and the answers to our team. That is the whole job.</p>
-<div class="g2">
-<div class="card" style="padding:30px">
-<p style="margin:0 0 9px;font:600 17px/1.3 'Inter',sans-serif;letter-spacing:-.015em">It calls in seconds.</p>
-<p style="margin:0;font:400 14.5px/1.6 'Inter',sans-serif;color:var(--ink2)">The seller is often still on our website when the phone rings. You are the first buyer they speak to, not the fourth.</p>
+<div class="ch-opener">
+<span class="ch-n">06</span>
+<span class="ch-w">Live</span>
 </div>
-<div class="card" style="padding:30px">
-<p style="margin:0 0 9px;font:600 17px/1.3 'Inter',sans-serif;letter-spacing:-.015em">It calls everyone at once.</p>
-<p style="margin:0;font:400 14.5px/1.6 'Inter',sans-serif;color:var(--ink2)">Six leads arrive together, six calls go out together. No queue, and no call-back landing on a busy line.</p>
+<hr class="ch-rule">
+<h2 style="margin-bottom:36px;max-width:640px;font-size:clamp(24px,3.5vw,34px);line-height:1.2">The first month, against the month before it</h2>
+<div class="prose" style="margin-bottom:40px">
+<p>Same lead sources. Same ad spend. Same five questions. Same two VAs and the same acquisitions team behind them.</p>
+<p>The only thing we changed was who made the first call.</p>
 </div>
-<div class="card" style="padding:30px">
-<p style="margin:0 0 9px;font:600 17px/1.3 'Inter',sans-serif;letter-spacing:-.015em">It never clocks off.</p>
-<p style="margin:0;font:400 14.5px/1.6 'Inter',sans-serif;color:var(--ink2)">No shift, no breaks, no holidays. We still do not ring phones in the middle of the night, so an overnight lead gets a text straight away and a call first thing.</p>
-</div>
-<div class="card" style="padding:30px">
-<p style="margin:0 0 9px;font:600 17px/1.3 'Inter',sans-serif;letter-spacing:-.015em">It keeps trying.</p>
-<p style="margin:0;font:400 14.5px/1.6 'Inter',sans-serif;color:var(--ink2)">Up to ten attempts on every lead, on schedule, whether anyone remembers or not. Attempt five happens every time now.</p>
-</div>
-</div>
-</div>
-</section>
 
-<!-- Pull quote -->
-<section style="padding:132px 20px">
-<div style="max-width:820px;margin:0 auto;padding:0 12px">
-<h2 style="margin:0 0 32px;font-size:clamp(28px,4.4vw,46px);line-height:1.12;letter-spacing:-.03em">Now our team only talks to sellers who picked up.</h2>
-<div style="display:flex;flex-direction:column;gap:18px;margin-bottom:52px;font:400 17.5px/1.7 'Inter',sans-serif;color:var(--ink2)">
-<p style="margin:0">This is the change we felt most.</p>
-<p style="margin:0">Sloan does the dialing. It takes the ringing out, the voicemails, the dead numbers. It also handles most of the screening on its own, so a lot of leads are already qualified before a person is involved.</p>
-<p style="margin:0">Our team no longer spends half the day listening to phones ring. They spend it talking to sellers who answered. When a call needs a human, they take it.</p>
-</div>
-<blockquote style="margin:0;padding:6px 0 6px 28px;border-left:3px solid var(--blue)">
-<p class="accent" style="margin:0;font-size:clamp(22px,3vw,30px);line-height:1.4;color:var(--ink)">We did not replace our VAs. We deleted the four hours a day they spent waiting for someone to pick up.</p>
-</blockquote>
-</div>
-</section>
-
-<!-- Proof -->
-<section style="padding:88px 20px;background:var(--bg2);border-top:1px solid var(--border)">
-<div class="wrap">
-<h2 style="margin:0 0 18px;max-width:760px;font-size:clamp(26px,3.6vw,38px);line-height:1.16;letter-spacing:-.028em">Same leads. Same questions. Same team. One thing changed.</h2>
-<p class="lede" style="margin-bottom:40px;max-width:620px">We did not touch lead sources or ad spend when we switched. Only who made the first call.</p>
-
-<div class="card" style="max-width:900px;overflow:hidden;margin-bottom:44px">
+<!-- Comparison table -->
+<div class="card" style="max-width:800px;overflow:hidden;margin-bottom:32px">
 <div class="proof-head" style="background:var(--bg2);border-bottom:1px solid var(--border)">
 <div style="padding:12px 22px;font:500 12.5px/1.3 'Inter',sans-serif;color:var(--ink3)">&nbsp;</div>
-<div style="padding:12px 16px;text-align:center;font:500 12.5px/1.3 'Inter',sans-serif;color:var(--ink3)">Before, VA team</div>
-<div style="padding:12px 16px;text-align:center;font:500 12.5px/1.3 'Inter',sans-serif;color:var(--blue)">After, Sloan</div>
+<div style="padding:12px 16px;text-align:center;font:500 12.5px/1.3 'Inter',sans-serif;color:var(--ink3)">Two VAs</div>
+<div style="padding:12px 16px;text-align:center;font:500 12.5px/1.3 'Inter',sans-serif;color:var(--blue)">Sloan</div>
 </div>
-<div class="proof-row"><div style="padding:14px 22px;font:400 14.5px/1.4 'Inter',sans-serif">Time to first call</div><div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">3h 41m</div><div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--blue);background:#FAFCFE">7 seconds</div></div>
-<div class="proof-row"><div style="padding:14px 22px;font:400 14.5px/1.4 'Inter',sans-serif">Calls at the same time</div><div style="padding:14px 16px;text-align:center;font:400 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">3 at most</div><div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--blue);background:#FAFCFE">No practical limit</div></div>
-<div class="proof-row"><div style="padding:14px 22px;font:400 14.5px/1.4 'Inter',sans-serif">Hours covered per day</div><div style="padding:14px 16px;text-align:center;font:400 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">9</div><div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--blue);background:#FAFCFE">24</div></div>
-<div class="proof-row"><div style="padding:14px 22px;font:400 14.5px/1.4 'Inter',sans-serif">Attempts per lead</div><div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">2.4</div><div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--blue);background:#FAFCFE">8.1</div></div>
-<div class="proof-row"><div style="padding:14px 22px;font:400 14.5px/1.4 'Inter',sans-serif">Leads that got no call at all</div><div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">4%</div><div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--blue);background:#FAFCFE">0%</div></div>
+<div class="proof-row">
+<div style="padding:14px 22px;font:400 14.5px/1.4 'Inter',sans-serif">Time to first call, median</div>
+<div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">3h 41m</div>
+<div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--blue);background:#FAFCFE">7 seconds</div>
 </div>
-
-<div class="card" style="max-width:900px;overflow:hidden">
-<div style="display:flex;align-items:center;justify-content:space-between;padding:13px 20px;background:var(--bg2);border-bottom:1px solid var(--border);gap:12px">
-<span style="font:500 12.5px/1.3 'Inter',sans-serif;color:var(--ink2)">One lead, end to end · Marcus T. · 1442 San Francisco Circle</span>
-<span class="pill pill-teal" style="white-space:nowrap">Qualified</span>
+<div class="proof-row">
+<div style="padding:14px 22px;font:400 14.5px/1.4 'Inter',sans-serif">Worst wait we could find</div>
+<div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">36 hours</div>
+<div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--blue);background:#FAFCFE"><span class="ph">00 seconds</span></div>
 </div>
-<div class="split" style="gap:0">
-<div style="padding:24px;border-right:1px solid #EDEDEC">
-<p style="margin:0 0 16px;font:500 12px/1 'Inter',sans-serif;color:var(--ink3)">Call activity</p>
-<div style="display:flex;flex-direction:column;gap:13px">
-<div style="display:flex;gap:12px;align-items:baseline"><span style="flex:none;width:62px;font:400 12px/1.4 'Inter',sans-serif;color:#B4B2AC">Sat 21:38</span><span style="font:400 13.5px/1.4 'Inter',sans-serif;color:var(--ink2)">Lead received from Facebook form</span></div>
-<div style="display:flex;gap:12px;align-items:baseline"><span style="flex:none;width:62px;font:500 12px/1.4 'Inter',sans-serif;color:var(--blue)">21:38:07</span><span style="font:500 13.5px/1.4 'Inter',sans-serif;color:var(--ink)">Attempt 1 — connected, 1m 02s</span></div>
-<div style="display:flex;gap:12px;align-items:baseline"><span style="flex:none;width:62px;font:400 12px/1.4 'Inter',sans-serif;color:#B4B2AC">21:42</span><span style="font:400 13.5px/1.4 'Inter',sans-serif;color:var(--ink2)">Transcript and answers delivered</span></div>
-<div style="display:flex;gap:12px;align-items:baseline"><span style="flex:none;width:62px;font:400 12px/1.4 'Inter',sans-serif;color:#B4B2AC">Mon 08:30</span><span style="font:400 13.5px/1.4 'Inter',sans-serif;color:var(--ink2)">Acquisitions opened the day with this</span></div>
+<div class="proof-row">
+<div style="padding:14px 22px;font:400 14.5px/1.4 'Inter',sans-serif">Calls at the same time</div>
+<div style="padding:14px 16px;text-align:center;font:400 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">2</div>
+<div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--blue);background:#FAFCFE">No practical limit</div>
 </div>
-<div style="margin-top:22px;padding:14px;border:1px solid var(--border);border-radius:8px;background:#FBFBFA">
-<p class="accent" style="margin:0;font-size:13.5px;line-height:1.6;color:var(--ink)">"Honestly I filled that form in and forgot about it. You called me back in about ten seconds, which nobody does."</p>
-<p style="margin:8px 0 0;font:400 12px/1.4 'Inter',sans-serif;color:var(--ink3)">Transcript excerpt</p>
+<div class="proof-row">
+<div style="padding:14px 22px;font:400 14.5px/1.4 'Inter',sans-serif">Hours covered per day</div>
+<div style="padding:14px 16px;text-align:center;font:400 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">9</div>
+<div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--blue);background:#FAFCFE">24</div>
 </div>
+<div class="proof-row">
+<div style="padding:14px 22px;font:400 14.5px/1.4 'Inter',sans-serif">Attempts per lead</div>
+<div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">2.4</div>
+<div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--blue);background:#FAFCFE">8.1</div>
 </div>
-<div style="padding:24px;background:#FBFBFA">
-<p style="margin:0 0 16px;font:500 12px/1 'Inter',sans-serif;color:var(--ink3)">Qualification answers</p>
-<div style="display:flex;flex-direction:column;gap:11px">
-<div style="display:flex;justify-content:space-between;gap:16px;padding-bottom:11px;border-bottom:1px solid #EDEDEC"><span style="font:400 13px/1.4 'Inter',sans-serif;color:var(--ink3)">Reason for selling</span><span style="font:500 13px/1.4 'Inter',sans-serif;text-align:right">Downsizing</span></div>
-<div style="display:flex;justify-content:space-between;gap:16px;padding-bottom:11px;border-bottom:1px solid #EDEDEC"><span style="font:400 13px/1.4 'Inter',sans-serif;color:var(--ink3)">Timeline</span><span style="font:500 13px/1.4 'Inter',sans-serif;text-align:right">As soon as possible</span></div>
-<div style="display:flex;justify-content:space-between;gap:16px;padding-bottom:11px;border-bottom:1px solid #EDEDEC"><span style="font:400 13px/1.4 'Inter',sans-serif;color:var(--ink3)">Condition</span><span style="font:500 13px/1.4 'Inter',sans-serif;text-align:right">Needs work, especially the kitchen</span></div>
-<div style="display:flex;justify-content:space-between;gap:16px;padding-bottom:11px;border-bottom:1px solid #EDEDEC"><span style="font:400 13px/1.4 'Inter',sans-serif;color:var(--ink3)">Asking price</span><span style="font:500 13px/1.4 'Inter',sans-serif;text-align:right">$410,000</span></div>
-<div style="display:flex;justify-content:space-between;gap:16px"><span style="font:400 13px/1.4 'Inter',sans-serif;color:var(--ink3)">Mortgage owed</span><span style="font:500 13px/1.4 'Inter',sans-serif;text-align:right">$0</span></div>
-</div>
-</div>
+<div class="proof-row">
+<div style="padding:14px 22px;font:400 14.5px/1.4 'Inter',sans-serif">Leads that got no call at all</div>
+<div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--ink2)">4%</div>
+<div style="padding:14px 16px;text-align:center;font:500 14.5px/1.4 'Inter',sans-serif;color:var(--blue);background:#FAFCFE">0%</div>
 </div>
 </div>
 
-<p style="margin:28px 0 0;max-width:660px;font:400 14px/1.6 'Inter',sans-serif;color:var(--ink3)">You can hear this call in full on the <a href="/#recording-card" style="color:var(--blue);text-decoration:underline" data-cta-location="cs_recording">home page</a>.</p>
+<div class="prose" style="margin-bottom:40px">
+<p>The row that still gets me is the first one. Thirty six hours became seven seconds. Not because Sloan is clever. Because it is never busy.</p>
+</div>
+
+<!-- Screenshots ch-06 -->
+<div style="display:flex;flex-direction:column;gap:28px;max-width:760px;margin-bottom:40px">
+<div>
+<div class="screenshot-ph">
+<span class="ss-label">Screenshot</span>
+<span class="ss-desc"><span class="ph">6</span> leads landed inside <span class="ph">4</span> minutes and all six were on a call at once. Nobody waited.</span>
+</div>
+</div>
+<div>
+<div class="screenshot-ph">
+<span class="ss-label">Screenshot</span>
+<span class="ss-desc">Time to first contact before and after, with the switchover date visible. The switch happened on <span class="ph">date</span>.</span>
+</div>
+</div>
+</div>
+
+<p style="max-width:660px;font:400 13.5px/1.65 'Inter',sans-serif;color:var(--ink3)">Figures cover <span class="ph">date range</span> and <span class="ph">000</span> inbound seller leads. Time to first call is measured from the lead reaching our CRM to the first ring. These are our own numbers from our own operation, and your lead mix will not look exactly like ours.</p>
 </div>
 </section>
 
-<!-- Cost shape -->
-<section style="padding:88px 20px">
+<!-- 07 Now -->
+<section id="ch-07" class="chapter" data-chapter="07" style="scroll-margin-top:128px">
 <div class="wrap">
-<h2 style="margin:0 0 18px;max-width:760px;font-size:clamp(26px,3.6vw,38px);line-height:1.16;letter-spacing:-.028em">We pay a VA for the month. We pay Sloan for the talking.</h2>
-<div style="max-width:640px;display:flex;flex-direction:column;gap:14px;margin-bottom:40px;font:400 16.5px/1.65 'Inter',sans-serif;color:var(--ink2)">
-<p style="margin:0">A VA costs the same whether the phone is ringing or not. So if only about half the shift is a real conversation, an hour of actual talking costs roughly double what it looks like on the invoice.</p>
-<p style="margin:0">Sloan costs money only while a call is connected. Idle time is free. That is the whole difference, and it is a difference in shape rather than in rate.</p>
+<div class="ch-opener">
+<span class="ch-n">07</span>
+<span class="ch-w">Now</span>
 </div>
-<div class="split" style="max-width:900px">
-<div class="card" style="padding:26px">
-<p class="kicker" style="margin-bottom:20px">Human VA, per hour of talk time</p>
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-top:1px solid #EDEDEC"><span style="font:400 14px/1.4 'Inter',sans-serif;color:var(--ink2)">You are billed for</span><span style="font:500 14.5px/1.4 'Inter',sans-serif;text-align:right">The whole shift</span></div>
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-top:1px solid #EDEDEC"><span style="font:400 14px/1.4 'Inter',sans-serif;color:var(--ink2)">Actually talking</span><span style="font:500 14.5px/1.4 'Inter',sans-serif;text-align:right">About half of it</span></div>
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-top:1px solid #EDEDEC"><span style="font:400 14px/1.4 'Inter',sans-serif;color:var(--ink2)">Ringing, voicemail, dead numbers</span><span style="font:500 14.5px/1.4 'Inter',sans-serif;text-align:right">Paid in full</span></div>
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-top:1px solid #EDEDEC"><span style="font:500 14px/1.4 'Inter',sans-serif;color:var(--ink)">Real cost per hour of talking</span><span style="font:600 16px/1.4 'Inter',sans-serif;color:var(--blue);text-align:right">Roughly double the headline rate</span></div>
+<hr class="ch-rule">
+<h2 style="margin-bottom:36px;max-width:640px;font-size:clamp(24px,3.5vw,34px);line-height:1.2">What our two VAs do today</h2>
+<div class="prose" style="margin-bottom:40px">
+<p>Both of them are still here.</p>
+<p>They do not dial any more. Sloan makes the calls, screens the sellers, and hands over the ones worth a real conversation. Our VAs spend their day talking to people who already picked up and already answered the five questions.</p>
+<p>That is the part I did not expect to matter as much as it does. Nobody enjoys four hours of ringtone. They both like the job more now, and we are not paying anybody to listen to a phone ring.</p>
 </div>
-<div class="card" style="padding:26px">
-<p class="kicker" style="margin-bottom:20px">Sloan, per hour of talk time</p>
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-top:1px solid #EDEDEC"><span style="font:400 14px/1.4 'Inter',sans-serif;color:var(--ink2)">You are billed for</span><span style="font:500 14.5px/1.4 'Inter',sans-serif;text-align:right">Connected minutes only</span></div>
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-top:1px solid #EDEDEC"><span style="font:400 14px/1.4 'Inter',sans-serif;color:var(--ink2)">Actually talking</span><span style="font:500 14.5px/1.4 'Inter',sans-serif;text-align:right">All of it</span></div>
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-top:1px solid #EDEDEC"><span style="font:400 14px/1.4 'Inter',sans-serif;color:var(--ink2)">Ringing, voicemail, dead numbers</span><span style="font:500 14.5px/1.4 'Inter',sans-serif;text-align:right">Free</span></div>
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-top:1px solid #EDEDEC"><span style="font:500 14px/1.4 'Inter',sans-serif;color:var(--ink)">Real cost per hour of talking</span><span style="font:600 16px/1.4 'Inter',sans-serif;color:var(--blue);text-align:right">The rate you were quoted</span></div>
+
+<div class="pull-quote" style="max-width:720px">
+<p>We did not replace our VAs. We deleted the half of the day they spent waiting for somebody to pick up.</p>
+</div>
+
+<h3 style="margin:56px 0 24px;font-size:20px">And here is what Sloan is still bad at</h3>
+<div class="grid-3" style="max-width:900px;margin-bottom:28px">
+<div class="card" style="padding:24px">
+<p style="margin:0 0 8px;font:600 16px/1.3 'Inter',sans-serif;letter-spacing:-.015em">Emotional calls need a person.</p>
+<p style="margin:0;font:400 14px/1.6 'Inter',sans-serif;color:var(--ink2)">Probate, divorce, foreclosure. Sloan asks the next question. A good VA knows when to stop asking. See day six.</p>
+</div>
+<div class="card" style="padding:24px">
+<p style="margin:0 0 8px;font:600 16px/1.3 'Inter',sans-serif;letter-spacing:-.015em">It cannot follow a hunch.</p>
+<p style="margin:0;font:400 14px/1.6 'Inter',sans-serif;color:var(--ink2)">When a seller drops a hint that he is more motivated than he said, a sharp caller chases it. Sloan carries on down the list. This is the one we feel most.</p>
+</div>
+<div class="card" style="padding:24px">
+<p style="margin:0 0 8px;font:600 16px/1.3 'Inter',sans-serif;letter-spacing:-.015em">Some sellers can tell.</p>
+<p style="margin:0;font:400 14px/1.6 'Inter',sans-serif;color:var(--ink2)">Most cannot. A few can, and a few of those hang up. That is a real loss. It is smaller than the voicemail they used to get on a Saturday.</p>
+</div>
+<div class="card" style="padding:24px">
+<p style="margin:0 0 8px;font:600 16px/1.3 'Inter',sans-serif;letter-spacing:-.015em">Odd answers break the call.</p>
+<p style="margin:0;font:400 14px/1.6 'Inter',sans-serif;color:var(--ink2)">Answer sideways and the call can end half finished. It gets flagged, a person picks it up. Nobody is standing by to rescue it live.</p>
+</div>
+<div class="card" style="padding:24px">
+<p style="margin:0 0 8px;font:600 16px/1.3 'Inter',sans-serif;letter-spacing:-.015em">Transcripts make mistakes.</p>
+<p style="margin:0;font:400 14px/1.6 'Inter',sans-serif;color:var(--ink2)">Addresses and figures get checked by a human before they go anywhere near an offer.</p>
+</div>
+<div class="card" style="padding:24px">
+<p style="margin:0 0 8px;font:600 16px/1.3 'Inter',sans-serif;letter-spacing:-.015em">When it breaks, it breaks everywhere.</p>
+<p style="margin:0;font:400 14px/1.6 'Inter',sans-serif;color:var(--ink2)">One VA having a bad day costs you one seat. One wrong setting costs you every lead until somebody notices. We check the dashboard every morning.</p>
 </div>
 </div>
-<p style="margin:28px 0 0;max-width:640px;font:400 15.5px/1.65 'Inter',sans-serif;color:var(--ink2)">One more thing. If you want an American voice on the phone, a US based caller costs considerably more than an offshore one. On most calls, sellers cannot tell Sloan is not one.</p>
+<p style="max-width:660px;font:400 14.5px/1.65 'Inter',sans-serif;color:var(--ink3);margin-bottom:56px">Sloan does not negotiate, make offers, book appointments or close. That is still our people, and if your team is not ready to take the handoff, calling faster will not save you.</p>
+
+<!-- Closing -->
+<div class="prose">
+<p style="color:var(--ink);font-size:17.5px">Would we go back? No.</p>
+<p>Not because the technology is impressive. Because no lead we pay for waits any more. Not the Saturday night one. Not the fifth one in a spike. Not the one that needed a seventh attempt.</p>
+</div>
 </div>
 </section>
 
-<!-- Limitations -->
-<section style="padding:88px 20px;background:var(--bg2);border-top:1px solid var(--border)">
-<div class="wrap">
-<h2 style="margin:0 0 18px;font-size:clamp(26px,3.6vw,38px);line-height:1.16;letter-spacing:-.028em">What Sloan is bad at.</h2>
-<p class="lede" style="margin-bottom:36px;max-width:620px">You would find all of this out in week one, so here it is now. If any of it is a dealbreaker, better you know at this point.</p>
-<div class="g3">
-<div class="card" style="padding:26px">
-<p style="margin:0 0 9px;font:600 16px/1.3 'Inter',sans-serif;letter-spacing:-.015em">Emotional calls need a person.</p>
-<p style="margin:0;font:400 14.5px/1.6 'Inter',sans-serif;color:var(--ink2)">Probate, divorce, foreclosure. Sloan asks the next question. A good VA knows when to stop asking.</p>
-</div>
-<div class="card" style="padding:26px">
-<p style="margin:0 0 9px;font:600 16px/1.3 'Inter',sans-serif;letter-spacing:-.015em">It cannot follow a hunch.</p>
-<p style="margin:0;font:400 14.5px/1.6 'Inter',sans-serif;color:var(--ink2)">A seller drops a hint that they are more motivated than they said. A sharp caller chases it. Sloan carries on down the script. This is the one we feel most.</p>
-</div>
-<div class="card" style="padding:26px">
-<p style="margin:0 0 9px;font:600 16px/1.3 'Inter',sans-serif;letter-spacing:-.015em">Some sellers can tell.</p>
-<p style="margin:0;font:400 14.5px/1.6 'Inter',sans-serif;color:var(--ink2)">Most cannot. A few can, and a few of those hang up. That is a real loss, and it is smaller than the voicemail they used to get on a Saturday.</p>
-</div>
-<div class="card" style="padding:26px">
-<p style="margin:0 0 9px;font:600 16px/1.3 'Inter',sans-serif;letter-spacing:-.015em">Odd answers break the call.</p>
-<p style="margin:0;font:400 14.5px/1.6 'Inter',sans-serif;color:var(--ink2)">If a seller answers sideways, the call can end half finished. It gets flagged and a person picks it up. Nobody is standing by to rescue it live.</p>
-</div>
-<div class="card" style="padding:26px">
-<p style="margin:0 0 9px;font:600 16px/1.3 'Inter',sans-serif;letter-spacing:-.015em">Transcripts make mistakes.</p>
-<p style="margin:0;font:400 14.5px/1.6 'Inter',sans-serif;color:var(--ink2)">Addresses and figures need checking before they go anywhere near an offer.</p>
-</div>
-<div class="card" style="padding:26px">
-<p style="margin:0 0 9px;font:600 16px/1.3 'Inter',sans-serif;letter-spacing:-.015em">When it breaks, it breaks everywhere.</p>
-<p style="margin:0;font:400 14.5px/1.6 'Inter',sans-serif;color:var(--ink2)">One VA having a bad day costs you one seat. One wrong setting costs you every lead until somebody notices. We check the dashboard every morning.</p>
-</div>
-</div>
-<p style="margin:28px 0 0;font:400 15px/1.65 'Inter',sans-serif;color:var(--ink3)">Sloan does not negotiate, make offers, book appointments or close. That is still your team, and if your team is not ready to take the handoff, faster qualification will not help you.</p>
-</div>
-</section>
-
-<!-- CTA -->
+<!-- Dark CTA -->
 <section id="cta" style="padding:96px 20px;background:var(--ink)">
-<div class="wrap">
-<p style="margin:0 auto 40px;max-width:900px;font:400 13px/1.6 'Inter',sans-serif;color:#8F8B84;text-align:center">Figures cover June 2026, 200 inbound seller leads from our own Facebook ads. Time to first call is measured from the lead reaching our CRM to the first ring. Talk time is connected minutes only. Lead sources, forms, questions and staff were unchanged across both periods. These are our own numbers from our own operation.</p>
-<div style="text-align:center">
+<div class="wrap" style="text-align:center">
 <h2 style="margin:0 auto 16px;max-width:680px;font-size:clamp(26px,4vw,40px);line-height:1.14;letter-spacing:-.03em;color:#fff">Your next lead is coming in tonight.</h2>
-<p style="margin:0 auto 30px;max-width:560px;font:400 16.5px/1.6 'Inter',sans-serif;color:#B4B0A9">Answer a few questions about your lead volume and who calls them today. You get a straight yes or no from us, including a no if your volume means this will not pay for itself.</p>
-<a href="/#qualify" style="display:inline-block;font:600 15px/1 'Inter',sans-serif;color:#fff;background:var(--blue);padding:15px 26px;border-radius:6px;text-decoration:none" data-cta-location="cs_footer">See if you qualify</a>
+<p style="margin:0 auto 30px;max-width:520px;font:400 16.5px/1.6 'Inter',sans-serif;color:#B4B0A9">Answer a few questions about your lead volume and who calls them today. You get a straight yes or no from us, including a no if your volume means this will not pay for itself.</p>
+<a href="#qualify" style="display:inline-block;font:600 15px/1 'Inter',sans-serif;color:#fff;background:var(--blue);padding:15px 26px;border-radius:6px;text-decoration:none" data-cta-location="cs_cta">See if you qualify</a>
 <p style="margin:16px 0 0;font:400 13px/1 'Inter',sans-serif;color:#8F8B84">60 seconds, no card, one reply from a person</p>
 </div>
+</section>
+
+<!-- Qualify form -->
+<section id="qualify" style="padding:88px 20px;background:var(--bg2);border-top:1px solid var(--border);scroll-margin-top:24px">
+<div class="wrap" style="text-align:center">
+<h2 style="margin-bottom:14px">Your next lead is going to come in tonight. <span class="accent">Let Sloan call it.</span></h2>
+<p style="margin:0 auto 40px;max-width:560px;font:400 16.5px/1.6 'Inter',sans-serif;color:var(--ink2)">Answer a few quick questions about your lead volume and who calls them today. You will get a straight yes or no from us — including a no, if your volume means this will not pay for itself.</p>
+<form id="qualify-form" class="card" style="max-width:460px;margin:0 auto;padding:32px;text-align:left">
+<div class="field">
+<label for="f-name">Name and company</label>
+<input type="text" id="f-name" name="name_company" autocomplete="name" placeholder="Jane Doe, Ridgeline Property Group" required>
+</div>
+<div class="field">
+<label for="f-email">Work email</label>
+<input type="email" id="f-email" name="email" autocomplete="email" placeholder="you@company.com" required>
+</div>
+<div class="field">
+<label for="f-phone">Phone number</label>
+<input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="(555) 123-4567" required>
+</div>
+<div class="field">
+<label id="whatsapp-label">Can we contact you on WhatsApp?</label>
+<div class="radio-row" role="radiogroup" aria-labelledby="whatsapp-label">
+<label class="radio-pill"><input type="radio" name="whatsapp_ok" value="yes" required><span>Yes</span></label>
+<label class="radio-pill"><input type="radio" name="whatsapp_ok" value="no"><span>No</span></label>
+</div>
+</div>
+<div class="field">
+<label id="volume-label">Inbound seller leads per month</label>
+<div class="radio-row" role="radiogroup" aria-labelledby="volume-label">
+<label class="radio-pill"><input type="radio" name="lead_volume" value="<100" required><span>Under 100</span></label>
+<label class="radio-pill"><input type="radio" name="lead_volume" value="100-250"><span>100–250</span></label>
+<label class="radio-pill"><input type="radio" name="lead_volume" value="250-500"><span>250–500</span></label>
+<label class="radio-pill"><input type="radio" name="lead_volume" value="500+"><span>500+</span></label>
+</div>
+</div>
+<div class="field">
+<label for="f-caller">Who makes the first call today?</label>
+<input type="text" id="f-caller" name="first_caller" placeholder="VA, ISA, acquisitions rep, me" required>
+</div>
+<div class="field">
+<label for="f-cost">What does that cost you monthly?</label>
+<input type="text" id="f-cost" name="monthly_cost" placeholder="$" inputmode="numeric">
+</div>
+<input type="hidden" name="utm_source">
+<input type="hidden" name="utm_medium">
+<input type="hidden" name="utm_campaign">
+<input type="hidden" name="utm_term">
+<input type="hidden" name="utm_content">
+<input type="hidden" name="page_url">
+<button type="submit" class="btn" id="qualify-submit" style="width:100%">Get every lead called in seconds</button>
+<p id="form-status" role="status" aria-live="polite" style="margin:14px 0 0;text-align:center;font:400 13px/1.5 'Inter',sans-serif;color:var(--ink2)">60 seconds · no card · one reply from a person, not a sequence</p>
+</form>
 </div>
 </section>
 
@@ -500,6 +723,7 @@ function trackEvent(name, params){
   }catch(e){}
 }
 
+/* UTM persistence */
 (function utm(){
   var keys=['utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
   var params=new URLSearchParams(location.search);
@@ -508,9 +732,20 @@ function trackEvent(name, params){
   var changed=false;
   keys.forEach(function(k){ if(params.get(k)){ stored[k]=params.get(k); changed=true; } });
   if(changed){ try{sessionStorage.setItem('sloan_utms', JSON.stringify(stored));}catch(e){} }
+  window.__sloanUtms = stored;
   trackEvent('page_view',{page:'case_study',utm_source:stored.utm_source||'',utm_campaign:stored.utm_campaign||''});
+  var form=document.getElementById('qualify-form');
+  if(form){
+    keys.forEach(function(k){
+      var f=form.querySelector('[name="'+k+'"]');
+      if(f) f.value=stored[k]||'';
+    });
+    var pu=form.querySelector('[name="page_url"]');
+    if(pu) pu.value=location.href;
+  }
 })();
 
+/* Scroll depth */
 (function scrollDepth(){
   var fired={};
   var thresholds=[25,50,75,100];
@@ -519,94 +754,228 @@ function trackEvent(name, params){
     var scrollable=doc.scrollHeight-doc.clientHeight;
     var pct=scrollable>0?Math.round((window.scrollY/scrollable)*100):100;
     thresholds.forEach(function(t){
-      if(!fired[t] && pct>=t){ fired[t]=true; trackEvent('scroll_depth',{page:'case_study',percent:t}); }
+      if(!fired[t] && pct>=t){ fired[t]=true; trackEvent('scroll_depth',{percent:t,page:'case_study'}); }
     });
   }
   window.addEventListener('scroll',check,{passive:true});
   check();
 })();
 
+/* CTA tracking */
 document.querySelectorAll('a[data-cta-location]').forEach(function(a){
   a.addEventListener('click',function(){
-    trackEvent('cta_click',{type:'primary',location:a.dataset.ctaLocation||'unknown'});
+    trackEvent('cta_click',{type:'primary',location:a.dataset.ctaLocation||'unknown',page:'case_study'});
   });
 });
 
-(function calculator(){
-  // Measured on our own operation: 130 of the 200 leads we paid for in June
-  // 2026 never became a conversation. Everything else on this panel is the
-  // visitor's own assumption, moved with the sliders.
-  var MISS_RATE = 130 / 200;
+/* Chapter rail — active state + progress bar */
+(function chapterRail(){
+  var links = Array.from(document.querySelectorAll('.ch-link'));
+  var chapters = Array.from(document.querySelectorAll('.chapter'));
+  var progBar = document.getElementById('ch-prog-bar');
+  var progWrap = document.getElementById('ch-prog-wrap');
+  var railHeight = document.getElementById('ch-rail').offsetHeight;
+  var NAV_H = 64;
 
-  // Published list prices, by the lead-volume tier a given month falls into.
-  var TIERS = [
-    {max:75,  monthly:399},
-    {max:200, monthly:799},
-    {max:500, monthly:1199}
-  ];
-
-  var els = {
-    leads:   document.getElementById('cs-leads'),
-    cpl:     document.getElementById('cs-cpl'),
-    close:   document.getElementById('cs-close'),
-    fee:     document.getElementById('cs-fee'),
-    recover: document.getElementById('cs-recover')
-  };
-  if(!els.leads) return;
-
-  function money(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
-  function num(n){ return Math.round(n).toLocaleString('en-US'); }
-
-  function sloanYear(leads){
-    for(var i=0;i<TIERS.length;i++){
-      if(leads <= TIERS[i].max) return money(TIERS[i].monthly * 12);
-    }
-    // Above the top published tier there is no list price to quote.
-    return money(TIERS[TIERS.length-1].monthly * 12) + '+';
-  }
-
-  function render(){
-    var leads   = Number(els.leads.value),
-        cpl     = Number(els.cpl.value),
-        close   = Number(els.close.value),
-        fee     = Number(els.fee.value),
-        recover = Number(els.recover.value);
-
-    var missed      = leads * MISS_RATE,
-        spendYear   = missed * cpl * 12,
-        reachedYear = missed * 12 * (recover / 100),
-        dealsYear   = reachedYear * (close / 100),
-        profitYear  = dealsYear * fee;
-
-    document.getElementById('out-leads').textContent   = num(leads);
-    document.getElementById('out-cpl').textContent     = money(cpl);
-    document.getElementById('out-close').textContent    = close + '%';
-    document.getElementById('out-fee').textContent      = money(fee);
-    document.getElementById('out-recover').textContent  = recover + '%';
-
-    document.getElementById('r-missed').textContent  = num(missed) + ' a month';
-    document.getElementById('r-spend').textContent   = money(spendYear) + ' a year';
-    document.getElementById('r-reached').textContent = num(missed * (recover / 100)) + ' a month';
-    document.getElementById('r-deals').textContent   = dealsYear.toFixed(1) + ' a year';
-    document.getElementById('r-profit').textContent  = money(profitYear);
-    document.getElementById('r-sloan').textContent   = sloanYear(leads);
-  }
-
-  Object.keys(els).forEach(function(k){
-    els[k].addEventListener('input', render);
-    els[k].addEventListener('change', render);
-  });
-
-  var tracked = false;
-  Object.keys(els).forEach(function(k){
-    els[k].addEventListener('change', function(){
-      if(!tracked){ tracked = true; trackEvent('calculator_used',{page:'case_study'}); }
+  /* Smooth scroll on click */
+  links.forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.querySelector(link.getAttribute('href'));
+      if(target){
+        var top = target.getBoundingClientRect().top + window.scrollY - NAV_H - railHeight - 8;
+        window.scrollTo({top:top,behavior:'smooth'});
+      }
     });
   });
 
-  render();
+  /* Active chapter via IntersectionObserver */
+  if(typeof IntersectionObserver !== 'undefined'){
+    var current = '01';
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          current = e.target.dataset.chapter;
+          links.forEach(function(l){
+            var active = l.dataset.ch === current;
+            l.setAttribute('aria-current', active ? 'true' : 'false');
+          });
+        }
+      });
+    },{rootMargin:'-'+(NAV_H + railHeight + 16)+'px 0px -55% 0px',threshold:0});
+    chapters.forEach(function(ch){ io.observe(ch); });
+  }
+
+  /* Progress bar on scroll */
+  function updateProgress(){
+    var doc = document.documentElement;
+    var scrollable = doc.scrollHeight - doc.clientHeight;
+    var pct = scrollable > 0 ? (window.scrollY / scrollable * 100) : 0;
+    progBar.style.width = Math.min(100, pct) + '%';
+    progWrap.setAttribute('aria-valuenow', Math.round(pct));
+  }
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  updateProgress();
+})();
+
+/* Fade-rise animation */
+(function fadeIn(){
+  if(!('IntersectionObserver' in window)) return;
+  var chapters = document.querySelectorAll('.chapter');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) e.target.classList.add('ch-visible');
+    });
+  },{threshold:0.06});
+  chapters.forEach(function(ch){ io.observe(ch); });
+})();
+
+/* Calculator */
+(function calc(){
+  var ciPeople = document.getElementById('ci-people');
+  var ciCost   = document.getElementById('ci-cost');
+  var ciHours  = document.getElementById('ci-hours');
+  var ciConv   = document.getElementById('ci-conv');
+  var ciConvOut= document.getElementById('ci-conv-out');
+  var ciLeads  = document.getElementById('ci-leads');
+
+  var coCph    = document.getElementById('co-cph-v');
+  var coDial   = document.getElementById('co-dial-v');
+  var coUnc    = document.getElementById('co-unc-v');
+  var coSloan  = document.getElementById('co-sloan-v');
+  var coSloanN = document.getElementById('co-sloan-name');
+  var coHonest = document.getElementById('co-honest');
+  var coWorking= document.getElementById('co-working');
+
+  var TIERS = [
+    {max:75,  name:'Starter', price:399},
+    {max:200, name:'Standard', price:799},
+    {max:500, name:'Volume', price:1199}
+  ];
+
+  function fmt(n){ return Math.round(n).toLocaleString('en-US'); }
+  function fmt2(n){ return n < 10 ? n.toFixed(2) : Math.round(n).toLocaleString('en-US'); }
+
+  function update(){
+    var people = Math.max(1, parseInt(ciPeople.value) || 1);
+    var cost   = Math.max(0, parseFloat(ciCost.value) || 0);
+    var hours  = Math.max(1, parseFloat(ciHours.value) || 1);
+    var conv   = parseInt(ciConv.value) || 50;
+    var leads  = Math.max(1, parseInt(ciLeads.value) || 1);
+
+    ciConvOut.textContent = conv + '%';
+
+    var totalMonthlyCost = people * cost;
+    var paidHrsMo = people * hours * 22;
+    var talkHrsMo = paidHrsMo * (conv / 100);
+    var dialHrsMo = paidHrsMo * (1 - conv / 100);
+
+    var costPerTalkHr = talkHrsMo > 0 ? totalMonthlyCost / talkHrsMo : 0;
+    var dialingCostMo = totalMonthlyCost * (1 - conv / 100);
+    var uncovered = Math.max(0, 24 - hours);
+
+    var tier = TIERS[TIERS.length - 1];
+    for(var i = 0; i < TIERS.length; i++){
+      if(leads <= TIERS[i].max){ tier = TIERS[i]; break; }
+    }
+    var sloanLabel = leads > 500 ? tier.name + '+' : tier.name;
+
+    coCph.textContent = fmt2(costPerTalkHr);
+    coDial.textContent = fmt(dialingCostMo);
+    coUnc.textContent = uncovered;
+    coSloan.textContent = fmt(tier.price);
+    coSloanN.textContent = sloanLabel + ' plan';
+
+    var worseOff = dialingCostMo < tier.price && cost > 0;
+    coHonest.style.display = worseOff ? 'block' : 'none';
+
+    coWorking.textContent = 'cost per talk hour = ('+ people + ' × $' + fmt(cost) + ') ÷ (' + people + ' × ' + hours + ' hrs × 22 days × ' + conv + '%) = $' + fmt2(costPerTalkHr);
+
+    trackEvent('calculator_used', {page:'case_study'});
+  }
+
+  var calcTimer;
+  function debounce(){ clearTimeout(calcTimer); calcTimer = setTimeout(update, 150); }
+  [ciPeople, ciCost, ciHours, ciLeads].forEach(function(el){ el.addEventListener('input', debounce); });
+  ciConv.addEventListener('input', update);
+  update();
+})();
+
+/* Audio player */
+(function player(){
+  var a=document.getElementById('call-audio'),btn=document.getElementById('play-btn'),
+      icon=document.getElementById('play-icon'),scrub=document.getElementById('scrub'),
+      cur=document.getElementById('cur');
+  if(!a||!btn) return;
+  var seeking=false, startedTracked=false, halfTracked=false;
+
+  function fmt(s){s=Math.floor(s)||0;return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2)}
+  function total(){return isFinite(a.duration)?a.duration:0}
+  function updateFill(){
+    var pct=scrub.max>0?(scrub.value/scrub.max*100):0;
+    scrub.style.backgroundSize=pct+'% 100%, 100% 100%';
+  }
+
+  btn.addEventListener('click',function(){a.paused?a.play():a.pause()});
+  a.addEventListener('play',function(){
+    icon.innerHTML='&#10074;&#10074;';icon.style.marginLeft='0';
+    btn.setAttribute('aria-label','Pause the recording');
+    if(!startedTracked){startedTracked=true;trackEvent('audio_start',{page:'case_study'});}
+  });
+  a.addEventListener('pause',function(){
+    icon.innerHTML='&#9654;';icon.style.marginLeft='2px';
+    btn.setAttribute('aria-label','Play the recording');
+  });
+  function onMetadata(){ cur.textContent=fmt(total()); scrub.max=Math.round(total()*1000)||1000; }
+  a.addEventListener('loadedmetadata',onMetadata);
+  if(a.readyState>=1) onMetadata();
+  a.addEventListener('timeupdate',function(){
+    if(!seeking){ scrub.value=Math.round(a.currentTime*1000); updateFill(); }
+    cur.textContent=fmt(a.currentTime)+' / '+fmt(total());
+    if(!halfTracked && total() && a.currentTime/total()>=0.5){halfTracked=true;trackEvent('audio_50',{page:'case_study'});}
+  });
+  a.addEventListener('ended',function(){
+    scrub.value=0;a.currentTime=0;updateFill();
+    cur.textContent=fmt(total());
+    trackEvent('audio_complete',{page:'case_study'});
+  });
+  a.addEventListener('error',function(){
+    btn.disabled=true;btn.style.opacity='.45';btn.style.cursor='default';
+    scrub.disabled=true;cur.textContent='unavailable';
+  });
+  scrub.addEventListener('pointerdown',function(){seeking=true});
+  scrub.addEventListener('input',function(){ updateFill(); if(total()) a.currentTime=(scrub.value/1000); });
+  scrub.addEventListener('pointerup',function(){seeking=false});
+  scrub.addEventListener('change',function(){seeking=false});
+})();
+
+/* Qualify form */
+(function form(){
+  var f=document.getElementById('qualify-form');
+  var btn=document.getElementById('qualify-submit');
+  var status=document.getElementById('form-status');
+  if(!f) return;
+
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    btn.disabled=true;btn.textContent='Sending…';
+    var data=new FormData(f);
+    var body=Object.fromEntries(data.entries());
+    trackEvent('form_submit',{page:'case_study'});
+    fetch('/api/apply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+      .then(function(r){
+        if(!r.ok) throw new Error('bad response');
+        btn.textContent='Sent — we will be in touch';btn.style.opacity='.7';
+        status.textContent='Got it. Someone from our team will reply within one business day.';
+        trackEvent('form_success',{page:'case_study'});
+      })
+      .catch(function(){
+        btn.disabled=false;btn.textContent='Get every lead called in seconds';
+        status.textContent='Something went wrong — please email us directly.';
+        trackEvent('form_error',{page:'case_study'});
+      });
+  });
 })();
 </script>
-
 </body>
 </html>
